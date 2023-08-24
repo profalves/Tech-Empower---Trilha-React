@@ -38,21 +38,17 @@
 |                             [*Github*](https://github.com/profalves)                              |
 |                    [*LinkedIn*](https://www.linkedin.com/in/rodrigoalvesdev/)                     |
 
-<style>
-  img[alt="Rodrigo Alves"] { width: 200px; }
-</style>
-
 ### Ementa
 
 - **Semana 1**:
   <!-- - [Git e Github](semana-1/aula-01/git_github.md) -->
-  - ***Reintrodução ao Javascript***
-    - [*state*](semana-1/aula-02/state.md)
-    - [*context*](semana-1/aula-03/context.md)
-    - [*events*](semana-1/aula-03/eventos_js.md)
+  - [***Reintrodução ao Javascript***]()
+      - [*state*](semana-1/aula-02/state.md)
+      - [*context*](semana-1/aula-03/context.md)
+      - [*events*](semana-1/aula-03/eventos_js.md)
   - [Web Components](semana-1/aula-04/web_components_1.md)
   - [Typescript](semana-1/aula-05/typescipt.md)
-  
+
 <!-- - **Semana 2**: 
   - Explorando o Framework
   - Construção de Arquitetura
@@ -67,7 +63,7 @@
 
 ## Material de estudos
 
-<https://github.com/profalves/Aulas-Angular>
+<https://github.com/profalves/Tech-Empower---Trilha-React>
 
 ## Enviar exercícios
 
@@ -77,7 +73,7 @@ O link do seu pull request deverá ser enviado dentro do **classroom** do curso,
 
 ## Enviar dúvidas
 
-Abra uma *issue*: <https://github.com/profalves/Aulas-Angular/issues>
+Abra uma *issue*: <https://github.com/profalves/Tech-Empower---Trilha-React/issues>
 
 ## Sugestões e Melhorias
 
