@@ -22,8 +22,6 @@ Para entender melhor a diferença fundamental entre linguagem funcional e proced
 
 ## Visão Geral
 
-A JavaScript é uma linguagem dinâmica orientada a objetos; tem tipos e operadores, objetos e métodos. Sua sintaxe vem da linguagem C, por isso tantas estruturas desta se aplicam a JavaScript também. Uma das principais diferenças é que o JavaScript não tem classes; em vez disso, a funcionalidade de classe é realizada por protótipos de objetos. A outra diferença principal é que as funções são objetos, dando as funções a capacidade para armazenar código executável e serem passadas como parametro para qualquer outro objeto.
-
 ### Estrutura de Dados
 
 JavaScript é uma linguagem de tipagem dinâmica. Isso significa que você não necessita declarar o tipo de uma variável antes de sua atribuição. O Javascript usa em geral os tipos de dados primitivos e alguns deles são: 
@@ -41,7 +39,7 @@ Para complementar seus estudos:
  - [Sintaxe e tipos](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Grammar_and_types)
 
 
-## Trabalhando com Números
+### Trabalhando com Números
 
 Números em JavaScript são "valores de precisão dupla no formato IEEE 754", de acordo com a especificação. Isto tem algumas consequências interessantes. Não existe essa coisa de inteiro em JavaScript, então você deve ser um pouco cuidadoso com seus cálculos se você está acostumado com a matemática em C ou Java. Cuidado com coisas como:
 
@@ -54,70 +52,45 @@ Na prática, valores inteiros são tratados como inteiros de 32 bits (e são arm
 Você pode converter uma string em um inteiro usando a função embutida [`parseInt()`](/pt-BR/JavaScript/Reference/Global_Objects/parseInt). Ela tem um segundo parâmetro opcional para a base da conversão, parâmetro esse que você deveria sempre prover:
 
 ```js
-> parseInt("123", 10) // Parametro (10) é de numero decimal (inteiro)
+parseInt("123", 10) // Parametro (10) é de numero decimal (inteiro)
 123
 ```
 
 Se você quiser converter um número binário em um inteiro, basta mudar a base:
 
 ```js
-> parseInt("11", 2)
-3
+parseInt("11", 2) // 3
 ```
 
 Similarmente, você pode fazer a conversão de números de ponto flutuante usando a função embutida [`parseFloat()`](/pt-BR/JavaScript/Reference/Global_Objects/parseFloat) que usa a base 10 sempre, ao contrário de seu primo [`parseInt()`](/pt-BR/JavaScript/Reference/Global_Objects/parseInt).
 
 Você também pode usar o operador unário `+` para converter valores em números:
 
-```
-> + "42"
-42
+```js
++ "42" // 42
 ```
 
 Um valor especial chamado [`NaN`](/pt-BR/JavaScript/Reference/Global_Objects/NaN) (sigla de "*Not a Number*" ou "Não é Número") é retornado se a string não é um valor numérico:
 
 ```js
-> parseInt("hello", 10)
-NaN
+parseInt("hello", 10) // NaN
 ```
 
 `NaN` é tóxico: Se você provê-lo como uma entrada para qualquer operação matemática o resultado também será `NaN`:
 
 ```js
-> NaN + 5
-NaN
+NaN + 5 // NaN
 ```
 
 Você pode testar se é `NaN` usando a função embutida [`isNaN()`](/pt-BR/JavaScript/Reference/Global_Objects/isNaN):
 
 ```js
-> isNaN(NaN)
-true
-```
-
-JavaScript também tem os valores especiais [`Infinity`](/pt-BR/JavaScript/Reference/Global_Objects/Infinity) e `-Infinity`:
-
-```js
-> 1 / 0
-Infinity
-> -1 / 0
--Infinity
-```
-
-Você pode testar se o valor é `Infinity`, `-Infinity` e `NaN` usando a função embutida [`isFinite()`](/pt-BR/JavaScript/Reference/Global_Objects/isFinite):
-
-```js
-> isFinite(1/0)
-false
-> isFinite(-Infinite)
-false
-> isFinite(NaN)
-false
+isNaN(NaN + 5) // true
 ```
 
 > **Nota:** As funções [`parseInt()`](/pt-BR/JavaScript/Reference/Global_Objects/parseInt) e [`parseFloat()`](/pt-BR/JavaScript/Reference/Global_Objects/parseFloat) fazem a conversão da string até alcançarem um caracter que não é válido para o formato numérico especificado, então elas retornam o número convertido até aquele ponto. Contudo, o operador "+" simplesmente converte a string em `NaN` se tiver algum caracter inválido nela. Apenas tente por si mesmo converter a string "10.2abc" usando cada um desses métodos no console e entenderá melhor essas diferenças.
 
-## Trabalhando com Strings
+### Trabalhando com Strings
 
 Strings em JavaScript são sequências de caracteres. Para ser mais exato, elas são sequências de [Unicode characters](/pt-BR/JavaScript/Guide/Obsolete_Pages/Unicode), em que cada um deles é representado por um número de 16-bits. Isso deveria ser uma notícia bem-vinda para aqueles que tiveram que lidar com internacionalização.
 
@@ -126,24 +99,20 @@ Se você quiser representar um único caractere, você só tem que usar uma stri
 Para obter o tamanho de uma string, acesse sua propriedade [`length`](/pt-BR/JavaScript/Reference/Global_Objects/String/length):
 
 ```js
-> "hello".length
-5
+"hello".length // 5
 ```
 
 Essa é nossa primeira pincelada com objetos JavaScript! Eu mencionei que strings também são objetos? De modo que elas têm métodos:
 
 ```js
-> "hello".charAt(0)
-h
-> "hello, world".replace("hello", "goodbye")
-goodbye, world
-> "hello".toUpperCase()
-HELLO
+"hello".charAt(0) // h
+"hello, world".replace("hello", "goodbye") // goodbye, world
+"hello".toUpperCase() // HELLO
 ```
 
 E por falar nisso, tem esse vídedo muito bacana que explica como no Javascript é tudo objeto: <https://www.youtube.com/watch?v=n5uiJr-v0KQ>
 
-## Trabalhando com outros tipos
+### Trabalhando com outros tipos
 
 No JavaScript há distinção entre `null`, que é um objeto do tipo 'object' para indicar deliberadamente uma ausência de valor, do `undefined`, que é um objeto do tipo 'undefined' para indicar um valor não inicializado — isto é, que um valor não foi atribuído ainda. Vamos falar sobre variáveis depois, mas em JavaScript é possível declarar uma variável sem atribuir um valor para a mesma. Se você fizer isso, a variável será do tipo `undefined`.
 
@@ -155,16 +124,13 @@ JavaScript tem um tipo boolean, ao qual são possíveis os valores `true` e `fal
 Você pode fazer essa conversão explicitamente usando a função `Boolean()`:
 
 ```js
-> Boolean("")
-false
-> Boolean(234)
-true
+Boolean("") // false
+Boolean(234) // true
 ```
 
 Contudo, essa é uma necessidade rara, uma vez que JavaScript silenciosamente fará essa conversão quando for esperado um boolean, como em uma instrução `if`. Por isso, algumas vezes falamos simplesmente em "valores true" e "valores false" nos referindo a valores que se tornaram `true` e `false`, respectivamente, quando convertidos em boolean. Alternativamente, esses valores podem ser chamados de *"truthy"* (verdade/verdadeiro) e *"falsy"* (falso/falsidade), respectivamente.
 
 Operações booleanas como `&&` (_and_ lógico), `||` (_or_ lógico), e `!` (_not_ lógico) são suportadas.
-
 
 ### Variaveis
 
@@ -174,11 +140,10 @@ Existem três tipos de declarações em JavaScript.
 - **let**: Declara uma variável local de escopo do bloco, opcionalmente, inicializando-a com um valor. 👍
 - **const**: Declara uma constante de escopo de bloco, apenas para leitura. 👍
 
-#### Escopo
-Quando você declara uma váriavel fora de qualquer função, ela é chamada de variável global, porque está disponível para qualquer outro código no documento atual. Quando você declara uma variável dentro de uma função, é chamada de variável local,  pois ela está disponível somente dentro dessa função.
+> **Escopo**: Quando você declara uma váriavel fora de qualquer função, ela é chamada de variável global, porque está disponível para qualquer outro código no documento atual. Quando você declara uma variável dentro de uma função, é chamada de variável local,  pois ela está disponível somente dentro dessa função.
 
-#### Constantes
-Você pode criar uma constante apenas de leitura por meio da palavra-chave const. A sintaxe de um identificador de uma constante é semelhante ao identificador de uma variável: deve começar com uma letra, sublinhado ou cifrão e pode conter caractere alfabético, numérico ou sublinhado.
+### Constantes
+Você pode criar uma constante apenas de leitura por meio da palavra-chave `const`. A sintaxe de um identificador de uma constante é semelhante ao identificador de uma variável: deve começar com uma letra, sublinhado ou cifrão e pode conter caractere alfabético, numérico ou sublinhado.
 
 ``` javascript
 const PI = 3.14;

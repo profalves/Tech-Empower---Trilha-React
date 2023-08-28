@@ -23,9 +23,104 @@ Esta é a principal razão pelo qual um estado jamais deverá ser alterado diret
 
 ## O que é state (estado) no Javascript?
 
-Gerência de estados tem sido um assunto da atualidade, principalmente se você está envolvido com Javascript e toda velocidade do nosso ecossistema gigantesco, com certeza, pelo menos já se deparou com algo sobre.
+Gerenciamento de estados tem sido um hype da atualidade frontend, principalmente se você está envolvido com Javascript e toda velocidade do nosso ecossistema gigantesco, com certeza, pelo menos já se deparou com algo sobre.
 
 O conceito geral de estado na programação é uma fonte única de verdade. Na época do JQuery, o html era o state da aplicação e o que os famosos frameworks fizeram foi trazer o state para o javascript para gerenciá-lo e facilitar o reloading, melhorando a experiência de desenvolvimento.
+
+Aprender a trabalhar com estados (ou state) em JavaScript puro é fundamental para a criação de aplicações interativas. O conceito de estado refere-se aos dados que podem mudar ao longo do tempo e influenciar a renderização da interface do usuário. Aqui está um tutorial passo a passo sobre como trabalhar com estados usando JavaScript puro:
+
+Vamos criar um exemplo simples de uma contagem, onde clicar em um botão aumentará o valor da contagem exibida na página.
+
+1. **Preparação do HTML:**
+
+Comece criando um arquivo HTML básico que inclua um botão e um elemento para mostrar a contagem. O HTML deve ter um identificador para o elemento da contagem, por exemplo, `id="count-display"`.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>State com JavaScript Puro</title>
+</head>
+<body>
+  <h1>Contagem: <span id="count-display">0</span></h1>
+  <button id="increment-btn">Incrementar</button>
+
+  <script src="app.js"></script>
+</body>
+</html>
+```
+
+2. **JavaScript para manipulação do estado:**
+Crie um arquivo app.js (conforme referenciado no `<script>` no HTML acima) para lidar com a lógica de estado e interatividade.
+
+```js
+// Selecionar elementos do DOM
+const countDisplay = document.getElementById('count-display');
+const incrementBtn = document.getElementById('increment-btn');
+
+// Inicialização do estado
+let count = 0;
+
+// Função para atualizar a exibição da contagem
+function updateCountDisplay() {
+  countDisplay.textContent = count;
+}
+
+// Manipulador de clique para o botão
+incrementBtn.addEventListener('click', () => {
+  // Atualizar o estado
+  count++;
+  
+  // Atualizar a exibição
+  updateCountDisplay();
+});
+```
+
+Neste exemplo, começamos selecionando os elementos do DOM que precisamos manipular. Em seguida, inicializamos o estado (aqui, a variável count) com o valor inicial de 0. Criamos a função updateCountDisplay para atualizar a exibição da contagem no elemento HTML.
+
+O evento de clique no botão (addEventListener) dispara a função que incrementa o estado da contagem e, em seguida, chama a função updateCountDisplay para refletir essa mudança na interface do usuário.
+
+Para ter uma melhor manutenção e organização do código, podemos usar a classe no javascript 
+
+```js
+class CounterApp {
+  constructor() {
+    // Selecionar elementos do DOM
+    this.countDisplay = document.getElementById('count-display');
+    this.incrementBtn = document.getElementById('increment-btn');
+
+    // Inicialização do estado
+    this.count = 0;
+
+    // Vincular métodos de classe ao objeto
+    this.updateCountDisplay = this.updateCountDisplay.bind(this);
+    this.handleIncrementClick = this.handleIncrementClick.bind(this);
+
+    // Adicionar ouvintes de eventos
+    this.incrementBtn.addEventListener('click', this.handleIncrementClick);
+
+    // Atualizar a exibição inicial
+    this.updateCountDisplay();
+  }
+
+  updateCountDisplay() {
+    this.countDisplay.textContent = this.count;
+  }
+
+  handleIncrementClick() {
+    // Atualizar o estado
+    this.count++;
+
+    // Atualizar a exibição
+    this.updateCountDisplay();
+  }
+}
+
+// Iniciar a aplicação
+const counterApp = new CounterApp();
+```
 
 ### Controlando o estado
 
