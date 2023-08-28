@@ -42,32 +42,72 @@
 
 - **Semana 1**:
   <!-- - [Git e Github](semana-1/aula-01/git_github.md) -->
-  - [***Reintrodução ao Javascript***]()
-      - [*state*](semana-1/aula-02/state.md)
-      - [*context*](semana-1/aula-03/context.md)
-      - [*events*](semana-1/aula-03/eventos_js.md)
-  - [Web Components](semana-1/aula-04/web_components_1.md)
-  - [Typescript](semana-1/aula-05/typescipt.md)
+  - [***Reintrodução ao Javascript***](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Language_Overview)
+    - Conceitos Gerais
+  - Typescript
 
-<!-- - **Semana 2**: 
-  - Explorando o Framework
-  - Construção de Arquitetura
-  - PWA
-  - Routes e Route Guards
-  - Testes
-    - Mocks
-    - Jasmine
-    - Karma
-    - TDD
--->
+- **Semana 2**: 
+  - *state no JS*
+  - `useState` React
+
+- **Semana 3**: 
+  - Ciclo de Vida dos Componentes
+  - Hooks (useEffect)
+
+- **Semana 4**: 
+  - Hooks (useContext)
+  - Formulários e validações
+
+- **Semana 5**: 
+  - Introdução ao Redux
+  - Conceitos Redux (store, actions, reducers)
+  - Gerenciamento de estado com Redux
+
+- **Semana 6**: 
+  - Integração Redux com React
+  - **Projeto prático**
+
+- **Semana 7**: 
+  - Introdução ao React Router
+  - Navegação entre páginas
+
+- **Semana 8**: 
+  - Trabalhando com querys e parâmetros de rotas
+  - Rotas protegidas
+
+- **Semana 9**: 
+  - Revisão de conteúdo
+  - **Projeto prático**
+
+- **Semana 10**: 
+  - Autenticação e autorização em APIs
+  - Manipulação de dados assíncrona
+
+- **Semana 11**: 
+  - Tratamento de erros
+  - Estilização com CSS-in-JS
+
+- **Semana 12**: 
+  - Revisão de conteúdo
+  - **Projeto prático**
+
+- **Semana 13**: 
+  - Testes de integração
+  - Testes de unidade avançados
+
+- **Semana 14**: 
+  - Testes E2E
+  - Processo de deploy
+
+- **Semana 15**: 
+  - Revisão de conteúdo
+  - **Projeto final**
 
 ## Material de estudos
 
 <https://github.com/profalves/Tech-Empower---Trilha-React>
 
 ## Enviar exercícios
-
-Precisa enviar um pull request com o conteúdo dentro de uma pasta (`semana-x/aula-xx/exercicio/pasta-com-seu-nome`). Para isso, você precisa dar um fork no repositório e criar a sua branch para enviar o mesmo.
 
 O link do seu pull request deverá ser enviado dentro do **classroom** do curso, por meio de um comentário particular.
 
