@@ -43,7 +43,7 @@
 - **Semana 1**:
   - [***Reintrodução ao Javascript***](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Language_Overview)
     - Conceitos Gerais 
-    - Contexto
+    - OOP, Contexto e Closures
   
 
 - **Semana 2**: 
