@@ -513,3 +513,11 @@ Então, quando `makeAdder` é chamado, um objeto de escopo é criado com uma ún
 Objetos de escopo formam uma cadeia chamada de cadeia de escopos, similar a cadeia de protótipos usadas no sistema de objetos de JavaScript.
 
 Uma clausura é a combinação de uma função e o objeto de escopo na qual é criado. Clausuras permitem você guardar estado — de tal forma, elas podem ser frequentemente utilizadas no lugar de objetos.
+
+## Docs
+
+- <https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Language_Overview>
+
+## Desafio
+
+Acesse este repositório: <https://github.com/profalves/calculadora-template-sample>
