@@ -427,6 +427,8 @@ arr.forEach(function(each){
 });
 ```
 
+Leia esta matéria interessante sobre performance de loops no javascript: <https://greenonsoftware.com/articles/thoughts/loops-performance-in-javascript/> 
+
 ### Outros Manipuladores de Arrays
 
 Vetores vem com vários métodos:
