@@ -41,14 +41,14 @@
 ### Ementa
 
 - **Semana 1**:
-  <!-- - [Git e Github](semana-1/aula-01/git_github.md) -->
   - [***Reintrodução ao Javascript***](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Language_Overview)
-    - Conceitos Gerais
-  - Typescript
+    - Conceitos Gerais 
+    - Contexto
+  
 
 - **Semana 2**: 
-  - *state no JS*
-  - `useState` React
+  - Typescript
+  - *state no JS* e `useState` React
 
 - **Semana 3**: 
   - Ciclo de Vida dos Componentes
