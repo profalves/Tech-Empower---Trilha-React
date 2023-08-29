@@ -12,7 +12,7 @@ Apesar de sua popularidade, poucos sabem que JavaScript é uma linguagem de prog
 
 ### Lisp na roupa de C
 
-A sintaxe semelhante a **C** do JavaScript, incluindo chaves e a desajeitada instrução `for` , faz com que pareça uma linguagem processual comum. Isso é enganoso porque JavaScript tem mais em comum com linguagens funcionais como **Lisp** ou **Scheme** do que com **C** ou **Java**. Possui arrays em vez de listas e objetos em vez de listas de propriedades.
+A sintaxe semelhante a **C** do JavaScript, incluindo chaves e a desajeitada instrução `for`, faz com que pareça uma linguagem processual comum. Isso é enganoso porque JavaScript tem mais em comum com linguagens funcionais como **Lisp** ou **Scheme** do que com **C** ou **Java**. Possui arrays em vez de listas e objetos em vez de listas de propriedades.
 
 Para entender melhor a diferença fundamental entre linguagem funcional e procedural, podemos dizer que reside em suas abordagens para resolução de problemas. As linguagens procedurais, como **C** e **Pascal**, organizam o código em procedimentos e funções que manipulam variáveis compartilhadas, seguindo uma abordagem passo a passo. Já as linguagens funcionais, como **Haskell** e **Lisp**, enfatizam a avaliação de expressões e o uso de funções puras, evitando estados compartilhados e mutabilidade. Isso permite um código mais conciso, legível e seguro, uma vez que as operações são tratadas como transformações de dados imutáveis, resultando em maior paralelismo e modularidade.
 
@@ -38,7 +38,6 @@ Para complementar seus estudos:
  - [Sobre tipos primitivos](https://developer.mozilla.org/pt-BR/docs/Glossary/Primitive)
  - [Sintaxe e tipos](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Grammar_and_types)
 
-
 ### Trabalhando com Números
 
 Números em JavaScript são "valores de precisão dupla no formato IEEE 754", de acordo com a especificação. Isto tem algumas consequências interessantes. Não existe essa coisa de inteiro em JavaScript, então você deve ser um pouco cuidadoso com seus cálculos se você está acostumado com a matemática em C ou Java. Cuidado com coisas como:
@@ -49,12 +48,27 @@ Números em JavaScript são "valores de precisão dupla no formato IEEE 754", de
 
 Na prática, valores inteiros são tratados como inteiros de 32 bits (e são armazenados dessa forma em algumas implementações do navegador), que podem ser importantes para as operações bit a bit.
 
-Você pode converter uma string em um inteiro usando a função embutida [`parseInt()`](/pt-BR/JavaScript/Reference/Global_Objects/parseInt). Ela tem um segundo parâmetro opcional para a base da conversão, parâmetro esse que você deveria sempre prover:
+Você pode converter uma string em um inteiro usando a função embutida [`parseInt()`](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/parseInt). Ela tem um segundo parâmetro opcional para a base da conversão, parâmetro esse que você deveria sempre prover. Veja:
 
 ```js
-parseInt("123", 10) // Parametro (10) é de numero decimal (inteiro)
-123
+parseInt("123") // 123)
 ```
+
+Até ai tudo normal, certo? Mas se caso a minha string venha com `0` na frente?
+
+```js
+let octalNumber = "010"; // String que parece octal
+let number = parseInt(octalNumber);
+console.log(number); // Saída: 10 (interpretação incorreta como decimal)
+```
+
+Neste exemplo agora, a string `"010"` se parece com um número octal devido ao zero à esquerda. Sem especificar a base no segundo parâmetro, `parseInt` interpretará a string como base 10, resultando em um número 10. Isso pode não ser o resultado esperado, já que a intenção pode ter sido interpretar a string como octal (base 8).
+
+E isso acontece por que? Se base é `undefined` ou `0` (ou ausente), JavaScript assume o seguinte:
+
+- Se a string de entrada começa com "0x" ou "0X", a base é 16 (hexadecimal) e o restante da string é analisado.
+- Se a string de entrada começa com "0", a base é oito (octal) ou 10 (decimal). Exatamente qual base é escolhida é dependente da implementação. **O ECMAScript 5 especifica que 10 (decimal) seja utilizado, mas nem todos os browsers suportam isso ainda.** Por essa razão sempre especifique uma base quando estiver usando parseInt.
+- Se a string de entrada começa com qualquer outro valor, a base é 10 (decimal).
 
 Se você quiser converter um número binário em um inteiro, basta mudar a base:
 
@@ -62,7 +76,7 @@ Se você quiser converter um número binário em um inteiro, basta mudar a base:
 parseInt("11", 2) // 3
 ```
 
-Similarmente, você pode fazer a conversão de números de ponto flutuante usando a função embutida [`parseFloat()`](/pt-BR/JavaScript/Reference/Global_Objects/parseFloat) que usa a base 10 sempre, ao contrário de seu primo [`parseInt()`](/pt-BR/JavaScript/Reference/Global_Objects/parseInt).
+Similarmente, você pode fazer a conversão de números de ponto flutuante usando a função embutida [`parseFloat()`](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/parseFloat) **que usa a base 10 sempre**, ao contrário de seu primo `parseInt()`.
 
 Você também pode usar o operador unário `+` para converter valores em números:
 
@@ -70,7 +84,7 @@ Você também pode usar o operador unário `+` para converter valores em número
 + "42" // 42
 ```
 
-Um valor especial chamado [`NaN`](/pt-BR/JavaScript/Reference/Global_Objects/NaN) (sigla de "*Not a Number*" ou "Não é Número") é retornado se a string não é um valor numérico:
+Um valor especial chamado [`NaN`](/pt-BR/JavaScript/Reference/Global_Objects/NaN) (sigla de *"Not a Number"* ou *"Não é um Número"*) é retornado se a string não é um valor numérico:
 
 ```js
 parseInt("hello", 10) // NaN
@@ -88,7 +102,13 @@ Você pode testar se é `NaN` usando a função embutida [`isNaN()`](/pt-BR/Java
 isNaN(NaN + 5) // true
 ```
 
-> **Nota:** As funções [`parseInt()`](/pt-BR/JavaScript/Reference/Global_Objects/parseInt) e [`parseFloat()`](/pt-BR/JavaScript/Reference/Global_Objects/parseFloat) fazem a conversão da string até alcançarem um caracter que não é válido para o formato numérico especificado, então elas retornam o número convertido até aquele ponto. Contudo, o operador "+" simplesmente converte a string em `NaN` se tiver algum caracter inválido nela. Apenas tente por si mesmo converter a string "10.2abc" usando cada um desses métodos no console e entenderá melhor essas diferenças.
+> **Nota:** As funções `parseInt()` e `parseFloat()` fazem a conversão da string até alcançarem um caracter que não é válido para o formato numérico especificado, então elas retornam o número convertido até encontrar o ponto. Contudo, o operador "+" simplesmente converte a string em `NaN` se tiver algum caracter inválido nela. Apenas tente por si mesmo converter a string "10.2abc" usando cada um desses métodos no console e entenderá melhor essas diferenças.
+> ```js
+> parseInt('10.2abc') // 10
+> parseFloat('10.2abc') // 10.2
+> const convert = + "10.2abc" // NaN
+> ```
+> ___
 
 ### Trabalhando com Strings
 
@@ -143,64 +163,13 @@ Existem três tipos de declarações em JavaScript.
 > **Escopo**: Quando você declara uma váriavel fora de qualquer função, ela é chamada de variável global, porque está disponível para qualquer outro código no documento atual. Quando você declara uma variável dentro de uma função, é chamada de variável local,  pois ela está disponível somente dentro dessa função.
 
 ### Constantes
-Você pode criar uma constante apenas de leitura por meio da palavra-chave `const`. A sintaxe de um identificador de uma constante é semelhante ao identificador de uma variável: deve começar com uma letra, sublinhado ou cifrão e pode conter caractere alfabético, numérico ou sublinhado.
+Você pode criar uma constante apenas de leitura por meio da palavra-chave `const`, ou seja, não pode ser reatribuída. A sintaxe de uma declaração de uma constante é semelhante ao identificador de uma variável: deve começar com uma letra, sublinhado ou cifrão e pode conter caractere alfabético, numérico ou sublinhado.
 
 ``` javascript
 const PI = 3.14;
 ```
 
 Veja mais detalhes: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Values,_variables,_and_literals
-
-### Operadores
-
-O JavaScript possui os tipos de operadores a seguir. Veja mais sobre cada um abaixo, nosso conselho é que apenas CONHEÇA e tente pelo menos utiliza-los de alguma forma para que se lembre no futuro.
-
-- [Operadores de atribuição](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_Operators#operador_atribuicao)
-- [Operadores de comparação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_Operators#operador_comparacao)
-- [Operadores aritméticos](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_Operators#operadores_aritmeticos)
-- [Operadores relacionais](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_Operators#operador_virgula)
-- [Operadores bit a bit](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_Operators#operadores_bit_a_bit)
-- [Operadores lógicos](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_Operators#operadores_logicos)
-- [Operadores de string](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_Operators#operadores_string)
-- [Operador condicional (ternário)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_Operators#operador_condicional_ternario)
-- [Operador vírgula](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_Operators#operador_virgula)
-- [Operadores unário](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_Operators#operadores_unario)
-
-Para saber mais:
-- https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_operators
-- https://tableless.github.io/iniciantes/manual/js/controles-de-fluxo-e-controles-de-repeticao.html
-
-
-### Funções/Métodos
-
-Funções são blocos de construção fundamentais em JavaScript. Uma função é um procedimento de JavaScript - um conjunto de instruções que executa uma tarefa ou calcula um valor. Para usar uma função, você deve defini-la em algum lugar no escopo do qual você quiser chamá-la.
-
-``` javascript
-function square(numero) { 
-  return numero * numero; 
-}
-```
-
-- https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Fun%C3%A7%C3%B5es
-- https://medium.com/reactbrasil/como-o-javascript-funciona-entendendo-as-fun%C3%A7%C3%B5es-e-suas-formas-de-uso-eb387c7fa138
-
-### Loops e Iterações
-
-Rapidamente, o que é um loop? É um código que vai ser repetindo até que uma determinada condição seja alcançada, ou até mesmo que não haja condição de parada, estes são conhecidos como loops infinitos.
-
-- http://blog.portalrmfactory.com.br/estrutura-de-loops-em-javascript/
-- https://tableless.github.io/iniciantes/manual/js/controles-de-fluxo-e-controles-de-repeticao.html
-
-
-## Variáveis
-
-Existem três tipos de declarações de variáveis em JavaScript.
-
-- **var**: Declara uma variável, opcionalmente, inicializando-a com um valor.
-- **let**: Declara uma variável local de escopo do bloco, opcionalmente, inicializando-a com um valor.
-- **const**: Declara uma constante de escopo de bloco, apenas para leitura.
-
-**Veja mais detalhes:** https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Values,_variables,_and_literals
 
 ## Escopo
 Quando você declara uma váriavel fora de qualquer função, ela é chamada de variável global, porque está disponível para qualquer outro código no documento atual. Quando você declara uma variável dentro de uma função, é chamada de variável local,  pois ela está disponível somente dentro dessa função.

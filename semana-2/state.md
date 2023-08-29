@@ -6,17 +6,19 @@ O por quê do javascript ser uma linguagem de tipagem dinamica? Qual é a difere
 
 ## Imutabilidade
 
-Imutabilidade em seu conceito mais simples é algo que não pode ser alterado. No conceito de programação a imutabilidade se aplica normalmente a objetos/variáveis que não podem ter seu estado modificado após serem criados, mas isso não garante que os seus valores serão sempre os mesmos.
+Imutabilidade em seu conceito mais simples é algo que não pode ser alterado. No conceito de programação, especialmente em linguagens funcionais como JavaScript, os dados imutáveis têm várias vantagens, como prevenção de efeitos colaterais indesejados e facilitação da previsibilidade do código. No JavaScript, os tipos primitivos (como números, strings e booleanos) são imutáveis por natureza, o que significa que seus valores não podem ser alterados após a criação. No entanto, quando se trata de objetos e arrays, que são tipos de referência, é possível alcançar imutabilidade usando abordagens específicas. A imutabilidade se aplica normalmente a objetos que não podem ter seu estado modificado após serem criados, mas isso não garante que os seus valores serão sempre os mesmos.
 
 Evita que erros assim aconteçam:
 
 ```javascript
-const person = {}
-const clonedPerson = person
-person.name = 'John'
+// Exemplo: Referência Compartilhada
+let person1 = { name: 'Alice' };
+let person2 = person1; // person2 agora referencia o mesmo objeto
 
-console.log(person.name) // 'John'
-console.log(person.clonedPerson) // 'John'
+person2.name = 'Bob'; // Isso também afeta o objeto person1
+
+console.log(person1.name); // Output: 'Bob'
+console.log(person2.name); // Output: 'Bob'
 ```
 
 Esta é a principal razão pelo qual um estado jamais deverá ser alterado diretamente.
