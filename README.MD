@@ -49,6 +49,7 @@
 - **Semana 2**: 
   - Typescript
   - *state no JS* e `useState` React
+  - **Projeto prático**
 
 - **Semana 3**: 
   - Ciclo de Vida dos Componentes
@@ -57,6 +58,7 @@
 - **Semana 4**: 
   - Hooks (useContext)
   - Formulários e validações
+  - **Projeto prático**
 
 - **Semana 5**: 
   - Introdução ao Redux
@@ -74,14 +76,15 @@
 - **Semana 8**: 
   - Trabalhando com querys e parâmetros de rotas
   - Rotas protegidas
-
-- **Semana 9**: 
-  - Revisão de conteúdo
   - **Projeto prático**
 
-- **Semana 10**: 
+- **Semana 9**: 
   - Autenticação e autorização em APIs
+  - Revisão de conteúdo
+
+- **Semana 10**: 
   - Manipulação de dados assíncrona
+  - **Projeto prático**
 
 - **Semana 11**: 
   - Tratamento de erros
