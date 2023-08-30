@@ -41,14 +41,15 @@
 ### Ementa
 
 - **Semana 1**:
-  <!-- - [Git e Github](semana-1/aula-01/git_github.md) -->
   - [***Reintrodução ao Javascript***](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Language_Overview)
-    - Conceitos Gerais
-  - Typescript
+    - [Conceitos Gerais](semana-1/introJS-1.md) 
+    - [OOP, Contexto e Closures](semana-1/introJS-2.md)
+  
 
 - **Semana 2**: 
-  - *state no JS*
-  - `useState` React
+  - Typescript
+  - *state no JS* e `useState` React
+  - **Projeto prático**
 
 - **Semana 3**: 
   - Ciclo de Vida dos Componentes
@@ -57,6 +58,7 @@
 - **Semana 4**: 
   - Hooks (useContext)
   - Formulários e validações
+  - **Projeto prático**
 
 - **Semana 5**: 
   - Introdução ao Redux
@@ -74,14 +76,15 @@
 - **Semana 8**: 
   - Trabalhando com querys e parâmetros de rotas
   - Rotas protegidas
-
-- **Semana 9**: 
-  - Revisão de conteúdo
   - **Projeto prático**
 
-- **Semana 10**: 
+- **Semana 9**: 
   - Autenticação e autorização em APIs
+  - Revisão de conteúdo
+
+- **Semana 10**: 
   - Manipulação de dados assíncrona
+  - **Projeto prático**
 
 - **Semana 11**: 
   - Tratamento de erros
