@@ -1,10 +1,10 @@
-# Uma Reintrodução ao Javascript
+# Uma Reintrodução ao Javascript - Parte 2
 
 ## Objetos Personalizados
 
-> **Nota:** Para uma discursão mais detalhada de programação orientada a objetos em JavaScript, veja [Introdução a JavaScript Orientado a Objeto](/pt-BR/JavaScript/Introduction_to_Object-Oriented_JavaScript).
+> **Nota:** Para uma discursão mais detalhada de programação orientada a objetos em JavaScript, veja [Introdução a JavaScript Orientado a Objeto](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Objects).
 
-Na clássica Programação Orientada a Objetos, objetos são coleções de dados e métodos que operam sobre esses dados. JavaScript é uma linguagem baseada em protótipos que não contém a estrutura de classe, como tem em C++ e Java. (Algumas vezes isso é algo confuso para o programador acostumado a linguagens com estrutura de classe). Em vez disso, JavaScript usa funções como classes. Vamos considerar um objeto pessoa com os campos primeiro e último nome. Há duas formas em que o nome talvez possa ser exibido: como "primeiro nome segundo nome" ou como "último nome, primeiro nome". Usando as funções e objetos que discutimos anteriormente, aqui está uma forma de fazer isso:
+Na clássica Programação Orientada a Objetos, objetos são coleções de dados e métodos que operam sobre esses dados. JavaScript é uma linguagem baseada em protótipos que não contém a estrutura de classe, como tem em C++ e Java. *(Algumas vezes isso é algo confuso para o programador acostumado a linguagens com estrutura de classe)*. Em vez disso, **o JavaScript usa funções como classes**. Vamos considerar um objeto pessoa com os campos primeiro e último nome. Há duas formas em que o nome talvez possa ser exibido: como `"primeiro nome segundo nome"` ou como `"último nome, primeiro nome"`. Usando as funções e objetos que discutimos anteriormente, aqui está uma forma de fazer isso:
 
 ```js
 function makePerson(first, last) {
@@ -44,7 +44,7 @@ s.fullName() // Simon Willison
 s.fullNameReversed() // Willison, Simon
 ```
 
-Há algo aqui que não havíamos visto anteriormente: a palavra-chave '[`this`](/pt-BR/JavaScript/Reference/Operators/this)'. Usada dentro de uma função, '`this`' refere-se ao objeto corrente. O que aquilo de fato significa é especificado pelo modo em que você chamou aquela função. Se você chamou-a usando [notação ponto ou notação colchete](/pt-BR/JavaScript/Reference/Operators/Member_Operators) em um objeto, aquele objeto torna-se '`this`'. Se a notação ponto não foi usada pela chamada, '`this`' refere-se ao objeto global. Isso é uma frequente causa de erros. Por exemplo:
+Há algo aqui que não havíamos visto anteriormente: a palavra-chave '[`this`](/pt-BR/JavaScript/Reference/Operators/this)'. Usada dentro de uma função, '`this`' refere-se ao objeto corrente. O que aquilo de fato significa é especificado pelo modo em que você chamou aquela função. Se você chamou-a usando [notação ponto ou notação colchete](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Property_accessors) em um objeto, aquele objeto torna-se '`this`'. Se a notação ponto não foi usada pela chamada, '`this`' refere-se ao objeto global. Isso é uma frequente causa de erros. Por exemplo:
 
 ```js
 const s = makePerson("Simon", "Willison")
@@ -156,7 +156,7 @@ Person.prototype.toString = function() {
     return '<Person: ' + this.fullName() + '>';
 }
 
-console.log(s..toString()) // <Person: Simon Willison>
+console.log(s.toString()) // <Person: Simon Willison>
 ```
 
 ## Contexto
