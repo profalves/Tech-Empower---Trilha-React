@@ -114,7 +114,7 @@ function performOperation(nextOperator: string) {
 Abra um terminal na pasta onde está o arquivo `js/app.ts` e execute o comando TypeScript para compilar o código:
 
 ```bash
-tsc app.ts
+npx tsc js/app.ts
 ```
 
 Isso criará/atualizará o arquivo `app.js`.
