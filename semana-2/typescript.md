@@ -6,7 +6,7 @@
 
 Vale lembrar o código TypeScript é utilizando somente em ambiente de desenvolvimento e é totalmente convertido para JavaScript no processo de build de produção, ou seja, o navegador ou o Node lerão somente código JS no fim das contas.
 
-## Vantagens do TypeScript
+### Vantagens do TypeScript
 
 - Descobrir erros durante o desenvolvimento;
 - Recursos adicionais, tais como de incrementar a inteligência (IntelliSense) à IDE que estamos utilizando;
@@ -16,7 +16,13 @@ Vale lembrar o código TypeScript é utilizando somente em ambiente de desenvolv
 Para começar a usar o TypeScript, você precisa tê-lo instalado globalmente em sua máquina, o que pode ser feito através do Node.js e do gerenciador de pacotes npm. Abra o terminal e execute o seguinte comando:
 
 ```bash
-npm install -g typescript
+npm i -g typescript #or yarn global add typescript
+```
+
+É muito recomendado usar o TS a partir do seu node-package, ou seja, instalando como dependencia de desenvolvimento:
+
+```bash
+npm i typescript --save-dev #or yarn add typescript -D
 ```
 
 ## Tipos Básicos
@@ -249,6 +255,37 @@ O uso de parâmetros de tipo genérico fornece uma maneira poderosa de escrever 
 
 Ao usar `<T>` em TypeScript, você está criando um componente ou função que pode trabalhar com uma ampla gama de tipos de dados, tornando seu código mais genérico e versátil.
 
+### Conversão explicita de tipos com `as`
+
+Em TypeScript, o operador `as` é usado para realizar uma ***conversão de tipo explícita***, também conhecida como _"type assertion"_. Ele permite que você indique ao compilador que você tem conhecimento sobre o tipo de uma variável ou expressão melhor do que o TypeScript pode inferir automaticamente. No entanto, o uso do `as` deve ser feito com cuidado, pois se você especificar um tipo que não é compatível com o valor real, isso pode levar a erros em tempo de execução.
+
+Aqui estão algumas situações em que você pode querer usar o operador `as` em TypeScript:
+
+1. **Quando você sabe mais sobre o tipo do que o compilador**: Às vezes, o TypeScript pode não conseguir inferir o tipo de uma variável de maneira adequada. Usar as nesses casos permite que você informe ao TypeScript qual tipo você acredita que a variável deve ter.
+
+```ts
+const valor: any = "123";
+const numero: number = valor as number;
+```
+
+2. **Trabalhando com tipos mais abstratos**: Em alguns casos, você pode estar trabalhando com tipos mais abstratos, como any ou unknown, e deseja convertê-los em tipos mais específicos.
+
+```ts
+const valor: any = "123";
+const numero: number = valor as number;
+```
+
+3. **Quando você está interoperando com JavaScript não tipado**: Se você estiver integrando código JavaScript não tipado em seu projeto TypeScript, pode usar as para dizer ao TypeScript como tratar os tipos.
+
+```ts
+// Exemplo de uma biblioteca JavaScript não tipada
+const elemento = document.getElementById("meu-elemento") as HTMLInputElement;
+```
+
+É importante notar que o as não realiza nenhuma verificação em tempo de execução. Portanto, se você usar as para converter um valor em um tipo incompatível, pode ocorrer um erro em tempo de execução. É por isso que é recomendável usar type assertion apenas quando você tem certeza de que a conversão é segura.
+
+No entanto, sempre que possível, é melhor evitar o uso do as e permitir que o TypeScript infira tipos de forma natural, pois isso ajuda a tirar o máximo proveito das verificações de tipo estático oferecidas pela linguagem. Use type assertion apenas quando você tem certeza do que está fazendo e precisa lidar com situações que o TypeScript não pode inferir automaticamente.
+
 ## Interface, Types e Classes
 
 ### Interfaces
@@ -452,12 +489,77 @@ const user: Person = person
 user.showMe() // result => Hello, I am John and I am 20 years old
 ```
 
-Classes em TypeScript pode também definir as propriedades como sendo `public`, `private`, `protected` e/ou `static`:
+Classes podem também definir as propriedades como sendo `public`, `private`, `protected` e/ou `static`:
 
 - **public:** Permite acessar a propriedade livremente.
-- **private:** Quando uma propriedade é marcada como `private`, ela não pode ser acessada de fora da classe que o contém.
-- **protected:** O modificador `protected` age como o `private`, com a exceção de que os membros declarados como `protected` também podem ser acessados ​​nas classes derivadas.  
+- **private:** Quando uma propriedade é marcada como `private`, ela não pode ser acessada de fora da classe que o contém. 
 - **static:** São visíveis na própria classe e não nas instâncias.
+
+Em JavaScript, não existem modificadores de acesso como `public` e `private` como em algumas outras linguagens de programação orientada a objetos, como Java ou C++. No entanto, você pode simular esses conceitos usando convenções e recursos da linguagem. Vamos discutir como você pode alcançar isso em JavaScript:
+
+1. **Public**: Em JavaScript, todas as propriedades e métodos de uma classe são, por padrão, públicas, o que significa que podem ser acessadas e modificadas de fora da classe. Por exemplo:
+
+```ts
+class MinhaClasse {
+  constructor() {
+    this.propriedadePublica = 10;
+  }
+
+  metodoPublico() {
+    return 'Este é um método público';
+  }
+}
+
+const instancia = new MinhaClasse();
+console.log(instancia.propriedadePublica); // Acesso a uma propriedade pública
+console.log(instancia.metodoPublico()); // Acesso a um método público
+```
+
+2. **Private**: Embora JavaScript não tenha suporte nativo para membros de classe privados, você pode simular privacidade usando convenções de nomenclatura e, a partir do **ECMAScript 2022 (ES12)**, por meio da utilização do prefixo `#`. Por exemplo:
+
+```ts
+class MinhaClasse {
+  constructor() {
+    this.propriedadePublica = 10;
+    this.#propriedadePrivada = 20; // Membro privado com #
+  }
+
+  #metodoPrivado() { // Método privado com #
+    return 'Este é um método privado';
+  }
+
+  acessoPropriedadePrivada() {
+    return this.#propriedadePrivada;
+  }
+
+  acessoMetodoPrivado() {
+    return this.#metodoPrivado();
+  }
+}
+
+const instancia = new MinhaClasse();
+console.log(instancia.propriedadePublica); // Acesso a uma propriedade pública
+console.log(instancia.acessoPropriedadePrivada()); // Acesso a um membro privado
+console.log(instancia.acessoMetodoPrivado()); // Acesso a um membro privado
+```
+
+3. **Static**: Quando você declara um membro de classe como static, ele pertence à própria classe em vez de instâncias individuais dessa classe. Isso significa que você pode acessar membros estáticos sem criar uma instância da classe. Aqui está um exemplo:
+
+```ts
+class MinhaClasse {
+  constructor() {
+    this.propriedade = 10;
+  }
+
+  static metodoEstatico() {
+    return 'Este é um método estático';
+  }
+}
+
+const instancia1 = new MinhaClasse();
+console.log(instancia1.propriedade); // Acesso a uma propriedade de instância
+console.log(MinhaClasse.metodoEstatico()); // Acesso a um método estático sem criar uma instância
+```
 
 ### Quando Usar Cada Um
 
