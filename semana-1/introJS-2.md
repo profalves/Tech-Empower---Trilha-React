@@ -1,4 +1,4 @@
-# Uma Reintrodução ao Javascript
+# Uma Reintrodução ao Javascript - Parte 2
 
 ## Objetos Personalizados
 
@@ -156,7 +156,7 @@ Person.prototype.toString = function() {
     return '<Person: ' + this.fullName() + '>';
 }
 
-console.log(s..toString()) // <Person: Simon Willison>
+console.log(s.toString()) // <Person: Simon Willison>
 ```
 
 ## Contexto

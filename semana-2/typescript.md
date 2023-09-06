@@ -282,9 +282,9 @@ const numero: number = valor as number;
 const elemento = document.getElementById("meu-elemento") as HTMLInputElement;
 ```
 
-É importante notar que o as não realiza nenhuma verificação em tempo de execução. Portanto, se você usar as para converter um valor em um tipo incompatível, pode ocorrer um erro em tempo de execução. É por isso que é recomendável usar type assertion apenas quando você tem certeza de que a conversão é segura.
+É importante notar que o `as` não realiza nenhuma verificação em tempo de execução. Portanto, se você usar `as` para converter um valor em um tipo incompatível, pode ocorrer um erro em tempo de execução. É por isso que é recomendável usar *type assertion* apenas quando você tem **certeza** de que a conversão é **segura**.
 
-No entanto, sempre que possível, é melhor evitar o uso do as e permitir que o TypeScript infira tipos de forma natural, pois isso ajuda a tirar o máximo proveito das verificações de tipo estático oferecidas pela linguagem. Use type assertion apenas quando você tem certeza do que está fazendo e precisa lidar com situações que o TypeScript não pode inferir automaticamente.
+No entanto, sempre que possível, é melhor evitar o uso do `as` e permitir que o TypeScript infira tipos de forma natural, pois isso ajuda a tirar o máximo proveito das verificações de tipo estático oferecidas pela linguagem. Use *type assertion* apenas quando você tem certeza do que está fazendo e precisa lidar com situações que o TypeScript não pode inferir automaticamente.
 
 ## Interface, Types e Classes
 
