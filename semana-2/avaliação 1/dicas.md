@@ -122,17 +122,57 @@ function performOperation(nextOperator: string) {
 }
 ```
 
+### Estrutura Modular (Classes)
+
+Se desejar trabalhar com a organização do código usando `class`, poderá seguir essa estrutura:
+
+```ts
+class Calculator {
+  static buttons = document.querySelectorAll(".tecla");
+  static display = document.getElementById("display") as HTMLSpanElement;
+
+  static displayValue: string = "0";
+
+  static updateDisplay = () => {
+    this.display.textContent = this.displayValue;
+  };
+
+  static inputDisplay = (digit: string) => {
+    if (this.displayValue.length >= 8) {
+      return; // Limite máximo de 8 dígitos
+    }
+
+    if (this.displayValue === "0") this.displayValue = "";
+    this.displayValue += digit;
+
+    this.updateDisplay();
+  };
+
+  static start = () => {
+    this.buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const buttonText = button.getAttribute("id");
+
+        this.inputDisplay(buttonText!);
+      });
+    });
+  };
+}
+
+Calculator.start();
+```
+
 ## Passo 6: Compilação do TypeScript
 Abra um terminal na pasta onde está o arquivo `js/app.ts` e execute o comando TypeScript para compilar o código:
 
 ```bash
-tsc app.ts
+npx tsc app.ts
 ```
 
 Isso criará/atualizará o arquivo `app.js`.
 
 ## Passo 7: Vincule o arquivo JavaScript ao HTML
-No seu arquivo HTML, certifique-se de incluir o arquivo JavaScript gerado no trecho de código <script src="js/app.js"></script> existente no elemento <body>.
+No seu arquivo HTML, certifique-se de incluir o arquivo JavaScript gerado no trecho de código `<script src="js/app.js"></script>` existente no elemento `<body>`.
 
 ## Passo 8: Teste a Calculadora
 Agora, abra o seu arquivo HTML em um navegador da web. Você deve ver a calculadora funcional e pode começar a realizar cálculos.
