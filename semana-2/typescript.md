@@ -638,6 +638,7 @@ node app.js
 - <https://medium.com/@mariusbongarts/build-your-own-blog-portfolio-with-web-components-typescript-adfbcd917d96>
 - <https://www.thisdot.co/blog/web-components-integration-using-litelement-and-typescript>
 - <https://gilfink.medium.com/creating-a-custom-element-decorator-using-typescript-302e7ed3a3d1>
+- <https://www.freecodecamp.org/news/a-practical-guide-to-typescript-how-to-build-a-pokedex-app-using-html-css-and-typescript/>
 
 ---
 
