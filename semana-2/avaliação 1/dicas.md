@@ -72,10 +72,22 @@ buttons.forEach((button) => {
 ```
 
 ## Passo 5: Implemente as Funções Faltantes
-Aqui estão as funções que precisam ser implementadas: `inputDigit`, `inputDecimal`, `performOperation` e `clearDisplay`. Estas são responsáveis por adicionar dígitos no display da calculadora, adicionar um ponto decimal, executar operações e limpar o display, respectivamente.
+Aqui estão as funções que precisam ser implementadas: `inputDisplay`, `inputDecimal`, `performOperation` e `clearDisplay`. Estas são responsáveis por adicionar dígitos no display da calculadora, adicionar um ponto decimal, executar operações e limpar o display, respectivamente.
 
-### Função `inputDigit`
-A função inputDigit é responsável por adicionar dígitos ao display quando os botões numéricos são clicados. Ela deve verificar se o limite de 8 dígitos é atingido e se estamos esperando o segundo operando para evitar a substituição do valor atual.
+### Função `inputDisplay`
+A função inputDisplay é responsável por adicionar dígitos ao display quando os botões numéricos são clicados. Ela deve verificar se o limite de 8 dígitos é atingido e se estamos esperando o segundo operando para evitar a substituição do valor atual.
+
+```ts
+static inputDisplay = (digit: string) => {
+  if (this.displayValue.length >= 8) return; // Limite máximo de 8 dígitos
+
+  if (this.displayValue === "0") this.displayValue = "";
+
+  this.displayValue += digit;
+
+  this.display.textContent = this.displayValue;
+};
+```
 
 ### Função `inputDecimal`
 A função inputDecimal adiciona um ponto decimal ao número atual no display. Ela verifica se um ponto decimal já foi inserido para evitar múltiplos pontos.
@@ -114,7 +126,7 @@ function performOperation(nextOperator: string) {
 Abra um terminal na pasta onde está o arquivo `js/app.ts` e execute o comando TypeScript para compilar o código:
 
 ```bash
-npx tsc js/app.ts
+tsc app.ts
 ```
 
 Isso criará/atualizará o arquivo `app.js`.
