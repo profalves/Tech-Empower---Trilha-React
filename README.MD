@@ -47,13 +47,12 @@
   
 
 - **Semana 2**: 
-  - Typescript
-  - *state no JS* e `useState` React
-  - **Projeto prático**
+  - [Typescript](semana-2/typescript.md)
+  - [**Projeto prático**](semana-2/avaliação%201/avaliação.md)
 
 - **Semana 3**: 
-  - Ciclo de Vida dos Componentes
-  - Hooks (useEffect)
+  - *state no JS* e `useState` hook no React
+  - `useEffect` hook e Ciclo de Vida dos Componentes
 
 - **Semana 4**: 
   - Hooks (useContext)
