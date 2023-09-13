@@ -44,29 +44,28 @@
   - [***Reintrodução ao Javascript***](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Language_Overview)
     - (29/08): [Conceitos Gerais](semana-1/introJS-1.md) 
     - (31/08): [OOP, Contexto e Closures](semana-1/introJS-2.md)
-  
 
 - **Semana 2**: 
   - (05/09): [Typescript](semana-2/typescript.md)
   - (07/09): ❌ Feriado
-  - [**Projeto prático**](semana-2/avaliação%201/avaliação.md)
 
 - **Semana 3**: 
   - (12/09): [*state no JS* e `useState` hook no React](semana-3/state.md)
   - (14/09): [`useEffect` hook e Ciclo de Vida dos Componentes]()
+  - [**Projeto prático**](semana-2/avaliação%201/avaliação.md)
 
 - **Semana 4**: 
-  - (19/09): Hooks (useContext)
-  - (21/09): Outros hooks (useCallback, useReducer, useRef, etc.)
-  - [**Projeto prático**]()
+  - (19/09): Revisão de conteúdo (javascript)
+  - (21/09): Hooks (useContext)
 
 - **Semana 5**: 
-  - (26/09): Formulários e validações
-  - (28/09): Conceitos Redux (store, actions, reducers)
+  - (26/09): Outros hooks (useCallback, useReducer, useRef, useMemo, etc.)
+  - (28/09): Formulários e validações
 
 - **Semana 6**: 
-  - (03/10): Integração Redux com React
-  - (05/10): **Projeto prático**
+  - (03/10): Conceitos Redux (store, actions, reducers)
+  - (05/10): Integração Redux com React
+  - [**Projeto prático**]()
 
 - **Semana 7**: 
   - (10/10): Introdução ao Router
@@ -75,19 +74,18 @@
 - **Semana 8**:
   - (17/10): Trabalhando com querys e parâmetros de rotas 
   - (19/10): Rotas protegidas
-  - **Projeto prático**
 
 - **Semana 9**: 
   - (24/10): Autenticação e autorização em APIs
   - (26/10): Manipulação de dados assíncrona
+  - [**Projeto prático**]()
 
 - **Semana 10**: 
   - (31/10): Revisão de conteúdo
   - (02/11): ❌ Feriado
-  - **Projeto prático**
 
 - **Semana 11**: 
-  - (07/11): Estilização com CSS-in-JS
+  - (07/11): Estilização com CSS-in-JS (styled components)
   - (09/11): Tratamento de erros
 
 - **Semana 12**: 
@@ -106,12 +104,9 @@
   - (05/12): Revisão de conteúdo
   - (07/12): **Projeto final**
 
-- **Semana 15**: 
-  - (12/12): Revisão/Dúvidas para o Projeto final
-  - (14/12): **Apresentação Projeto final**
+- **Semana 16**: 
+  - (12/12): **Apresentação Projeto final**
 
-- **Semana 15**: 
-  - (19/12): **Resultados do Projeto final**
 
 ## Material de estudos
 
