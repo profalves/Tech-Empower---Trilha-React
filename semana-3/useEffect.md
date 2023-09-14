@@ -140,7 +140,7 @@ useLayoutEffect(() => {
 
 ### A diferença entre `useEffect` e `useLayoutEffect`
 
-`useEffect` é executado de forma assíncrona e depois que uma renderização é lançada na tela.
+No React, tanto `useEffect` quanto `useLayoutEffect` são hooks usados para executar efeitos colaterais em componentes funcionais. Ambos são usados para lidar com tarefas como assinatura de eventos, chamadas de API, manipulação do DOM e muito mais. No entanto, eles têm uma diferença importante em relação ao momento em que são executados durante o ciclo de renderização.
 
 Então isso se parece com:
 
@@ -160,3 +160,5 @@ Então isso se parece com:
 Na maioria das vezes, `useEffect` é a escolha certa. Se o seu código estiver causando oscilações na renderização, mude para `useLayoutEffect` e veja se isso ajuda.
 
 Como `useLayoutEffect` é síncrono (bloqueia a renderização), o aplicativo não será atualizado visualmente até que o efeito termine de executar … isso pode causar problemas de desempenho se você tiver um código lento no seu efeito. Juntamente com o fato de que a maioria dos efeitos não precisam que o mundo faça uma pausa enquanto acontecem.
+
+A escolha entre `useEffect` e `useLayoutEffect` depende das necessidades específicas do seu componente. É importante considerar o desempenho e a sincronização das atualizações do DOM ao escolher entre eles. Geralmente, useEffect é suficiente para a maioria dos casos.
