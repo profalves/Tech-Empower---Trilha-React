@@ -121,3 +121,42 @@ Agora, vamos detalhar as diferentes fases do ciclo de vida usando `useEffect`:
    - A fase de desmontagem ocorre quando o componente é removido do **DOM**, como quando você navega para outra página ou remove o componente.
    - Uma função após o `return` no `useEffect` é usado para definir a lógica de desmontagem, como cancelar assinaturas ou limpar recursos.
 
+
+## `useLayoutEffect`
+
+`useLayoutEffect` é uma versão useEffectque é acionada antes que o navegador renderizar a tela. A maneira como você os chama parece a mesma:
+
+```jsx
+useEffect(() => {
+  // efeitos colaterais
+  return () => /* limpeza */
+}, [dependency]);
+
+useLayoutEffect(() => {
+  // efeitos colaterais
+  return () => /* limpeza */
+}, [dependency]);
+```
+
+### A diferença entre `useEffect` e `useLayoutEffect`
+
+`useEffect` é executado de forma assíncrona e depois que uma renderização é lançada na tela.
+
+Então isso se parece com:
+
+1. Você causa uma renderização de alguma forma (altera o estado ou o componente pai é renderizado novamente)
+2. React renderiza seu componente (chama seu componente)
+3. A tela é visualmente atualizada
+4. SÓ ENTÃO `useEffect` é executado
+
+`useLayoutEffect`, por outro lado, é executado de forma síncrona após uma renderização, mas antes da atualização da tela. Significa:
+
+1. Você causa uma renderização de alguma forma (altera o estado ou o componente pai é renderizado novamente)
+2. React renderiza seu componente (chama seu componente)
+3. `useLayoutEffect` é executado e o React aguarda seu término
+4. A tela é visualmente atualizada
+
+### Devo usar o Effect ou use o LayoutEffect?
+Na maioria das vezes, `useEffect` é a escolha certa. Se o seu código estiver causando oscilações na renderização, mude para `useLayoutEffect` e veja se isso ajuda.
+
+Como `useLayoutEffect` é síncrono (bloqueia a renderização), o aplicativo não será atualizado visualmente até que o efeito termine de executar … isso pode causar problemas de desempenho se você tiver um código lento no seu efeito. Juntamente com o fato de que a maioria dos efeitos não precisam que o mundo faça uma pausa enquanto acontecem.
