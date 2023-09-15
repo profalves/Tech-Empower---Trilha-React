@@ -162,3 +162,9 @@ Na maioria das vezes, `useEffect` é a escolha certa. Se o seu código estiver c
 Como `useLayoutEffect` é síncrono (bloqueia a renderização), o aplicativo não será atualizado visualmente até que o efeito termine de executar … isso pode causar problemas de desempenho se você tiver um código lento no seu efeito. Juntamente com o fato de que a maioria dos efeitos não precisam que o mundo faça uma pausa enquanto acontecem.
 
 A escolha entre `useEffect` e `useLayoutEffect` depende das necessidades específicas do seu componente. É importante considerar o desempenho e a sincronização das atualizações do DOM ao escolher entre eles. Geralmente, useEffect é suficiente para a maioria dos casos.
+
+## Docs
+
+- <https://react.dev/reference/react/useEffect>
+- <https://react.dev/reference/react/useLayoutEffect>
+- <https://oieduardorabelo.medium.com/react-quando-usar-uselayouteffect-ao-inv%C3%A9s-de-useeffect-9f2157396aac>
