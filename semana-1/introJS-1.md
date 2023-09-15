@@ -17,6 +17,7 @@ A sintaxe semelhante a **C** do JavaScript, incluindo chaves e a desajeitada ins
 Para entender melhor a diferença fundamental entre linguagem funcional e procedural, podemos dizer que reside em suas abordagens para resolução de problemas. As linguagens procedurais, como **C** e **Pascal**, organizam o código em procedimentos e funções que manipulam variáveis compartilhadas, seguindo uma abordagem passo a passo. Já as linguagens funcionais, como **Haskell** e **Lisp**, enfatizam a avaliação de expressões e o uso de funções puras, evitando estados compartilhados e mutabilidade. Isso permite um código mais conciso, legível e seguro, uma vez que as operações são tratadas como transformações de dados imutáveis, resultando em maior paralelismo e modularidade.
 
 **Leia mais sobre em:** 
+- <https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Language_overview>
 - <https://terminalroot.com.br/2019/10/diferencas-entre-programacao-procedural-funcional-orientada-a-objetos-e-eventos.html>
 - <https://guia.dev/pt/pillars/languages-and-tools/programming-paradigms.html>
 

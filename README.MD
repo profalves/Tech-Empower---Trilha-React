@@ -42,68 +42,71 @@
 
 - **Semana 1**:
   - [***Reintrodução ao Javascript***](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Language_Overview)
-    - [Conceitos Gerais](semana-1/introJS-1.md) 
-    - [Objetos, Contexto e Closures](semana-1/introJS-2.md)
-  
+    - (29/08): [Conceitos Gerais](semana-1/introJS-1.md) 
+    - (31/08): [Objetos, Contexto e Closures](semana-1/introJS-2.md)
 
 - **Semana 2**: 
-  - [Typescript](semana-2/typescript.md)
-  - [**Projeto prático**](semana-2/avaliação%201/avaliação.md)
+  - (05/09): [Typescript](semana-2/typescript.md)
+  - (07/09): ❌ Feriado
 
 - **Semana 3**: 
-  - *state no JS* e `useState` hook no React
-  - `useEffect` hook e Ciclo de Vida dos Componentes
+  - (12/09): [*state no JS* e `useState` hook no React](semana-3/state.md)
+  - (14/09): [`useEffect` hook e Ciclo de Vida dos Componentes]()
+  - [**Projeto prático**](semana-2/avaliação%201/avaliação.md)
 
 - **Semana 4**: 
-  - Hooks (useContext)
-  - Formulários e validações
-  - **Projeto prático**
+  - (19/09): Revisão de conteúdo (javascript)
+  - (21/09): Hooks (useContext)
 
 - **Semana 5**: 
-  - Introdução ao Redux
-  - Conceitos Redux (store, actions, reducers)
-  - Gerenciamento de estado com Redux
+  - (26/09): Outros hooks (useCallback, useReducer, useRef, useMemo, etc.)
+  - (28/09): Formulários e validações
 
 - **Semana 6**: 
-  - Integração Redux com React
-  - **Projeto prático**
+  - (03/10): Conceitos Redux (store, actions, reducers)
+  - (05/10): Integração Redux com React
+  - [**Projeto prático**]()
 
 - **Semana 7**: 
-  - Introdução ao React Router
-  - Navegação entre páginas
+  - (10/10): Introdução ao Router
+  - (12/10): ❌ Feriado
 
-- **Semana 8**: 
-  - Trabalhando com querys e parâmetros de rotas
-  - Rotas protegidas
-  - **Projeto prático**
+- **Semana 8**:
+  - (17/10): Trabalhando com querys e parâmetros de rotas 
+  - (19/10): Rotas protegidas
 
 - **Semana 9**: 
-  - Autenticação e autorização em APIs
-  - Revisão de conteúdo
+  - (24/10): Autenticação e autorização em APIs
+  - (26/10): Manipulação de dados assíncrona
+  - [**Projeto prático**]()
 
 - **Semana 10**: 
-  - Manipulação de dados assíncrona
-  - **Projeto prático**
+  - (31/10): Revisão de conteúdo
+  - (02/11): ❌ Feriado
 
 - **Semana 11**: 
-  - Tratamento de erros
-  - Estilização com CSS-in-JS
+  - (07/11): Estilização com CSS-in-JS (styled components)
+  - (09/11): Tratamento de erros
 
 - **Semana 12**: 
-  - Revisão de conteúdo
-  - **Projeto prático**
+  - (14/11): Revisão de conteúdo
+  - (16/11): **Projeto prático**
 
 - **Semana 13**: 
-  - Testes de integração
-  - Testes de unidade avançados
+  - (21/11): Testes de integração
+  - (23/11): Testes de unidade avançados
 
 - **Semana 14**: 
-  - Testes E2E
-  - Processo de deploy
+  - (28/11): Testes E2E
+  - (30/11): Processo de deploy
 
 - **Semana 15**: 
-  - Revisão de conteúdo
-  - **Projeto final**
+  - (05/12): Revisão de conteúdo
+  - (07/12): **Projeto final**
+
+- **Semana 16**: 
+  - (12/12): **Apresentação Projeto final**
+
 
 ## Material de estudos
 

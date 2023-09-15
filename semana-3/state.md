@@ -132,7 +132,7 @@ O uso de estados permite que os desenvolvedores do React criem componentes inter
 
 ### Configurar um Projeto React
 
-Primeiro, certifique-se de ter o `Node.js` instalado em seu sistema operacional. Em seguida, você pode criar um novo projeto React usando o Next.js, como recomendado recentemente na [documentação oficial](https://react.dev/learn/start-a-new-react-project#nextjs) 
+Primeiro, certifique-se de ter o `Node.js` instalado em seu sistema operacional. Em seguida, você pode criar um novo projeto `React` usando o `Next.js`, como recomendado recentemente na [documentação oficial](https://react.dev/learn/start-a-new-react-project#nextjs) 
 
 ```bash
 npx create-next-app // agora vem com TypeScript por padrão.
@@ -140,7 +140,7 @@ npx create-next-app // agora vem com TypeScript por padrão.
 
 **Next.js é uma estrutura React full-stack**. É versátil e permite criar aplicativos React de qualquer tamanho, desde um blog quase estático até um aplicativo dinâmico complexo. Mas se você nunca usou `Next.js`, confira o [tutorial do Next.js](https://nextjs.org/learn/foundations/about-nextjs).
 
-Podemos usar também qualquer outra estrutura de projeto da comunidade: 
+Podemos usar também qualquer outras estruturas de projeto da comunidade: 
 
 - [Remix](https://react.dev/learn/start-a-new-react-project#remix)
 - [Gatsby](https://react.dev/learn/start-a-new-react-project#gatsby)
