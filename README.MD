@@ -51,12 +51,12 @@
 
 - **Semana 3**: 
   - (12/09): [*state no JS* e `useState` hook no React](semana-3/state.md)
-  - (14/09): [`useEffect` hook e Ciclo de Vida dos Componentes]()
+  - (14/09): [`useEffect` hook e Ciclo de Vida dos Componentes](semana-3/useEffect.md)
   - [**Projeto prático**](semana-2/avaliação%201/avaliação.md)
 
 - **Semana 4**: 
-  - (19/09): Revisão de conteúdo (javascript)
-  - (21/09): Hooks (useContext)
+  - (19/09): [Revisão de conteúdo (javascript)](semana-2/avaliação%201/dicas.md)
+  - (21/09): [Hooks (useContext)]()
 
 - **Semana 5**: 
   - (26/09): Outros hooks (useCallback, useReducer, useRef, useMemo, etc.)
