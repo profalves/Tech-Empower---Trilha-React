@@ -43,7 +43,7 @@
 - **Semana 1**:
   - [***Reintrodução ao Javascript***](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Language_Overview)
     - (29/08): [Conceitos Gerais](semana-1/introJS-1.md) 
-    - (31/08): [OOP, Contexto e Closures](semana-1/introJS-2.md)
+    - (31/08): [Objetos, Contexto e Closures](semana-1/introJS-2.md)
 
 - **Semana 2**: 
   - (05/09): [Typescript](semana-2/typescript.md)

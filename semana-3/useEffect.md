@@ -121,7 +121,6 @@ Agora, vamos detalhar as diferentes fases do ciclo de vida usando `useEffect`:
    - A fase de desmontagem ocorre quando o componente é removido do **DOM**, como quando você navega para outra página ou remove o componente.
    - Uma função após o `return` no `useEffect` é usado para definir a lógica de desmontagem, como cancelar assinaturas ou limpar recursos.
 
-
 ## `useLayoutEffect`
 
 `useLayoutEffect` é uma versão useEffectque é acionada antes que o navegador renderizar a tela. A maneira como você os chama parece a mesma:
