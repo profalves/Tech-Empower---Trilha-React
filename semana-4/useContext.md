@@ -140,7 +140,7 @@ Aqui, o componente Filho recebe a função enviarMensagemParaPai do componente P
 
 Agora, você tem um exemplo completo de como passar props de um componente pai para um componente filho e como passar dados do componente filho de volta para o componente pai no React usando TypeScript.
 
-<!-- ## Mão na Massa: To-Do-List
+## Mão na Massa: To-Do-List
 
 Vamos criar um caso de uso comum onde podemos aplicar os conceitos que explicamos anteriormente. Vamos criar um aplicativo simples de lista de tarefas (To-Do List) com React e TypeScript. O aplicativo terá um componente pai que renderiza uma lista de tarefas e um componente filho para adicionar novas tarefas. Também vamos demonstrar como passar dados do componente filho de volta para o componente pai quando uma nova tarefa for adicionada.
 
@@ -278,8 +278,6 @@ li {
 ```
 
 As tarefas serão exibidas na lista de tarefas e você terá implementado com sucesso a passagem de dados de um componente filho (`AddTodo`) para um componente pai (`TodoList`) e também a renderização de props entre componentes em React usando TypeScript.
-
- -->
 
 ## useContext Hook
 
