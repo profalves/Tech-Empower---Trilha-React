@@ -140,6 +140,144 @@ Aqui, o componente Filho recebe a função enviarMensagemParaPai do componente P
 
 Agora, você tem um exemplo completo de como passar props de um componente pai para um componente filho e como passar dados do componente filho de volta para o componente pai no React usando TypeScript.
 
+## Mão na Massa: To-Do-List
+
+Vamos criar um caso de uso comum onde podemos aplicar os conceitos que explicamos anteriormente. Vamos criar um aplicativo simples de lista de tarefas (To-Do List) com React e TypeScript. O aplicativo terá um componente pai que renderiza uma lista de tarefas e um componente filho para adicionar novas tarefas. Também vamos demonstrar como passar dados do componente filho de volta para o componente pai quando uma nova tarefa for adicionada.
+
+### 1. Criando os Componentes
+
+Crie dois componentes: `TodoList.tsx` (o componente pai) e `AddTodo.tsx` (o componente filho).
+
+#### `TodoList.tsx` (Componente Pai)
+
+```tsx
+import React, { useState } from "react";
+import Task from "./ToDo";
+import AddToDo from "./AddToDo";
+
+export default function ToDoList() {
+  const [tasks, setTasks] = useState<Array<string>>([]);
+
+  const addTodo = (newTask: string) => {
+    setTasks([...tasks, newTask]);
+  };
+
+  return (
+    <div>
+      <h1>Lista de Tarefas</h1>
+      <AddToDo addTodo={addTodo} />
+      <ul>
+        {tasks.map((task: string, index: number) => {
+          return <Task key={index}>{task}</Task>;
+        })}
+      </ul>
+    </div>
+  );
+}
+
+```
+
+#### `AddTodo.tsx` (Componente Filho)
+
+```tsx
+import React, { useState } from "react";
+
+interface AddTodoProps {
+  addTodo: (task: string) => void;
+}
+
+export default function AddToDo({ addTodo }: AddTodoProps) {
+  const [newTask, setNewTarefa] = useState<string>("");
+
+  const addTodoHandler = () => {
+    if (newTask === "") return;
+    addTodo(newTask);
+  };
+
+  return (
+    <>
+      <input
+        type="text"
+        value={newTask}
+        onChange={(e) => setNewTarefa(e.target.value)}
+        placeholder={"Digite a tarefa"}
+      />
+      <button onClick={addTodoHandler}>Adicionar Tarefa</button>
+    </>
+  );
+}
+
+```
+
+#### `Todo.tsx` (Componente de Tarefa)
+
+Crie um componente `Todo.tsx` para exibir cada tarefa individualmente. Este componente é apenas para fins de ilustração e não requer interação com os outros componentes. Aqui, estamos apenas recebendo a `text` *prop* e renderizando-a.
+
+```tsx
+import React from "react";
+
+interface ToDoProps {
+  children: React.ReactNode;
+}
+
+export default function ToDo({ children }: ToDoProps) {
+  return <li>{children}</li>;
+}
+```
+
+### 2. Renderizando os Componentes no `Index.tsx`
+
+Agora, renderize os componentes da `TodoList` no arquivo `src/pages/Index.tsx`:
+
+```tsx
+import Head from "next/head";
+// ...
+import ToDoList from "@/components/ToDoList";
+
+// ...
+
+export default function Home() {
+  return (
+    <>
+      <Head>
+        ...
+      </Head>
+      <main className={`${styles.main} ${inter.className}`}>
+        <ToDoList />
+      </main>
+    </>
+  );
+}
+
+```
+
+### 3. Estilos CSS (Opcional)
+
+Você pode adicionar estilos CSS para tornar seu app mais atraente. Este exemplo é apenas o básico:
+
+```css
+.main {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+  padding: 5px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+```
+
+As tarefas serão exibidas na lista de tarefas e você terá implementado com sucesso a passagem de dados de um componente filho (`AddTodo`) para um componente pai (`TodoList`) e também a renderização de props entre componentes em React usando TypeScript.
 
 ## useContext Hook
 
@@ -340,10 +478,10 @@ Agora, vamos para um desafio para aplicar o conhecimento sobre o `useContext`:
 
 * Implemente um sistema de temas com dois temas: **escuro** e **claro**. Crie um contexto para gerenciar o tema.
 
-* Crie um componente `ThemeSwitch` que permita alternar entre os temas. Esse componente deve usar o useContext para acessar o contexto do tema e alternar entre os temas escuro e claro quando clicado.
+* Crie um componente `ThemeSwitch` que permita alternar entre os temas. Esse componente deve usar o `useContext` para acessar o contexto do tema e alternar entre os temas escuro e claro quando clicado.
 
 * Crie um componente principal que mude seu estilo com base no tema selecionado. Por exemplo, se o tema for escuro, o aplicativo deve usar cores escuras; se o tema for claro, use cores claras.
 
 * Certifique-se de que a troca de tema seja imediatamente refletida em toda a aplicação devido ao uso do useContext.
 
-Este desafio permitirá que você pratique a criação e o uso de contextos com useContext para gerenciar temas em uma aplicação React. Além disso, você ganhará experiência em lidar com lógica de alternância de temas e estilização com base no tema selecionado. Boa sorte!
+Este desafio permitirá que você pratique a criação e o uso de contextos com `useContext` para gerenciar temas em uma aplicação React. Além disso, você ganhará experiência em lidar com lógica de alternância de temas e estilização com base no tema selecionado. Boa sorte!
