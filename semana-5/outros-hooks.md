@@ -96,4 +96,93 @@ Neste exemplo, criamos um Reducer `todoReducer` que lida com três tipos de aç�
 
 Agora, você pode acessar o `state` e a função `dispatch` do contexto `TodoContext` para adicionar, alternar entre concluída/não-concluída e remover tarefas em seus componentes React.
 
-Para uma explicação mais detalhada sobre o padrão Reducer, pode ser encontrado [aqui](./complementos/reducer-flux-redux.md)
+Para uma explicação mais detalhada sobre o padrão Reducer e a Arquitetura Flux/Redux, leia [aqui](./complementos/reducer-flux-redux.md)
+
+## `useCallback`
+
+O hook `useCallback` é uma ferramenta importante no desenvolvimento de aplicações React para otimizar o desempenho e evitar problemas de renderização desnecessária de componentes. Ele é usado para ***memoizar (cachear)*** funções e evitar que sejam recriadas a cada renderização de um componente. Isso é especialmente útil quando você está passando funções como props para componentes filhos ou quando essas funções são parte da dependência de um hook, como o useEffect. Quando você envolve uma função com o useCallback, o React armazena essa função em memória e a retorna sempre que o componente for renderizado novamente, a menos que suas dependências mudem. Isso evita que a função seja recriada em cada renderização, o que pode causar re-renderizações desnecessárias de componentes filhos. Vamos explorar o useCallback em detalhes e fornecer exemplos de situações em que ele é útil.
+
+### Sintaxe do useCallback
+
+O useCallback tem a seguinte sintaxe:
+
+```jsx
+const memoizedCallback = useCallback(callback, dependencies);
+```
+
+- `callback`: A função que você deseja memoizar.
+- `dependencies`: Um array de dependências que determina quando o useCallback deve recalcular a função. Se alguma das dependências mudar entre renderizações, o useCallback recalculará a função; caso contrário, ele retornará a função memoizada anterior.
+
+### Exemplos de Uso
+
+Aqui estão alguns exemplos de situações em que o useCallback é útil:
+
+#### Passando Funções para Componentes Filhos
+
+Quando você passa funções como props para componentes filhos, é importante usar `useCallback` para evitar a recriação dessas funções a cada renderização do componente pai. Isso é especialmente relevante quando as funções passadas como `props` são usadas em componentes filhos que dependem de otimizações de memoização.
+
+```jsx
+import React, { useCallback } from 'react';
+import ChildComponent from './ChildComponent';
+
+function ParentComponent() {
+  const handleClick = useCallback(() => {
+    // Lógica da função
+  }, []); // Nenhuma dependência, função é memoizada permanentemente
+
+  return <ChildComponent onClick={handleClick} />;
+}
+```
+
+#### Evitando Re-renders em `useEffect`
+
+No `useEffect`, se você usar uma função como dependência e ela for recriada a cada renderização, isso pode levar a efeitos colaterais indesejados. O `useCallback` pode ser usado para memoizar essa função e garantir que o efeito seja executado apenas quando as dependências mudarem.
+
+```jsx
+import React, { useState, useEffect, useCallback } from 'react';
+
+function ExampleComponent() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = useCallback(() => {
+    setCount(count + 1);
+  }, [count]);
+
+  useEffect(() => {
+    // Este efeito só será reexecutado quando 'count' mudar
+    console.log('Efeito executado');
+  }, [count]);
+
+  return (
+    <div>
+      <button onClick={handleClick}>Incrementar</button>
+    </div>
+  );
+}
+```
+
+#### Evitando Re-renderizações de Componentes
+
+Se você tiver um componente funcional que depende de várias funções internas que não mudam entre as renderizações, pode usar `useCallback` para evitar recriar essas funções a cada renderização do componente.
+
+```jsx
+import React, { useCallback } from 'react';
+
+function MyComponent() {
+  const doSomething = useCallback(() => {
+    // Lógica da função
+  }, []);
+
+  const doAnotherThing = useCallback(() => {
+    // Lógica da função
+  }, []);
+
+  return (
+    <div>
+      {/* ... */}
+    </div>
+  );
+}
+```
+
+O uso adequado do `useCallback` é uma prática importante para melhorar o desempenho e a eficiência de componentes React. No entanto, lembre-se de que não é necessário memoizar todas as funções; use-o quando for relevante evitar a recriação de funções que podem causar re-renderizações desnecessárias ou efeitos colaterais indesejados. Use-o com sabedoria para otimizar o desempenho do seu aplicativo React.

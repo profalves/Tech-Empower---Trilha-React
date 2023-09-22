@@ -514,6 +514,155 @@ Objetos de escopo formam uma cadeia chamada de cadeia de escopos, similar a cade
 
 Uma clausura é a combinação de uma função e o objeto de escopo na qual é criado. Clausuras permitem você guardar estado — de tal forma, elas podem ser frequentemente utilizadas no lugar de objetos.
 
+## Callbacks
+
+Em JavaScript, uma `callback` é uma função que é passada como argumento para outra função e é executada após a conclusão de uma operação assíncrona ou de um evento específico. As callbacks são amplamente usadas para lidar com operações que podem levar algum tempo para serem concluídas, como requisições de rede, leitura de arquivos, manipulação de eventos do usuário, entre outras.
+
+As callbacks são essenciais para a programação assíncrona em JavaScript, pois permitem que você especifique o que deve acontecer depois que uma operação assíncrona for concluída, em vez de bloquear a execução do código até que a operação termine.
+
+Aqui está um exemplo simples de como uma callback pode ser usada:
+
+```javascript
+function fazerAlgoAssincrono(callback) {
+  setTimeout(function () {
+    console.log("Operação assíncrona concluída");
+    callback(); // A função de callback é chamada após a operação assíncrona
+  }, 3000); // a chamada vai levar 3 segundos para ser concluída
+}
+
+function minhaCallback() {
+  console.log("Callback foi chamada");
+}
+
+fazerAlgoAssincrono(minhaCallback);
+```
+
+Neste exemplo, `fazerAlgoAssincrono` é uma função que simula uma operação assíncrona usando `setTimeout`. Ela aceita uma função de callback como argumento e, após um segundo, chama essa função de callback.
+
+As callbacks podem ser usadas em muitos contextos em JavaScript, incluindo:
+
+1. **Requisições de Rede**: Ao fazer uma solicitação `AJAX` ou usar a `API Fetch`, você geralmente fornece uma função de callback para lidar com a resposta da solicitação.
+
+  ```js
+  function fetchDados(url, callback) {
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Erro na requisição: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      callback(null, data); // Chama o callback com os dados obtidos
+    })
+    .catch((error) => {
+      callback(error, null); // Chama o callback com o erro, se ocorrer
+    });
+  }
+
+  // Uso da função fetchDados com callback
+  fetchDados("https://jsonplaceholder.typicode.com/posts/1", (error, data) => {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log(data);
+    }
+  });
+
+  ```
+
+2. **Manipulação de Eventos**: Quando você deseja responder a eventos do DOM, como cliques de botão ou envio de formulário, você define funções de callback para esses eventos. É justamente a função que agente passa dentro do `addEventListener`.
+
+  - Manipulação de Eventos de Cliques:
+    ```js
+    // HTML: <button id="meuBotao">Clique-me</button>
+
+    const botao = document.getElementById("meuBotao");
+
+    function handleClick() {
+      alert("Botão clicado!");
+    }
+
+    botao.addEventListener("click", handleClick);
+    ```
+  
+  - Manipulação de Eventos de Teclado:
+    ```js
+    // HTML: <input id="meuInput" type="text">
+
+    const input = document.getElementById("meuInput");
+
+    function handleKeyPress(event) {
+      console.log("Tecla pressionada: " + event.key);
+    }
+
+    input.addEventListener("keydown", handleKeyPress);
+    ```
+
+3. **Leitura de Arquivos**: Ao ler arquivos em JavaScript (por exemplo, ao fazer upload de um arquivo em um formulário), você fornece uma função de callback que é chamada quando a leitura do arquivo é concluída. Quando você deseja ler arquivos no JavaScript, como ao fazer upload de um arquivo em um formulário `HTML5`, pode usar o evento `onchange` para detectar quando um arquivo foi selecionado pelo usuário e, em seguida, fornecer uma função de callback que será chamada quando a leitura do arquivo for concluída. Abaixo está um exemplo de código que demonstra essa funcionalidade:
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Upload de Arquivo</title>
+  </head>
+  <body>
+      <input type="file" id="arquivoInput" />
+      <div id="infoArquivo"></div>
+
+      <script>
+          // Obtém uma referência ao elemento de entrada de arquivo
+          const arquivoInput = document.getElementById("arquivoInput");
+
+          // Define uma função de callback para lidar com a leitura do arquivo
+          function handleFileUpload(event) {
+              const arquivo = event.target.files[0]; // Obtém o primeiro arquivo selecionado
+              if (arquivo) {
+                  const leitor = new FileReader();
+
+                  leitor.onload = function (e) {
+                      const conteudo = e.target.result; // O conteúdo do arquivo lido
+                      exibirInformacoesArquivo(arquivo.name, arquivo.type, conteudo);
+                  };
+
+                  leitor.readAsText(arquivo); // Lê o arquivo como texto
+              }
+          }
+
+          // Exibe informações sobre o arquivo
+          function exibirInformacoesArquivo(nome, tipo, conteudo) {
+              const infoArquivo = document.getElementById("infoArquivo");
+              infoArquivo.innerHTML = `
+                  <p>Nome do arquivo: ${nome}</p>
+                  <p>Tipo do arquivo: ${tipo}</p>
+                  <p>Conteúdo do arquivo:</p>
+                  <pre>${conteudo}</pre>
+              `;
+          }
+
+          // Adiciona um ouvinte de eventos para o input de arquivo
+          arquivoInput.addEventListener("change", handleFileUpload);
+      </script>
+  </body>
+  </html>
+
+  ```
+
+Neste exemplo, temos um formulário simples com um campo de entrada de arquivo (`<input type="file" id="arquivoInput" />`) e uma div para exibir informações sobre o arquivo selecionado (`<div id="infoArquivo"></div>`).
+
+A função `handleFileUpload` é definida para lidar com a leitura do arquivo quando o usuário seleciona um arquivo. Ela usa a classe `FileReader` para ler o conteúdo do arquivo como texto e, em seguida, chama a função `exibirInformacoesArquivo` para exibir informações sobre o arquivo na `div` de informações.
+
+Quando um arquivo é selecionado, o evento `change` do campo de entrada de arquivo é acionado, chamando a função `handleFileUpload`.
+
+Este é um exemplo simples de como fornecer uma função de `callback` para lidar com a leitura de arquivos em JavaScript quando o usuário faz o upload de um arquivo em um formulário HTML5.
+
+4. **Programação Assíncrona em Geral**: Em tarefas assíncronas, como timers, animações e processamento em segundo plano, as callbacks são usadas para especificar o que fazer quando a tarefa estiver pronta.
+
+> É importante observar que, com o aumento da complexidade do JavaScript e a necessidade de lidar com múltiplas operações assíncronas, surgiram padrões como `Promises` e `async/await`, que fornecem abstrações mais poderosas e legíveis do que callbacks aninhadas, tornando o código mais fácil de entender e manter em aplicações assíncronas complexas.
+
 ## Docs
 
 - <https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Language_Overview>
