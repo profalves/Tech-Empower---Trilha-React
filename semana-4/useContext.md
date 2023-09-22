@@ -338,7 +338,7 @@ Agora vamos fazer um passo a passo de como usar o `useContext` no **React** com 
 Crie o contexto que irá conter o estado global do **To-Do List**. No arquivo `TodoContext.tsx`, defina o contexto da seguinte forma:
 
 ```tsx
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 // Defina o tipo do estado
 type Todo = {
@@ -351,11 +351,19 @@ type State = {
   todos: Todo[];
 };
 
+// Crie uma interface para representar o objeto de contexto
+export interface TodoContextType {
+  state: State;
+  addTodo: (text: string) => void;
+  toggleTodo: (id: number) => void;
+  removeTodo: (id: number) => void;
+}
+
 // Crie o contexto
-const TodoContext = createContext<State | undefined>(undefined);
+const TodoContext = createContext<TodoContextType | undefined>(undefined);
 
 // Crie o provedor do contexto
-const TodoProvider: React.FC = ({ children }) => {
+const TodoProvider = ({ children }: { children: ReactNode }) => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
   const addTodo = (text: string) => {
@@ -375,7 +383,9 @@ const TodoProvider: React.FC = ({ children }) => {
   };
 
   return (
-    <TodoContext.Provider value={{ todos, addTodo, toggleTodo, removeTodo }}>
+    <TodoContext.Provider
+      value={{ state: { todos }, addTodo, toggleTodo, removeTodo }}
+    >
       {children}
     </TodoContext.Provider>
   );
@@ -389,17 +399,23 @@ export { TodoProvider, TodoContext };
 Agora, crie o componente que usará o contexto para acessar e atualizar a lista de tarefas. No arquivo `TodoList.tsx`, você pode fazer algo como:
 
 ```tsx
-import React, { useContext, useState } from 'react';
-import { TodoContext } from '../context/TodoContext';
+import React, { useContext, useState } from "react";
+import { TodoContext } from "../context/TodoContext";
 
 const TodoList: React.FC = () => {
-  const { todos, addTodo, toggleTodo, removeTodo } = useContext(TodoContext);
-  const [newTodo, setNewTodo] = useState<string>('');
+  const todoContext = useContext(TodoContext);
+
+  if (!todoContext) {
+    return <div>Carregando...</div>;
+  }
+
+  const { state, addTodo, toggleTodo, removeTodo } = todoContext;
+  const [newTodo, setNewTodo] = useState<string>("");
 
   const handleAddTodo = () => {
-    if (newTodo.trim() === '') return;
+    if (newTodo.trim() === "") return;
     addTodo(newTodo);
-    setNewTodo('');
+    setNewTodo("");
   };
 
   return (
@@ -413,11 +429,11 @@ const TodoList: React.FC = () => {
       />
       <button onClick={handleAddTodo}>Adicionar</button>
       <ul>
-        {todos.map((todo) => (
+        {state.todos.map((todo) => (
           <li key={todo.id}>
             <span
               style={{
-                textDecoration: todo.completed ? 'line-through' : 'none',
+                textDecoration: todo.completed ? "line-through" : "none",
               }}
               onClick={() => toggleTodo(todo.id)}
             >
@@ -436,25 +452,28 @@ export default TodoList;
 
 ### Passo 3: Integre o Contexto na Aplicação
 
-Em `App.tsx`, envolva sua aplicação com o `TodoProvider` para que o contexto esteja disponível em toda a árvore de componentes:
+Em `Index.tsx`, envolva sua aplicação com o `TodoProvider` para que o contexto esteja disponível em toda a árvore de componentes:
 
 ```tsx
-import React from 'react';
-import './App.css';
-import TodoList from './components/TodoList';
-import { TodoProvider } from './context/TodoContext';
+import Head from "next/head";
+// ...
+import TodoList from "@/components/TodoList";
+import { TodoProvider } from "@/context/TodoContext";
 
-function App() {
+// ...
+
+export default function Home() {
   return (
-    <div className="App">
-      <TodoProvider>
-        <TodoList />
-      </TodoProvider>
-    </div>
+    <>
+      ...
+      <main className={`${styles.main} ${inter.className}`}>
+        <TodoProvider>
+          <TodoList />
+        </TodoProvider>
+      </main>
+    </>
   );
 }
-
-export default App;
 ```
 
 No tutorial acima, você aprendeu como usar o `useContext` no React com TypeScript para criar um sistema de To-Do List de forma simplificada. O useContext é uma ferramenta poderosa que permite compartilhar informações globais entre componentes sem a necessidade de passar dados por meio das props, tornando o código mais limpo e eficiente.
