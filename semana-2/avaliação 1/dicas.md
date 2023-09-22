@@ -71,58 +71,131 @@ buttons.forEach((button) => {
 });
 ```
 
-## Passo 5: Implemente as Funções Faltantes
-Aqui estão as funções que precisam ser implementadas: `inputDisplay`, `inputDecimal`, `performOperation` e `clearDisplay`. Estas são responsáveis por adicionar dígitos no display da calculadora, adicionar um ponto decimal, executar operações e limpar o display, respectivamente.
+## Passo 5: Implemente as Funções
+Aqui estão as funções que precisam ser implementadas: `inputDisplay`, `inputDecimal`, `prepareOperation`, `performOperation` e `clearDisplay`. Estas são responsáveis por adicionar dígitos no display da calculadora, adicionar um ponto decimal, executar operações e limpar o display, respectivamente.
 
 ### Função `inputDisplay`
 A função inputDisplay é responsável por adicionar dígitos ao display quando os botões numéricos são clicados. Ela deve verificar se o limite de 8 dígitos é atingido e se estamos esperando o segundo operando para evitar a substituição do valor atual.
 
 ```ts
-static inputDisplay = (digit: string) => {
-  if (this.displayValue.length >= 8) return; // Limite máximo de 8 dígitos
+function inputDisplay(digit: string) {
+  // limita a 8 caracteres na tela, imperdindo a digitação de mais
+  if (displayValue.length === 8) return;
 
-  if (this.displayValue === "0") this.displayValue = "";
-
-  this.displayValue += digit;
-
-  this.display.textContent = this.displayValue;
-};
+  switch (digit) {
+    case "mais":
+    case "menos":
+    case "por":
+    case "dividido": // todos os cases até aqui vão disparar a função abaixo
+      prepareOperation(digit);
+      break;
+    case "igual":
+      performOperation();
+      break;
+    case "ponto":
+      inputDecimal();
+      break;
+    default:
+      // Elimina o zero à esquerda na digitação
+      if (displayValue === "0") displayValue = "";
+      // Insere os valores e caso seja um novo operando, o valor antigo é limpo da tela
+      if (waitingForSecondOperand) {
+        displayValue = digit;
+        waitingForSecondOperand = false;
+      } else {
+        displayValue += digit;
+      }
+  }
+  // atualiza a tela com os numeros digitados e o resultado de seus calculos
+  updateDisplay();
+}
 ```
 
 ### Função `inputDecimal`
 A função inputDecimal adiciona um ponto decimal ao número atual no display. Ela verifica se um ponto decimal já foi inserido para evitar múltiplos pontos.
 
-### Função performOperation
+```ts
+function inputDecimal() {
+  if (!decimalEntered) {
+    displayValue += ".";
+    decimalEntered = true;
+    updateDisplay();
+  }
+}
+```
+
+### Função `prepareOperation`
+
+Função para captar todos os dados necessários para efetuar um cálculo.
+
+```ts
+function prepareOperation(operatorSign: string) {
+  operator = operatorSign; // atualiza o operador digitado
+  previousValue = displayValue; // salva o primeiro valor para receber o segundo valor a ser calculado
+  waitingForSecondOperand = true; // indica que o `displayValue` pode ser atualizado com o novo valor
+}
+```
+
+### Função `performOperation`
 A função performOperation é responsável por executar as operações quando os botões de operação são clicados. Ela verifica se um operador já está definido e, se estiver, realiza a operação com base no operador anterior. Cabe usar um `switch case` ou `object literals` ao analisar qual operador foi digitado. Pense também na conversão dos numeros para realizar as operações. Aqui está um exemplo da implementação:
 
 ```ts
-function performOperation(nextOperator: string) {
-  const inputValue = parseFloat(displayValue);
-
+function performOperation() {
   switch (operator) {
-    case "+":
+    case "mais":
       // implementa a operação de soma
+      displayValue = (
+        parseFloat(previousValue) + parseFloat(displayValue)
+      ).toString();
       break; // tenha sempre atenção de não esquecer o break para não permitir a execução dos demais cases
-    case "-":
+    case "menos":
       // implementa a operação de substração
+      displayValue = (
+        parseFloat(previousValue) - parseFloat(displayValue)
+      ).toString();
       break;
-    case "*":
+    case "por":
       // implementa a operação de multiplicação
+      displayValue = (
+        parseFloat(previousValue) * parseFloat(displayValue)
+      ).toString();
       break;
-    case "/":
+    case "dividido":
       // implementa a operação dee divisão. Vale lembrar de validar a divisão por zero
+      if (displayValue === "0") {
+        alert("não existe divisão por zero");
+        return;
+      }
+      displayValue = (
+        parseFloat(previousValue) / parseFloat(displayValue)
+      ).toString();
     default:
       break;
   }
 
-  // Vale implementar uma validação para que atualize o operador apenas se não for um botão de operação
-  
-  // Seguir com as demais implementações
+  previousValue = displayValue;
+}
 
+
+```
+
+### Função sd
+
+Função para limpar o display e o estado, rreplicando o comportamento da calculadora física. 
+
+```ts
+function clearDisplay() {
+  // Implementação do botão ON/C da calculadora
+  displayValue = "0";
+  previousValue = "";
+  operator = null;
+  waitingForSecondOperand = false;
+  decimalEntered = false;
+  updateDisplay();
 }
 ```
 
-### Estrutura Modular (Classes)
+## Extra: Estrutura Modular (Classes)
 
 Se desejar trabalhar com a organização do código usando `class`, poderá seguir essa estrutura:
 
@@ -147,6 +220,8 @@ class Calculator {
 
     this.updateDisplay();
   };
+
+  // As demais funções vem aqui.
 
   static start = () => {
     this.buttons.forEach((button) => {
