@@ -152,30 +152,29 @@ Crie dois componentes: `TodoList.tsx` (o componente pai) e `AddTodo.tsx` (o comp
 
 ```tsx
 import React, { useState } from "react";
-import Todo from "./Todo";
-import AddTodo from "./AddTodo";
+import Task from "./ToDo";
+import AddToDo from "./AddToDo";
 
-const TodoList: React.FC = () => {
-  const [todos, setTodos] = useState<string[]>([]);
+export default function ToDoList() {
+  const [tasks, setTasks] = useState<Array<string>>([]);
 
-  const addTodo = (newTodo: string) => {
-    setTodos([...todos, newTodo]);
+  const addTodo = (newTask: string) => {
+    setTasks([...tasks, newTask]);
   };
 
   return (
     <div>
-      <h1>Minha Lista de Tarefas</h1>
-      <AddTodo addTodo={addTodo} />
+      <h1>Lista de Tarefas</h1>
+      <AddToDo addTodo={addTodo} />
       <ul>
-        {todos.map((todo, index) => (
-          <Todo key={index} text={todo} />
-        ))}
+        {tasks.map((task: string, index: number) => {
+          return <Task key={index}>{task}</Task>;
+        })}
       </ul>
     </div>
   );
-};
+}
 
-export default TodoList;
 ```
 
 #### `AddTodo.tsx` (Componente Filho)
@@ -184,33 +183,30 @@ export default TodoList;
 import React, { useState } from "react";
 
 interface AddTodoProps {
-  addTodo: (newTodo: string) => void;
+  addTodo: (task: string) => void;
 }
 
-const AddTodo: React.FC<AddTodoProps> = ({ addTodo }) => {
-  const [newTodo, setNewTodo] = useState<string>("");
+export default function AddToDo({ addTodo }: AddTodoProps) {
+  const [newTask, setNewTarefa] = useState<string>("");
 
-  const handleAddTodo = () => {
-    if (newTodo.trim() !== "") {
-      addTodo(newTodo);
-      setNewTodo("");
-    }
+  const addTodoHandler = () => {
+    if (newTask === "") return;
+    addTodo(newTask);
   };
 
   return (
-    <div>
+    <>
       <input
         type="text"
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
-        placeholder="Digite uma nova tarefa"
+        value={newTask}
+        onChange={(e) => setNewTarefa(e.target.value)}
+        placeholder={"Digite a tarefa"}
       />
-      <button onClick={handleAddTodo}>Adicionar Tarefa</button>
-    </div>
+      <button onClick={addTodoHandler}>Adicionar Tarefa</button>
+    </>
   );
-};
+}
 
-export default AddTodo;
 ```
 
 #### `Todo.tsx` (Componente de Tarefa)
@@ -220,35 +216,39 @@ Crie um componente `Todo.tsx` para exibir cada tarefa individualmente. Este comp
 ```tsx
 import React from "react";
 
-interface TodoProps {
-  text: string;
+interface ToDoProps {
+  children: React.ReactNode;
 }
 
-const Todo: React.FC<TodoProps> = ({ text }) => {
-  return <li>{text}</li>;
-};
-
-export default Todo;
+export default function ToDo({ children }: ToDoProps) {
+  return <li>{children}</li>;
+}
 ```
 
-### 2. Renderizando os Componentes no `App.tsx`
+### 2. Renderizando os Componentes no `Index.tsx`
 
-Agora, renderize os componentes `TodoList` no arquivo `src/App.tsx`:
+Agora, renderize os componentes da `TodoList` no arquivo `src/pages/Index.tsx`:
 
 ```tsx
-import React from "react";
-import "./App.css";
-import TodoList from "./TodoList";
+import Head from "next/head";
+// ...
+import ToDoList from "@/components/ToDoList";
 
-function App() {
+// ...
+
+export default function Home() {
   return (
-    <div className="App">
-      <TodoList />
-    </div>
+    <>
+      <Head>
+        ...
+      </Head>
+      <main className={`${styles.main} ${inter.className}`}>
+        <ToDoList />
+      </main>
+    </>
   );
 }
 
-export default App;
 ```
 
 ### 3. Estilos CSS (Opcional)
@@ -256,7 +256,7 @@ export default App;
 Você pode adicionar estilos CSS para tornar seu app mais atraente. Este exemplo é apenas o básico:
 
 ```css
-.App {
+.main {
   text-align: center;
 }
 
@@ -478,10 +478,10 @@ Agora, vamos para um desafio para aplicar o conhecimento sobre o `useContext`:
 
 * Implemente um sistema de temas com dois temas: **escuro** e **claro**. Crie um contexto para gerenciar o tema.
 
-* Crie um componente `ThemeSwitch` que permita alternar entre os temas. Esse componente deve usar o useContext para acessar o contexto do tema e alternar entre os temas escuro e claro quando clicado.
+* Crie um componente `ThemeSwitch` que permita alternar entre os temas. Esse componente deve usar o `useContext` para acessar o contexto do tema e alternar entre os temas escuro e claro quando clicado.
 
 * Crie um componente principal que mude seu estilo com base no tema selecionado. Por exemplo, se o tema for escuro, o aplicativo deve usar cores escuras; se o tema for claro, use cores claras.
 
 * Certifique-se de que a troca de tema seja imediatamente refletida em toda a aplicação devido ao uso do useContext.
 
-Este desafio permitirá que você pratique a criação e o uso de contextos com useContext para gerenciar temas em uma aplicação React. Além disso, você ganhará experiência em lidar com lógica de alternância de temas e estilização com base no tema selecionado. Boa sorte!
+Este desafio permitirá que você pratique a criação e o uso de contextos com `useContext` para gerenciar temas em uma aplicação React. Além disso, você ganhará experiência em lidar com lógica de alternância de temas e estilização com base no tema selecionado. Boa sorte!
