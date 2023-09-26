@@ -1,5 +1,5 @@
 # Outros React Hooks 
-
+<!-- 
 ## `useReducer`
 
 O hook `useReducer` é uma alternativa ao `useState` que é frequentemente usado em aplicações React para gerenciar o estado. Enquanto o `useState` **é adequado para gerenciar estados simples**, o `useReducer` **é mais apropriado quando o estado é complexo e requer lógica mais avançada para atualizá-lo**. Ele é especialmente útil quando você tem um estado que depende de ações e transições de estados específicas.
@@ -96,7 +96,7 @@ Neste exemplo, criamos um Reducer `todoReducer` que lida com três tipos de aç�
 
 Agora, você pode acessar o `state` e a função `dispatch` do contexto `TodoContext` para adicionar, alternar entre concluída/não-concluída e remover tarefas em seus componentes React.
 
-Para uma explicação mais detalhada sobre o padrão Reducer e a Arquitetura Flux/Redux, leia [aqui](./complementos/reducer-flux-redux.md)
+Para uma explicação mais detalhada sobre o padrão Reducer e a Arquitetura Flux/Redux, leia [aqui](./complementos/reducer-flux-redux.md) -->
 
 ## `useCallback`
 
@@ -186,3 +186,100 @@ function MyComponent() {
 ```
 
 O uso adequado do `useCallback` é uma prática importante para melhorar o desempenho e a eficiência de componentes React. No entanto, lembre-se de que não é necessário memoizar todas as funções; use-o quando for relevante evitar a recriação de funções que podem causar re-renderizações desnecessárias ou efeitos colaterais indesejados. Use-o com sabedoria para otimizar o desempenho do seu aplicativo React.
+
+## `useMemo`
+
+O `useMemo` é um hook do React que permite otimizar o desempenho de um componente, memoizando valores computados. Isso é útil quando você possui cálculos ou operações custosas que não precisam ser refeitos a cada renderização do componente. 
+
+### Exemplo de Uso Básico
+
+Vamos criar um exemplo simples para entender como o `useMemo` funciona. Suponha que você tenha um componente que calcula a soma de dois números e exibe o resultado. No entanto, você deseja memoizar o resultado para evitar cálculos repetidos.
+
+```tsx
+import React, { useState, useMemo } from 'react';
+
+const Calculator: React.FC = () => {
+  const [number1, setNumber1] = useState(0);
+  const [number2, setNumber2] = useState(0);
+
+  // Use useMemo para memoizar o resultado da soma
+  const sum = useMemo(() => {
+    console.log('Calculating sum...');
+    return number1 + number2;
+  }, [number1, number2]);
+
+  return (
+    <>
+      <input
+        type="number"
+        value={number1}
+        onChange={(e) => setNumber1(Number(e.target.value))}
+      />
+      <input
+        type="number"
+        value={number2}
+        onChange={(e) => setNumber2(Number(e.target.value))}
+      />
+      <p>Soma: {sum}</p>
+    </>
+  );
+};
+
+export default Calculator;
+```
+
+Neste exemplo, usamos `useMemo` para calcular a soma apenas quando `number1` ou `number2` mudam. Isso evita que a soma seja recalculada a cada renderização do componente, economizando recursos.
+
+### Exemplo de Uso em um Projeto Real
+
+Vamos agora considerar um exemplo mais prático em um projeto real. Suponha que você tenha uma lista de itens e deseja calcular a média dos valores de uma propriedade desses itens. O useMemo pode ser útil aqui para evitar cálculos desnecessários.
+
+```tsx
+import React, { useMemo } from 'react';
+
+interface Item {
+  id: number;
+  name: string;
+  value: number;
+}
+
+const ItemList: React.FC<{ items: Item[] }> = ({ items }) => {
+  // Use useMemo para calcular a média dos valores dos itens
+  const averageValue = useMemo(() => {
+    const totalValue = items.reduce((sum, item) => sum + item.value, 0);
+    return totalValue / items.length;
+  }, [items]);
+
+  return (
+    <div>
+      <h2>Lista de Itens</h2>
+      <ul>
+        {items.map((item) => (
+          <li key={item.id}>{item.name}: R${item.value.toFixed(2)}</li>
+        ))}
+      </ul>
+      <p>Média de Valores: R${averageValue.toFixed(2)}</p>
+    </div>
+  );
+};
+
+export default ItemList;
+```
+
+Neste exemplo, o `averageValue` é calculado apenas quando a lista de itens muda, economizando ciclos de CPU desnecessários em renderizações subsequentes.
+
+Agora você pode usar esses componentes em seu aplicativo e observar o comportamento do `useMemo`. Sempre que os valores dependentes mudarem, o cálculo será refeito. Você pode verificar isso abrindo as ferramentas de desenvolvedor do seu navegador e observando as mensagens de log no console.
+
+Lembre-se de que o `useMemo` é uma ferramenta poderosa para otimização de desempenho, mas também pode ser mal utilizada. Use-o apenas quando tiver certeza de que está otimizando cálculos custosos, pois o uso indevido pode tornar o código mais complexo sem benefícios significativos.
+
+## Docs
+
+- <https://react.dev/reference/react/useCallback>
+- <https://react.dev/reference/react/useMemo>
+- <https://www.w3schools.com/react/react_usememo.asp>
+- [`React.useMemo` na prática](https://medium.com/reactbrasil/react-usememo-na-pr%C3%A1tica-692110771c01)
+- <https://www.linkedin.com/pulse/usecallback-e-usememo-quando-usar-luiz-henrique?originalSubdomain=pt>
+
+
+
+
