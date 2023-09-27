@@ -493,14 +493,146 @@ Agora, vamos para um desafio para aplicar o conhecimento sobre o `useContext`:
 
 ### Instruções:
 
-* Crie um novo projeto React com TypeScript. 
+* Crie um novo projeto. 
 
-* Implemente um sistema de temas com dois temas: **escuro** e **claro**. Crie um contexto para gerenciar o tema.
+* Implemente um sistema de temas com dois temas: **escuro** e **claro**. Crie um **contexto** para gerenciar o tema.
 
-* Crie um componente `ThemeSwitch` que permita alternar entre os temas. Esse componente deve usar o `useContext` para acessar o contexto do tema e alternar entre os temas escuro e claro quando clicado.
+* Crie um componente de botão `ThemeSwitch` que permita alternar entre os temas. Esse componente deve usar o `useContext` para acessar o contexto do tema e alternar entre os temas escuro e claro quando clicado.
 
-* Crie um componente principal que mude seu estilo com base no tema selecionado. Por exemplo, se o tema for escuro, o aplicativo deve usar cores escuras; se o tema for claro, use cores claras.
+* No componente principal que mude seu estilo com base no tema selecionado. Por exemplo, se o tema for escuro, o aplicativo deve usar cores escuras; se o tema for claro, use cores claras.
 
 * Certifique-se de que a troca de tema seja imediatamente refletida em toda a aplicação devido ao uso do useContext.
 
 Este desafio permitirá que você pratique a criação e o uso de contextos com `useContext` para gerenciar temas em uma aplicação React. Além disso, você ganhará experiência em lidar com lógica de alternância de temas e estilização com base no tema selecionado. Boa sorte!
+
+### Dicas
+
+Vou fornecer um exemplo simplificado de como você pode criar um aplicativo com os temas **escuros** e **claros** usando `useContext`. Lembre-se de que este é um exemplo básico e você pode estender e personalizar de acordo com sua criatividade.
+
+#### Passo 1: Criar o Contexto do Tema
+
+Crie um novo arquivo chamado `ThemeContext.tsx` para definir o contexto do tema:
+
+```tsx
+import React, { ReactNode, createContext, useContext, useState } from "react";
+
+type Theme = "light" | "dark"; // tipo string já forncendo valores padrão
+
+type ThemeContextType = {
+  theme: Theme; // deve conter o state do tema
+  toggleTheme: () => void; // a função que irá modificar o tema
+};
+
+type ThemeProviderProps = {
+  children: ReactNode;
+};
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  // lógica para usar o state e modifica-lo ... 
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+// sugestão:  poderá usar este hook customizado para que não seja 
+// preciso chamar o useContext, e poder pegar o valor diretamente
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return context;
+};
+```
+
+#### Passo 2: Criar Componente de Botão de Troca de Tema
+
+Agora, crie o componente `ThemeSwitch.tsx` que usará o contexto do tema.
+
+```tsx
+import React from "react";
+import { useTheme } from "@/context/ThemeContext";
+
+const ThemeSwitch: React.FC = () => {
+  // use o contexto...
+
+  return (
+    <button onClick={toggleTheme}> ...
+  );
+};
+
+export default ThemeSwitch;
+```
+
+### Passo 3: Estilização
+
+Os estilos globais podem ser adicionados diretamente ao arquivo `_app.tsx`. No `Next.js`, você deve usar o arquivo chamado `_app.tsx` para importar estilos globais e envolver a aplicação de modo a realizar a mudança de cores para TODOS os componentes e componentes futuros.
+
+```tsx
+import { ThemeProvider } from "@/context/ThemeContext";
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <ThemeProvider> // tema adicionado
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
+}
+```
+
+Ainda precisa adicionar o css dos temas claro e escuro
+
+```css
+/* light */
+.light {
+  background-color: #fff;
+  color: #000;
+}
+
+/* dark */
+.dark {
+  background-color: #000;
+  color: #fff;
+}
+
+```
+
+### Passo 4: Teste a Troca de Tema
+
+Certifique-se de importar o `useTheme` em `index.tsx` para que o contexto do tema seja utilizado em toda a aplicação.
+
+```tsx
+import Head from "next/head";
+...
+import { useTheme } from "@/context/ThemeContext";
+import ThemeSwitch from "@/components/ThemeSwitch";
+
+...
+
+export default function Home() {
+  // chama o hook customizado para o tema
+
+  // usando styles[theme] a classe css será alterada de acordo com o que o tema indicado
+
+  return (
+    <>
+      <Head>
+        ...
+      </Head>
+      <main className={`${styles.main} ${inter.className} ${styles[theme]}`}>  
+        <ThemeSwitch />
+        <div>
+          ...
+        </div>
+      </main>
+    </>
+  );
+}
+```

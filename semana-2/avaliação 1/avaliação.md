@@ -14,7 +14,7 @@ Neste desafio vocês deverão criar uma calculadora para funcionar e ela deve pe
 
 - Faça com que o botão **ON/C** desempenhe a função de limpar o display.
 - Possibilite as operações fracionárias, por exemplo: `1.5 + 2 = 3.5`. Neste caso, é importante que o ponto seja adicionado no display apenas uma vez.
-- Complete a calculadora com as operações de **porcentagem**, **raiz quadrada**, **troca de sinal(+/-)**, etc.
+- Complete a calculadora com as operações de **raiz quadrada**, **troca de sinal(+/-)**, etc.
 - Limite a tela para exibir no máximo 8 digitos.
 - Faça com que possa ser feito vários cálculos na mesma digitação, ex. Digitado: `1 + 2 * 2`, Resultado: `6`.
 - Evitar o uso do `eval()`, procure a função no javascript para converter o valor do display para números.

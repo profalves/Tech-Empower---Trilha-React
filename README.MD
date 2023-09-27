@@ -51,20 +51,20 @@
 
 - **Semana 3**: 
   - (12/09): [*state no JS* e `useState` hook no React](semana-3/state.md)
-  - (14/09): [`useEffect` hook e Ciclo de Vida dos Componentes]()
+  - (14/09): [`useEffect` hook e Ciclo de Vida dos Componentes](semana-3/useEffect.md)
   - [**Projeto prático**](semana-2/avaliação%201/avaliação.md)
 
 - **Semana 4**: 
-  - (19/09): Revisão de conteúdo (javascript)
-  - (21/09): Hooks (useContext)
+  - (19/09): [Revisão de conteúdo (javascript)](semana-2/avaliação%201/dicas.md)
+  - (21/09): [Comunicação entre componentes (Props)](semana-4/props-context.md#props)
 
 - **Semana 5**: 
-  - (26/09): Outros hooks (useCallback, useReducer, useRef, useMemo, etc.)
-  - (28/09): Formulários e validações
+  - (26/09): [Comunicação entre componentes (useContext)](semana-4/props-context.md#usecontext-hook)
+  - (28/09): Outros hooks (useCallback, useRef, useMemo, etc.)
 
 - **Semana 6**: 
-  - (03/10): Conceitos Redux (store, actions, reducers)
-  - (05/10): Integração Redux com React
+  - (03/10): Formulários e validações
+  - (05/10): Estilização com CSS-in-JS (styled components)
   - [**Projeto prático**]()
 
 - **Semana 7**: 
@@ -81,12 +81,12 @@
   - [**Projeto prático**]()
 
 - **Semana 10**: 
-  - (31/10): Revisão de conteúdo
+  - (31/10): Tratamento de erros
   - (02/11): ❌ Feriado
 
 - **Semana 11**: 
-  - (07/11): Estilização com CSS-in-JS (styled components)
-  - (09/11): Tratamento de erros
+  - (07/11): Conceitos Redux (store, actions, reducers)
+  - (09/11): Integração Redux com React
 
 - **Semana 12**: 
   - (14/11): Revisão de conteúdo
