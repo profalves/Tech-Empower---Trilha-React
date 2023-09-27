@@ -474,13 +474,13 @@ Agora, vamos para um desafio para aplicar o conhecimento sobre o `useContext`:
 
 ### Instruções:
 
-* Crie um novo projeto React com TypeScript. 
+* Crie um novo projeto. 
 
-* Implemente um sistema de temas com dois temas: **escuro** e **claro**. Crie um contexto para gerenciar o tema.
+* Implemente um sistema de temas com dois temas: **escuro** e **claro**. Crie um **contexto** para gerenciar o tema.
 
-* Crie um componente `ThemeSwitch` que permita alternar entre os temas. Esse componente deve usar o `useContext` para acessar o contexto do tema e alternar entre os temas escuro e claro quando clicado.
+* Crie um componente de botão `ThemeSwitch` que permita alternar entre os temas. Esse componente deve usar o `useContext` para acessar o contexto do tema e alternar entre os temas escuro e claro quando clicado.
 
-* Crie um componente principal que mude seu estilo com base no tema selecionado. Por exemplo, se o tema for escuro, o aplicativo deve usar cores escuras; se o tema for claro, use cores claras.
+* No componente principal que mude seu estilo com base no tema selecionado. Por exemplo, se o tema for escuro, o aplicativo deve usar cores escuras; se o tema for claro, use cores claras.
 
 * Certifique-se de que a troca de tema seja imediatamente refletida em toda a aplicação devido ao uso do useContext.
 
@@ -602,7 +602,7 @@ import ThemeSwitch from "@/components/ThemeSwitch";
 export default function Home() {
   // chama o hook customizado para o tema
 
-  // usando styles[theme] a classe css será alterada de acordo com o que o tema indicou
+  // usando styles[theme] a classe css será alterada de acordo com o que o tema indicado
 
   return (
     <>
