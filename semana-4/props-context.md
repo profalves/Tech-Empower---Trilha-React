@@ -587,7 +587,7 @@ Ainda precisa adicionar o css dos temas claro e escuro
 
 ```
 
-### Passo 4: Teste a Teoca de Tema
+### Passo 4: Teste a Troca de Tema
 
 Certifique-se de importar o `useTheme` em `index.tsx` para que o contexto do tema seja utilizado em toda a aplicação.
 
