@@ -497,7 +497,7 @@ Crie um novo arquivo chamado `ThemeContext.tsx` para definir o contexto do tema:
 ```tsx
 import React, { ReactNode, createContext, useContext, useState } from "react";
 
-type Theme = "light" | "dark"; // tipo string já forncendo valores padrão
+type Theme = "light" | "dark"; // tipo string já fornecendo valores padrão
 
 type ThemeContextType = {
   theme: Theme; // deve conter o state do tema
