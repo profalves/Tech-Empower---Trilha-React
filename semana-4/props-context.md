@@ -543,9 +543,7 @@ const ThemeSwitch: React.FC = () => {
   // use o contexto...
 
   return (
-    <button onClick={toggleTheme}>
-      {theme === "light" ? "Switch to Dark Theme" : "Switch to Light Theme"}
-    </button>
+    <button onClick={toggleTheme}> ...
   );
 };
 
