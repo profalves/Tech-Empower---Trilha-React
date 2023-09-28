@@ -41,23 +41,28 @@ function ParentComponent() {
 No `useEffect`, se você usar uma função como dependência e ela for recriada a cada renderização, isso pode levar a efeitos colaterais indesejados. O `useCallback` pode ser usado para memoizar essa função e garantir que o efeito seja executado apenas quando as dependências mudarem.
 
 ```jsx
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 
-function ExampleComponent() {
+const Button = ({ ...props }) => {
+  useEffect(() => console.log("Button Re-Render"));
+
+  useEffect(() => console.log("Click function Re-Created"), [props.onClick]);
+  return <button {...props}></button>;
+};
+
+export default function ExampleComponent() {
   const [count, setCount] = useState(0);
 
-  const handleClick = useCallback(() => {
-    setCount(count + 1);
-  }, [count]);
+  useEffect(() => console.log("Component Re-render"));
 
-  useEffect(() => {
-    // Este efeito só será reexecutado quando 'count' mudar
-    console.log('Efeito executado');
-  }, [count]);
+  const handleClick = useCallback(() => {
+    setCount((prev) => prev + 1);
+  }, []);
 
   return (
     <div>
-      <button onClick={handleClick}>Incrementar</button>
+      <div>Contador: {count}</div>
+      <Button onClick={handleClick}>Incrementar</Button>
     </div>
   );
 }

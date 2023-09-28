@@ -104,20 +104,20 @@ Estilize o aplicativo com base no tema escolhido. Crie arquivos CSS separados pa
 
 ```css
 /* App.css */
-.App {
+* {
   font-family: Arial, sans-serif;
   transition: background-color 0.3s ease-in-out;
   padding: 20px;
 }
 
 /* App-light.css */
-.App.light {
+.light {
   background-color: #ffffff;
   color: #000000;
 }
 
 /* App-dark.css */
-.App.dark {
+.dark {
   background-color: #333333;
   color: #ffffff;
 }

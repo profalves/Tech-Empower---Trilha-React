@@ -95,3 +95,7 @@ Neste exemplo, criamos um Reducer `todoReducer` que lida com três tipos de aç�
 Agora, você pode acessar o `state` e a função `dispatch` do contexto `TodoContext` para adicionar, alternar entre concluída/não-concluída e remover tarefas em seus componentes React.
 
 Para uma explicação mais detalhada sobre o padrão Reducer e a Arquitetura Flux/Redux, leia [aqui](./complementos/reducer-flux-redux.md)
+
+## Docs
+
+- <https://youtu.be/w92lb2i98zQ?si=42AspIVfnuef8rJZ>
