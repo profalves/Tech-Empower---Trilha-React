@@ -56,15 +56,15 @@
 
 - **Semana 4**: 
   - (19/09): [Revisão de conteúdo (javascript)](semana-2/avaliação%201/dicas.md)
-  - (21/09): [Comunicação entre componentes (Props)](semana-4/props-context.md#props)
+  - (21/09): [Comunicação entre componentes (`Props`)](semana-4/props-context.md#props)
 
 - **Semana 5**: 
-  - (26/09): [Comunicação entre componentes (useContext)](semana-4/props-context.md#usecontext-hook)
+  - (26/09): [Comunicação entre componentes (`useContext`)](semana-4/props-context.md#usecontext-hook)
   - (28/09): [Hooks de Performance: useCallback e useMemo](semana-5/outros-hooks.md)
 
 - **Semana 6**: 
   - (03/10): [Formulários e validações](semana-6/forms.md)
-  - (05/10): [Estilização com CSS-in-JS (styled components)](semana-6/styled-components.md)
+  - (05/10): [Estilização com CSS-in-JS (`styled components`)](semana-6/styled-components.md)
   - [**Projeto prático**]()
 
 - **Semana 7**: 
