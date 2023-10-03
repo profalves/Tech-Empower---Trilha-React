@@ -28,11 +28,6 @@ Esta são as possibilidade de páginas que o seu e-commerce pode ter:
 
 ## Critérios de Aceite
 
-
-### Critérios Anteriores (ultima chance)
-
-- Todos os critérios anteriores poderão ser atingidos a fim de tornar o seu ecommerce mais completo e satisfatório. Além de ser um portfolio para o seu Github. Então vamos lá e mão na massa: [Semana 3 - Critérios de Aceite](../semana-3/DESAFIO_S3.md)
-
 ### Criação do usuário
 
 - A tela deverá ser acessível pela tela de login com um botão que leve a tela de cadastro quando o usuário ainda não é cadastrado.
