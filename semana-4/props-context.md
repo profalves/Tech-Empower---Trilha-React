@@ -484,6 +484,7 @@ Ao criar um contexto e um provedor de contexto, você pode compartilhar dados em
 
 - <https://react.dev/learn/passing-props-to-a-component>
 - <https://react.dev/learn/passing-data-deeply-with-context#context-an-alternative-to-passing-props>
+- [Evite o A**prop**calipse](https://youtu.be/X0Lh3YjK2nY?si=kGkjJSexslshztR-)
 
 ## Desafio
 
