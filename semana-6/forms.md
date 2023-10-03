@@ -308,3 +308,70 @@ const schema = yup.object().shape({
 - <https://medium.com/@guigaoliveira_/conhecendo-o-useref-do-react-9d67e66>
 - <https://ateliware.com/blog/react-hook-form>
 - <https://www.devmedia.com.br/validando-formularios-com-react-hook-forms/42903>
+
+## Pratica em aula
+
+```jsx
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+interface IFormData {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+  confirmPassword: string;
+}
+
+const UserRegistrationForm = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<IFormData>({
+    mode: "all",
+  });
+
+  const onSubmit: SubmitHandler<IFormData> = (data) => {
+    // Enviar dados do formulário ...
+    console.log(data);
+  };
+
+  console.log({ errors });
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <label>Nome: </label>
+        <input
+          type="text"
+          {...register("name", {
+            required: "Nome é obrigatório",
+            minLength: 3,
+          })}
+        />
+        {<p>{errors.name?.message}</p>}
+      </div>
+      <div>
+        <label>E-mail: </label>
+        <input type="email" {...register("email")} />
+      </div>
+      <div>
+        <label>Telefone: </label>
+        <input type="tel" {...register("phone")} />
+      </div>
+      <div>
+        <label>Senha: </label>
+        <input type="password" {...register("password")} />
+      </div>
+      <div>
+        <label>Confirmação de Senha: </label>
+        <input type="password" {...register("confirmPassword")} />
+      </div>
+      <button type="submit">Cadastrar</button>
+    </form>
+  );
+};
+
+export default UserRegistrationForm;
+```
