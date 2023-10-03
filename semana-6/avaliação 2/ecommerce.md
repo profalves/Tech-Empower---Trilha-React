@@ -6,7 +6,7 @@ Com isso, é importante antes de começar, já escolher qual loja virtual deseja
 
 ## Estrutura de navegação
 
-Esta são as possibilidade de páginas que o seu e-commerce pode ter:
+Esta são as possibilidade de páginas que o seu e-commerce pode ter, **mas por agora apenas precisará criar a tela de cadastro e login**:
 
 ```bash
 
@@ -21,7 +21,7 @@ Esta são as possibilidade de páginas que o seu e-commerce pode ter:
 |-- Admin (CMS)
     |-- Cadastro de Produtos
     |-- Listagem de Clientes
-|-- Login
+|-- **Login**
 |-- **Cadastro**
 
 ```
@@ -51,19 +51,24 @@ Esta são as possibilidade de páginas que o seu e-commerce pode ter:
 
 ***OBS***. Caso queira adicionar uma página para cadastro de produtos pode fazer também que contará como pontos extras e você mesmo pode fazer do seu jeito, contanto que faça sentido com os futuros produtos da loja.
 
+### Tela de Login
+
+- As mesmas validações para email e senha da tela de cadastro
+
 ## Pesos
 
 Considerando que o desafio vale **10 pontos**:
 
 1. Página de cadastro de usuários
 2. Validação de campos:
-  - Nome é obrigatório
-  - Email é obrigatório e com formato certo
-  - Numero de celular tem que ter 11 digitos DDD + numero
-  - No Endereço o CEP é obrigatório
-  - As senhas devem coincindir, ter no mínimo 8 caracteres
+     - Nome é obrigatório
+     - Email é obrigatório e com formato certo
+     - Numero de celular tem que ter 11 digitos DDD + numero
+     - No Endereço o CEP é obrigatório
+     - As senhas devem coincindir, ter no mínimo 8 caracteres
+     - Deve exigir que a caixa de aceite das politicas de privacidade esteja preenchida
 3. Tela de Login (As mesmas validações para email e senha da tela de cadastro)
-4. Extra: Tela de cadastro de produtos e/ou valiações extras
+4. Extra: Tela de cadastro de produtos e/ou valiações extras no cadastro de clientes
 
 Para se inspirar e ter um exemplo de loja completa, acesse: <https://storetheme.vtex.com/>
 
