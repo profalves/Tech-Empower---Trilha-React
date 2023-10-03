@@ -71,7 +71,7 @@ const ThemeSwitch: React.FC = () => {
 export default ThemeSwitch;
 
 
-// App.tsx
+// _app.tsx
 import React from 'react';
 // ...
 import { ThemeProvider, useTheme } from './ThemeContext';
@@ -83,22 +83,44 @@ function Home() {
   const { theme } = useTheme();
   // ...
 
+  // adicione o componente na página principal
+
   return (
     ...
-    <ThemeProvider>
-      <div className={`App ${theme}`}>
-        <h1>Theme Toggle Example</h1>
-        <ThemeSwitch />
-        <p>This is some content that changes with the theme.</p>
-      </div>
-    </ThemeProvider>
+    <main className={`${styles.main} ${inter.className} ${styles[theme]}`}>
+      <ThemeSwitch /> 
+      <div className={styles.description}>
+        <p>
+          Get started by editing&nbsp;
+          <code className={styles.code}>src/pages/index.tsx</code>
+        </p>
+      <div>
+    </main>
   );
 }
 
 export default Home;
 ```
 
-## Passo 4: Estilização
+## Passo 4: Distribuindo o contexto
+
+Como este tema irá modificar ***TODA*** a aplicação, o ideal será colocar no componente app para que o mesmo esteja disponível para toda a parte.
+
+```tsx
+import { ThemeProvider } from "@/context/ThemeContext";
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <ThemeProvider>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
+}
+```
+
+## Passo 5: Estilização
 
 Estilize o aplicativo com base no tema escolhido. Crie arquivos CSS separados para os estilos de tema claro e escuro, por exemplo, App.css, App-light.css e App-dark.css. Os estilos podem ser algo assim:
 
@@ -123,9 +145,7 @@ Estilize o aplicativo com base no tema escolhido. Crie arquivos CSS separados pa
 }
 ```
 
-## Passo 5: Teste a Aplicação
-
-Certifique-se de que já esteja importado o `ThemeProvider` em `Index.tsx` para que o contexto do tema esteja disponível em toda a aplicação.
+## Passo 6: Teste a Aplicação
 
 Agora, quando você executa a aplicação e clica no botão **"Switch to Dark Theme"** ou **"Switch to Light Theme"**, os estilos e o tema da aplicação devem mudar dinamicamente.
 

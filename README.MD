@@ -63,8 +63,8 @@
   - (28/09): [Hooks de Performance: useCallback e useMemo](semana-5/outros-hooks.md)
 
 - **Semana 6**: 
-  - (03/10): [Formulários e validações]()
-  - (05/10): [Estilização com CSS-in-JS (styled components)]()
+  - (03/10): [Formulários e validações](semana-6/forms.md)
+  - (05/10): [Estilização com CSS-in-JS (styled components)](semana-6/styled-components.md)
   - [**Projeto prático**]()
 
 - **Semana 7**: 
