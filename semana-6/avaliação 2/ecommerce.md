@@ -73,7 +73,7 @@ Considerando que o desafio vale **10 pontos**:
      - As senhas devem coincindir, ter no mínimo 8 caracteres
      - Deve exigir que a caixa de aceite das politicas de privacidade esteja preenchida
 3. Tela de Login (As mesmas validações para email e senha da tela de cadastro) _-> 3 pontos_
-4. Extra (_escolha por um ou mais_): 
+4. Extra (_escolha por um ou mais_): _-> 1 ponto_
      - Tela de cadastro de produtos 
      - Valiações extras no cadastro de clientes, por exemplo, validar o formato de email para que tenha `@` e `.`
      - Adicionar um ***Contexto*** e realizar a ***troca de tema claro e escuro*** usando `useContext` e `styled-components`
