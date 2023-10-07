@@ -120,6 +120,8 @@ O link do seu pull request deverá ser enviado dentro do **classroom** do curso,
 
 Abra uma *issue*: <https://github.com/profalves/Tech-Empower---Trilha-React/issues>
 
+Também podem usar o discord do curso: <https://discord.gg/84thxW9w>
+
 ## Sugestões e Melhorias
 
 Para contribuir com o material, basta dar um fork e enviar um pull request. Ou abra uma issue e faça seus comentários
