@@ -68,16 +68,16 @@
   - [**Projeto prático**]()
 
 - **Semana 7**: 
-  - (10/10): Introdução ao Router
+  - (10/10): [Introdução ao Router](semana-7/react-router.md)
   - (12/10): ❌ Feriado
 
 - **Semana 8**:
-  - (17/10): Trabalhando com querys e parâmetros de rotas 
-  - (19/10): Rotas protegidas
+  - (17/10): [Trabalhando com rotas, querys e parâmetros de rotas no `NextJS`]()
+  - (19/10): [Rotas protegidas]()
 
 - **Semana 9**: 
-  - (24/10): Autenticação e autorização em APIs
-  - (26/10): Manipulação de dados assíncrona
+  - (24/10): Manipulação de dados assíncrona (`Promises` e `Async/Await`)
+  - (26/10): Autenticação e autorização em APIs
   - [**Projeto prático**]()
 
 - **Semana 10**: 
