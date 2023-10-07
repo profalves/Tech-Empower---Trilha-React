@@ -6,10 +6,9 @@ Com isso, é importante antes de começar, já escolher qual loja virtual deseja
 
 ## Estrutura de navegação
 
-Esta são as possibilidade de páginas que o seu e-commerce pode ter, **mas por agora apenas precisará criar a tela de cadastro e login**:
+Esta são as possibilidade de páginas que o seu e-commerce pode ter, **mas por agora apenas precisará criar a tela de _cadastro_ e _login_**:
 
 ```bash
-
 |-- home
     |-- PLP (Product List Page)
     |-- PDP (Product Detail Page)
@@ -21,8 +20,8 @@ Esta são as possibilidade de páginas que o seu e-commerce pode ter, **mas por 
 |-- Admin (CMS)
     |-- Cadastro de Produtos
     |-- Listagem de Clientes
-|-- **Login**
-|-- **Cadastro**
+|-- *Login*
+|-- *Cadastro*
 
 ```
 
