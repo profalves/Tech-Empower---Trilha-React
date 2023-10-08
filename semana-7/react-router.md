@@ -192,6 +192,10 @@ const Details: React.FC = () => {
 export default Details;
 ```
 
+No código acima, `useLocation` é usado para obter o objeto de localização atual, e em seguida, `URLSearchParams` é usado para analisar os query parameters da URL. O valor do parâmetro `id` é obtido usando o método `get` do objeto `searchParams`.
+
+Dessa forma, você pode usar query parameters nas suas rotas e acessá-los em seus componentes usando React Router. Certifique-se de que a URL da sua rota contenha os query parameters desejados para que você possa usá-los em seus componentes.
+
 ## Navegação Programática
 
 Para navegação programática, você pode usar o hook `useHistory` do React Router DOM. Por exemplo, para navegar para a página "Sobre" após um clique em um botão:
