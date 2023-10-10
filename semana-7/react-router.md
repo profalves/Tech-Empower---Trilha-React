@@ -88,26 +88,27 @@ Primeiro, crie um arquivo chamado `index.tsx` em um diretório chamado `routes` 
 
 ```tsx
 // src/routes/index.tsx
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './components/Home'; 
-import About from './components/About';
-import NotFound from './components/NotFound';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "../components/Home";
+import About from "../components/About";
+import NotFound from "../components/NotFound";
 // 👆 estes componentes já devem existir na sua aplicação
 
 const AppRouter: React.FC = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" element={<Home />} />
-        <Route path="/details/:id" element={<About />} />
-        <Route path="*" element={<NotFound />} /> {/* Rota para NotFound */}
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" Component={Home} />
+        <Route path="/about" Component={About} />
+        <Route path="*" Component={NotFound} /> {/* Rota para NotFound */}
+      </Routes>
+    </BrowserRouter>
   );
 };
 
 export default AppRouter;
+
 ```
 
 Neste exemplo, criamos três rotas: uma para a página inicial (`/`), uma para a página "Sobre" (`/about`) e uma rota padrão para quando nenhuma rota correspondente for encontrada.
