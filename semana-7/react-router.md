@@ -143,7 +143,7 @@ Para utilizar parâmetros de rota e parâmetros de consulta (*query params*), vo
 Exemplo de rota com parâmetros:
 
 ```tsx
-<Route path="/user/:id" element={<User />} />
+<Route path="/user/:id" component={User} />
 ```
 
 No componente `User`, você pode acessar o parâmetro id usando `useParams` do React Router DOM.
@@ -229,6 +229,7 @@ Isso é um guia básico para começar com React Router. Você pode expandir e pe
 
 - [Exemplos](https://reactrouter.com/en/main/start/examples)
 - [Tutorial Oficial](https://reactrouter.com/en/main/start/tutorial)
+- [Sobre Query Params](https://ultimatecourses.com/blog/query-strings-search-params-react-router)
 
 ## Desafio
 
