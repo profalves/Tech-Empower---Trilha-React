@@ -199,28 +199,25 @@ Dessa forma, você pode usar query parameters nas suas rotas e acessá-los em se
 
 ## Navegação Programática
 
-Para navegação programática, você pode usar o hook `useHistory` do React Router DOM. Por exemplo, para navegar para a página "Sobre" após um clique em um botão:
+Para navegação programática, ou seja, navegar dentro da logica de alguma função, você pode usar o hook `useNavigate` do React Router DOM. Por exemplo, para navegar para a página "Sobre" após um clique em um botão:
 
 ```tsx
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-const Home = () => {
-  const history = useHistory();
+export default function Home() {
+  const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    history.push('/about');
+  const handlerRoute = () => {
+    navigate("/about");
   };
 
   return (
-    <div>
-      <h1>Página Inicial</h1>
-      <button onClick={handleButtonClick}>Ir para a página Sobre</button>
-    </div>
+    <>
+      <h1>Página Principal</h1>
+      <button onClick={handlerRoute}>Ir para a página Sobre</button>
+    </>
   );
-};
-
-export default Home;
+}
 ```
 
 Isso é um guia básico para começar com React Router. Você pode expandir e personalizar seu aplicativo adicionando mais rotas, manipulando parâmetros e query params de acordo com suas necessidades específicas. Certifique-se de verificar a [documentação oficial do React Router](https://reactrouter.com/en/main) para mais informações detalhadas sobre suas funcionalidades e opções avançadas.
