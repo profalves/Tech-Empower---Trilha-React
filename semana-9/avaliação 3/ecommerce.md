@@ -1,6 +1,6 @@
 # Desafio
 
-Você teve a oportunidade de iniciar com a construção de ecommerce, iniciando pelos formulários de login e senha na avaliação passada. Daremos continuidade construindo um e-commerce por completo até a nossa ultima semana. Com isso, nesta semana será importante o desenvolvimento da navegação na **Jornada Simples de Compra**.
+Você teve a oportunidade de iniciar com a construção de ecommerce, iniciando pelos formulários de login e cadastro na avaliação passada. Daremos continuidade construindo um e-commerce por completo até a nossa ultima semana. Com isso, nesta semana será importante o desenvolvimento da navegação na **Jornada Simples de Compra**.
 
 Com isso, a escolha da loja virtual que deseja construir (moda, eletrônicos, mercados, variedades, etc.) será fundamental para as regras e o que será necessário incrementar nela ao longo dos desafios.
 
@@ -10,8 +10,8 @@ Esta semana precisaremos desta estrutura de navegação criada:
 
 ```bash
 |-- *home*
-    |-- *PLP* (Product List Page)
-    |-- PDP (Product Detail Page)
+    |-- PLP (Product List Page)
+    |-- *PDP* (Product Detail Page)
     |-- Cart
         |-- resume
         |-- checkout
