@@ -76,8 +76,8 @@
   - (19/10): [Rotas protegidas]()
 
 - **Semana 9**: 
-  - (24/10): Manipulação de dados assíncrona (`Promises` e `Async/Await`)
-  - (26/10): Autenticação e autorização em APIs
+  - (24/10): [Manipulação de dados assíncrona (`Promises` e `Async/Await`)]()
+  - (26/10): [Autenticação e autorização em APIs]()
   - [**Projeto prático**]()
 
 - **Semana 10**: 
