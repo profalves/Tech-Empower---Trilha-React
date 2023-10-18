@@ -72,7 +72,7 @@
   - (12/10): ❌ Feriado
 
 - **Semana 8**:
-  - (17/10): [Trabalhando com rotas, querys e parâmetros de rotas no `NextJS`]()
+  - (17/10): [Trabalhando com rotas, querys e parâmetros de rotas no `NextJS`](semana-8/routes-nextjs.md)
   - (19/10): [Rotas protegidas]()
 
 - **Semana 9**: 
