@@ -117,6 +117,61 @@ export default PostForm;
 
 Também podemos ter um botão de voltar caso usarmos o `router.back()` como função para este botão.
 
+## Modificando a página 404
+
+Para personalizar a página de erro 404 (página não encontrada) em uma aplicação Next.js, você pode criar um arquivo chamado `404.js` ou `404.tsx` na pasta pages do seu projeto. Quando o Next.js não encontrar uma rota correspondente, ele irá usar o conteúdo desse arquivo para renderizar a página de erro 404.
+
+Aqui está um exemplo básico de como você pode personalizar sua página 404:
+
+```tsx
+// pages/404.tsx
+import { FC } from 'react';
+
+const Custom404: FC = () => {
+  return (
+    <div style={{ textAlign: 'center', padding: '100px' }}>
+      <h1>Oops! Página não encontrada!</h1>
+      <p>Desculpe, a página que você está procurando não foi encontrada.</p>
+    </div>
+  );
+};
+
+export default Custom404;
+```
+
+Neste exemplo, o componente `Custom404` é uma página React que será exibida quando um usuário acessar uma rota que não existe.
+
+1. **Personalize conforme necessário**: Você pode personalizar o conteúdo da página 404 da maneira que desejar. Adicione estilos, imagens ou qualquer outro conteúdo que achar apropriado para sua aplicação.
+
+2. **Teste a Página 404**: Agora, se você acessar uma rota que não existe em sua aplicação, o Next.js irá renderizar o conteúdo do arquivo `404.tsx`.
+
+## Tratamento de erros em rotas de forma global
+
+Além disso, se você quiser controlar o comportamento de roteamento em relação aos erros 404, você pode usar o componente ErrorBoundary do Next.js para manipular esses erros em um nível mais global. Por exemplo:
+
+```ts
+import { ErrorBoundary } from 'react-error-boundary';
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <ErrorBoundary
+      onReset={() => {
+        // Reset the state of your app so the user can try again.
+      }}
+      onError={(error, stackTrace) => {
+        // Handle the error
+      }}
+    >
+      <Component {...pageProps} />
+    </ErrorBoundary>
+  );
+}
+
+export default MyApp;
+```
+
+Dentro do `onError` callback, você pode redirecionar o usuário para uma página de erro customizada ou fazer outras manipulações necessárias em caso de erros na aplicação.
+
 ## Conclusão
 
 Com esses exemplos acima, você deve ter uma compreensão básica de como trabalhar com rotas no `Next.js`, incluindo parâmetros de rota, parâmetros de consulta, navegação programática e o uso geral do `useRouter`. Lembre-se de adaptar e expandir esses conceitos de acordo com os requisitos específicos do seu projeto.
@@ -137,7 +192,8 @@ Conforme o exemplo trabalhado na aula usando uma lista de usuários e acessar um
     name: 'Uvas',
     image: 'https://picsum.photos/id/1/200/',
     price: 18.75
-  }
+  },
+  ...
 ]
 ```
 
