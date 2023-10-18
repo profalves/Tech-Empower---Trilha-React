@@ -67,7 +67,7 @@ const Post: React.FC = () => {
 export default Post;
 ```
 
-Para acessar **query params**, você pode usá-los diretamente no objeto `query` do `useRouter`:
+Para acessar **query params**, você pode usá-los diretamente no objeto `query` do `useRouter`. Caso a rota seja com `/posts?id=123`:
 
 ```tsx
 // pages/post.tsx
@@ -115,7 +115,30 @@ export default PostForm;
 
 > Neste exemplo, `router.push('/success')` navegará o usuário para a rota `/success` após o envio do formulário.
 
+Também podemos ter um botão de voltar caso usarmos o `router.back()` como função para este botão.
+
 ## Conclusão
 
 Com esses exemplos acima, você deve ter uma compreensão básica de como trabalhar com rotas no `Next.js`, incluindo parâmetros de rota, parâmetros de consulta, navegação programática e o uso geral do `useRouter`. Lembre-se de adaptar e expandir esses conceitos de acordo com os requisitos específicos do seu projeto.
 
+## Docs
+
+- [Páginas](https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts)
+- [Rotas Dinamicas](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)
+
+## Desafio
+
+Conforme o exemplo trabalhado na aula usando uma lista de usuários e acessar um usuário da lista em outra página passando o `id` dele pela rota, podemos fazer o mesmo com uma lista de produtos. Os produtos podem ficar em uma lista em um arquivo que terá o seguinte objeto para cada com as propriedades
+
+```ts
+[
+  {
+    id: '1',
+    name: 'Uvas',
+    image: 'https://picsum.photos/id/1/200/',
+    price: 18.75
+  }
+]
+```
+
+Depois é só seguir conforme a utilização de rotas dinâmicas, conforme o material [acima](#parâmetros-de-rota-e-query-params)
