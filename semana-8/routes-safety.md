@@ -108,6 +108,77 @@ Por outro lado, uma aplicação `React` padrão com `react-router-dom` oferece m
 
 A escolha entre essas abordagens dependerá dos requisitos específicos do seu projeto e do nível de complexidade que você está enfrentando. Independentemente da escolha, a segurança deve sempre ser uma prioridade, garantindo que apenas usuários autenticados e autorizados tenham acesso às partes sensíveis da sua aplicação.
 
+## Desafio
+
+Vamos praticar a estratégia de proteção de rotas apresentada em aula:
+
+1. Primeiramente precisa criar o projeto e escolher a opção de instalar o `appRouter` nas perguntas do comando `npx create-next-app`
+2. Depois precisa criar a pasta `pages` dedntro de `src` com as suas rotas definidas:
+
+![Arquitetura de pastas](image.png)
+
+3. Apague o arquivo `page.tsx` dentro da pasta `app`, pois usaremos o arquivo `src/pages/index.tsx` como a página **Home** do site
+4. Crie o arquivo `_app.tsx` dentro da pasta `pages`, pois tudo que fizermos dentro dele vai ser distribuido para todas as páginas
+
+```tsx
+import type { AppProps } from "next/app";
+import "@/app/globals.css";
+import { usePathname, useRouter } from "next/navigation";
+import { checkIsPublicRoute } from "@/utils";
+import { useEffect } from "react";
+
+export default function App({ Component, pageProps }: AppProps) {
+  const path = usePathname();
+  const { replace } = useRouter();
+
+  const isPublicRoute = checkIsPublicRoute(path!);
+
+  const isAuthenticated = true;
+
+  useEffect(() => {
+    if (!isPublicRoute) {
+      replace("/login");
+    }
+  }, []);
+
+  console.log({ path, isPublicRoute });
+
+  return (
+    <>
+      {!isPublicRoute && null}
+      {isPublicRoute && <Component {...pageProps} />}
+    </>
+  );
+}
+```
+
+5. Depois crie o arquivo `src/constants/index.ts` para definirmos as rotas publicas e privadas do nosso site:
+
+```ts
+export const APP_ROUTES = {
+  public: {
+    home: "/",
+    about: "/about",
+    login: "/login",
+  },
+  private: {
+    "my-account": "/my-account",
+    dashboard: "/dashboard",
+  },
+};
+```
+
+6. Crie o arquivo `src/utils/index.ts` para adicionar a função que retornará se tal rota é publica ou é privada:
+
+```ts
+import { APP_ROUTES } from "@/constants";
+
+export const checkIsPublicRoute = (path: string) => {
+  const publicRoutes = Object.values(APP_ROUTES.public);
+  return publicRoutes.includes(path);
+};
+```
+
 
 
 
