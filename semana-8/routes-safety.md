@@ -1,15 +1,16 @@
-Introdução: Autenticação e Autorização em Rotas Protegidas com Next.js, TypeScript e React Router Dom
+# Rotas Protegidas com Next.js, TypeScript e React Router Dom
 
-A segurança é uma preocupação primordial ao desenvolver aplicações web modernas. Garantir que apenas usuários autenticados e autorizados tenham acesso a determinadas partes do seu aplicativo é essencial para proteger dados sensíveis e funcionalidades importantes. Neste tutorial, vamos explorar como implementar rotas protegidas em uma aplicação Next.js utilizando TypeScript. Além disso, vamos comparar a abordagem Next.js com uma aplicação React padrão usando react-router-dom.
+A segurança é uma preocupação primordial ao desenvolver aplicações web modernas. Garantir que apenas usuários autenticados e autorizados tenham acesso a determinadas partes do seu aplicativo é essencial para proteger dados sensíveis e funcionalidades importantes. Então, vamos explorar como implementar rotas protegidas em uma aplicação `Next.js`. Além disso, vamos comparar a abordagem `Next.js` com uma aplicação React padrão usando `react-router-dom`.
 
-Parte 1: Implementando Rotas Protegidas com Next.js e TypeScript
-Vamos começar criando rotas protegidas em uma aplicação Next.js usando TypeScript. Vamos usar o Next.js para gerenciar o roteamento do lado do servidor e o TypeScript para garantir tipagem segura.
+## Parte 1: Implementando Rotas Protegidas com Next.js
 
-1.1 Criando uma Rota Protegida:
-Primeiro, crie uma página protegida account.tsx na pasta pages. Esta será a página para a qual os usuários autenticados serão redirecionados.
+Vamos começar criando rotas protegidas em uma aplicação `Next.js`. Vamos usar o `Next.js` para gerenciar o roteamento do lado do servidor e o TypeScript para garantir tipagem segura.
 
-tsx
-Copy code
+### 1.1 Criando uma Rota Protegida:
+
+Primeiro, crie uma página protegida `account.tsx` na pasta pages. Esta será a página para a qual os usuários autenticados serão redirecionados.
+
+```tsx
 // pages/account.tsx
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -30,11 +31,13 @@ const AccountPage = () => {
 };
 
 export default AccountPage;
-1.2 Configurando as Rotas:
-Configure suas rotas em pages/index.tsx usando o Next.js:
+```
 
-tsx
-Copy code
+### 1.2 Configurando as Rotas:
+
+Configure suas rotas em pages/index.tsx:
+
+```tsx
 // pages/index.tsx
 import Link from 'next/link';
 
@@ -48,14 +51,17 @@ const HomePage = () => {
 };
 
 export default HomePage;
-Parte 2: Comparação com React e react-router-dom
-Vamos agora comparar esta abordagem com uma aplicação React padrão usando react-router-dom.
+```
 
-2.1 Implementando Rotas Protegidas com react-router-dom:
-Para implementar rotas protegidas em uma aplicação React com react-router-dom, você pode usar um componente de rota personalizado.
+## Parte 2: Comparação com React e react-router-dom
 
-tsx
-Copy code
+Vamos agora comparar esta abordagem com uma aplicação `React` padrão usando `react-router-dom`.
+
+### 2.1 Implementando Rotas Protegidas com react-router-dom:
+
+Para implementar rotas protegidas em uma aplicação `React` com `react-router-dom`, você pode usar um componente de rota personalizado.
+
+```tsx
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => {
@@ -68,9 +74,11 @@ const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => {
     />
   );
 };
-2.2 Configurando as Rotas com react-router-dom:
-tsx
-Copy code
+```
+
+### 2.2 Configurando as Rotas com react-router-dom:
+
+```tsx
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const App = () => {
@@ -90,10 +98,13 @@ const App = () => {
     </Router>
   );
 };
-Conclusão: Comparando Next.js e React com react-router-dom
-Ambas as abordagens oferecem soluções eficazes para rotas protegidas em aplicações React. O Next.js, com sua renderização do lado do servidor (SSR), oferece uma abordagem mais completa e integrada, especialmente quando a complexidade da aplicação aumenta. O TypeScript fornece segurança e tipagem forte para ajudar a evitar erros comuns durante o desenvolvimento.
+```
 
-Por outro lado, uma aplicação React padrão com react-router-dom oferece mais flexibilidade e controle sobre o roteamento, sendo adequada para aplicativos menores ou projetos mais simples.
+## Conclusão: Comparando Next.js e React com react-router-dom
+
+Ambas as abordagens oferecem soluções eficazes para rotas protegidas em aplicações `React`. O `Next.js`, com sua renderização do lado do servidor (`SSR`), oferece uma abordagem mais completa e integrada, especialmente quando a complexidade da aplicação aumenta.
+
+Por outro lado, uma aplicação `React` padrão com `react-router-dom` oferece mais flexibilidade e controle sobre o roteamento, sendo adequada para aplicativos menores ou projetos mais simples.
 
 A escolha entre essas abordagens dependerá dos requisitos específicos do seu projeto e do nível de complexidade que você está enfrentando. Independentemente da escolha, a segurança deve sempre ser uma prioridade, garantindo que apenas usuários autenticados e autorizados tenham acesso às partes sensíveis da sua aplicação.
 
