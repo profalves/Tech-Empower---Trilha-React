@@ -108,7 +108,7 @@ Por outro lado, uma aplicação `React` padrão com `react-router-dom` oferece m
 
 A escolha entre essas abordagens dependerá dos requisitos específicos do seu projeto e do nível de complexidade que você está enfrentando. Independentemente da escolha, a segurança deve sempre ser uma prioridade, garantindo que apenas usuários autenticados e autorizados tenham acesso às partes sensíveis da sua aplicação.
 
-## Desafio
+## Mão na Massa: Desenvolver a estratégia de proteção de rotas
 
 Vamos praticar a estratégia de proteção de rotas apresentada em aula:
 
@@ -131,7 +131,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const path = usePathname();
   const { replace } = useRouter();
 
-  const isPublicRoute = checkIsPublicRoute(path!);
+  const isPublicRoute = checkIsPublicRoute(path!); // "!" afirma que o path sempre vai existir
 
   const isAuthenticated = true;
 
@@ -179,6 +179,98 @@ export const checkIsPublicRoute = (path: string) => {
 };
 ```
 
+7. Adicione na página de login a lógica para autorizar o acesso, para isso vamos usar o LocalStorage para além de estar acessível a qualquer momento essa informação, ela continuar a ser persistida mesmo após o refresh da página ou fechar o navegador.
 
+```jsx
+import { useRouter } from "next/navigation";
+import React from "react";
 
+export default function login() {
+  const { push } = useRouter();
+  const handleLogin = () => {
+    try { // O uso do try..catch é para garantir qua a aplicação não quebre se caso não consegui acessar o localStorage do browser
+      // ...logica do login
+      window.localStorage.setItem("isAuthenticated", "true");
+    } catch (error) {
+      throw new Error(JSON.stringify(error));
+    } finally {
+      push("/");
+    }
+  };
 
+  return (
+    <>
+      <h1>login</h1>
+      <div>
+        <label htmlFor="">Usuário: </label>
+        <input type="text" />
+      </div>
+      <div>
+        <label htmlFor="">Senha: </label>
+        <input type="text" />
+      </div>
+      <button onClick={handleLogin}>Entrar</button>
+    </>
+  );
+}
+```
+
+8. No `useEffect` do arquivo `_app.tsx`, adicione a lógica para acessar a informação `isAuthenticated` do `localStorage`
+
+```jsx
+useEffect(() => {
+    if (!isAuthenticated) {
+      replace("/login");
+      return;
+    }
+    try {
+      const isLogged =
+        window.localStorage.getItem("isAuthenticated") === "true";
+      console.log({ isLogged });
+      setIsAuthenticated(isLogged);
+    } catch (error) {
+      console.error("LocalStorage erro: ", error);
+    } finally {
+      if (!isPublicRoute && !isAuthenticated) {
+        replace("/login");
+      }
+    }
+  }, []);
+```
+
+Depois adicione a condição de renderização para incluir que é necessário estar auteticado também para ver a tela:
+
+```jsx
+return (
+    <>
+      {!isAuthenticated && !isPublicRoute ? null : <Component {...pageProps} />}
+    </>
+  );
+```
+
+9. Por fim pode fazer a simulação de `logout` na página de `/my-account`
+
+```jsx
+import { useRouter } from "next/navigation";
+import React from "react";
+
+export default function myAccount() {
+  const { push } = useRouter();
+  const logout = () => {
+    try {
+      window.localStorage.removeItem("isAuthenticated");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      push("/");
+    }
+  };
+
+  return (
+    <>
+      <h1>Minha Conta</h1>
+      <button onClick={logout}>Sair</button>
+    </>
+  );
+}
+```
