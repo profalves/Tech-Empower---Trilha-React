@@ -72,16 +72,16 @@
   - (12/10): ❌ Feriado
 
 - **Semana 8**:
-  - (17/10): [Trabalhando com rotas, querys e parâmetros de rotas no `NextJS`]()
-  - (19/10): [Rotas protegidas]()
+  - (17/10): [Trabalhando com rotas, querys e parâmetros de rotas no `NextJS`](semana-8/routes-nextjs.md)
+  - (19/10): [Rotas protegidas](semana-8/routes-safety.md)
 
 - **Semana 9**: 
-  - (24/10): Manipulação de dados assíncrona (`Promises` e `Async/Await`)
+  - (24/10): [Manipulação de dados assíncrona (`Promises` e `Async/Await`)](semana-9/async-functions.md)
   - (26/10): Autenticação e autorização em APIs
   - [**Projeto prático**]()
 
 - **Semana 10**: 
-  - (31/10): Tratamento de erros
+  - (31/10): Revisão de conteúdo
   - (02/11): ❌ Feriado
 
 - **Semana 11**: 
@@ -89,7 +89,7 @@
   - (09/11): Integração Redux com React
 
 - **Semana 12**: 
-  - (14/11): Revisão de conteúdo
+  - (14/11): Tratamento de erros 
   - (16/11): **Projeto prático**
 
 - **Semana 13**: 
