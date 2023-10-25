@@ -76,12 +76,12 @@
   - (19/10): [Rotas protegidas](semana-8/routes-safety.md)
 
 - **Semana 9**: 
-  - (24/10): [Manipulação de dados assíncrona (`Promises` e `Async/Await`)](semana-9/async-functions.md)
-  - (26/10): Autenticação e autorização em APIs
-  - [**Projeto prático**]()
+  - (24/10): [Manipulação de dados assíncrona (`promises` e `async/await`) e Tratamento de erros (`try/catch`)](semana-9/async-functions.md)
+  - (26/10): [Requisições em APIs]()
+  - [**Projeto prático**](semana-9/avaliação%203/ecommerce.md)
 
 - **Semana 10**: 
-  - (31/10): Revisão de conteúdo
+  - (31/10): Autenticação e autorização em APIs
   - (02/11): ❌ Feriado
 
 - **Semana 11**: 
@@ -89,7 +89,7 @@
   - (09/11): Integração Redux com React
 
 - **Semana 12**: 
-  - (14/11): Tratamento de erros 
+  - (14/11): 
   - (16/11): **Projeto prático**
 
 - **Semana 13**: 
