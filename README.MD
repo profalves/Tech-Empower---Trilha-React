@@ -81,7 +81,7 @@
   - [**Projeto prático**](semana-9/avaliação%203/ecommerce.md)
 
 - **Semana 10**: 
-  - (31/10): Autenticação e autorização em APIs
+  - (31/10): [Autenticação e autorização em APIs](semana-10/auth.md)
   - (02/11): ❌ Feriado
 
 - **Semana 11**: 
