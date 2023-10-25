@@ -88,26 +88,27 @@ Primeiro, crie um arquivo chamado `index.tsx` em um diretório chamado `routes` 
 
 ```tsx
 // src/routes/index.tsx
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './components/Home'; 
-import About from './components/About';
-import NotFound from './components/NotFound';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "../components/Home";
+import About from "../components/About";
+import NotFound from "../components/NotFound";
 // 👆 estes componentes já devem existir na sua aplicação
 
 const AppRouter: React.FC = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" element={<Home />} />
-        <Route path="/details/:id" element={<About />} />
-        <Route path="*" element={<NotFound />} /> {/* Rota para NotFound */}
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" Component={Home} />
+        <Route path="/about" Component={About} />
+        <Route path="*" Component={NotFound} /> {/* Rota para NotFound */}
+      </Routes>
+    </BrowserRouter>
   );
 };
 
 export default AppRouter;
+
 ```
 
 Neste exemplo, criamos três rotas: uma para a página inicial (`/`), uma para a página "Sobre" (`/about`) e uma rota padrão para quando nenhuma rota correspondente for encontrada.
@@ -142,7 +143,7 @@ Para utilizar parâmetros de rota e parâmetros de consulta (*query params*), vo
 Exemplo de rota com parâmetros:
 
 ```tsx
-<Route path="/user/:id" element={<User />} />
+<Route path="/user/:id" component={User} />
 ```
 
 No componente `User`, você pode acessar o parâmetro id usando `useParams` do React Router DOM.
@@ -192,30 +193,31 @@ const Details: React.FC = () => {
 export default Details;
 ```
 
+No código acima, `useLocation` é usado para obter o objeto de localização atual, e em seguida, `URLSearchParams` é usado para analisar os query parameters da URL. O valor do parâmetro `id` é obtido usando o método `get` do objeto `searchParams`.
+
+Dessa forma, você pode usar query parameters nas suas rotas e acessá-los em seus componentes usando React Router. Certifique-se de que a URL da sua rota contenha os query parameters desejados para que você possa usá-los em seus componentes.
+
 ## Navegação Programática
 
-Para navegação programática, você pode usar o hook `useHistory` do React Router DOM. Por exemplo, para navegar para a página "Sobre" após um clique em um botão:
+Para navegação programática, ou seja, navegar dentro da logica de alguma função, você pode usar o hook `useNavigate` do React Router DOM. Por exemplo, para navegar para a página "Sobre" após um clique em um botão:
 
 ```tsx
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-const Home = () => {
-  const history = useHistory();
+export default function Home() {
+  const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    history.push('/about');
+  const handlerRoute = () => {
+    navigate("/about");
   };
 
   return (
-    <div>
-      <h1>Página Inicial</h1>
-      <button onClick={handleButtonClick}>Ir para a página Sobre</button>
-    </div>
+    <>
+      <h1>Página Principal</h1>
+      <button onClick={handlerRoute}>Ir para a página Sobre</button>
+    </>
   );
-};
-
-export default Home;
+}
 ```
 
 Isso é um guia básico para começar com React Router. Você pode expandir e personalizar seu aplicativo adicionando mais rotas, manipulando parâmetros e query params de acordo com suas necessidades específicas. Certifique-se de verificar a [documentação oficial do React Router](https://reactrouter.com/en/main) para mais informações detalhadas sobre suas funcionalidades e opções avançadas.
@@ -224,6 +226,7 @@ Isso é um guia básico para começar com React Router. Você pode expandir e pe
 
 - [Exemplos](https://reactrouter.com/en/main/start/examples)
 - [Tutorial Oficial](https://reactrouter.com/en/main/start/tutorial)
+- [Sobre Query Params](https://ultimatecourses.com/blog/query-strings-search-params-react-router)
 
 ## Desafio
 

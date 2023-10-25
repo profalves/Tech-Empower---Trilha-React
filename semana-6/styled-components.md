@@ -149,5 +149,5 @@ Em resumo, Styled Components oferece uma maneira moderna, eficiente e reativa de
 
 ## Conclusão:
 
-Você aprendeu sobre CSS-in-JS e como usar Styled Components para criar componentes estilizados em um aplicativo React com TypeScript. Lembre-se de que Styled Components oferece muitos recursos avançados, como a capacidade de passar props dinamicamente para estilos e criar temas para sua aplicação. Consulte a documentação oficial do Styled Components para aprender mais sobre esses recursos e aprofundar seus conhecimentos.
+Você aprendeu sobre CSS-in-JS e como usar Styled Components para criar componentes estilizados em um aplicativo React com TypeScript. Lembre-se de que Styled Components oferece muitos recursos avançados, como a capacidade de passar props dinamicamente para estilos e criar temas para sua aplicação. Consulte a [documentação oficial do Styled Components](https://styled-components.com/docs/basics#getting-started) para aprender mais sobre esses recursos e aprofundar seus conhecimentos.
 

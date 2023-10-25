@@ -73,15 +73,15 @@
 
 - **Semana 8**:
   - (17/10): [Trabalhando com rotas, querys e parâmetros de rotas no `NextJS`](semana-8/routes-nextjs.md)
-  - (19/10): [Rotas protegidas]()
+  - (19/10): [Rotas protegidas](semana-8/routes-safety.md)
 
 - **Semana 9**: 
-  - (24/10): [Manipulação de dados assíncrona (`Promises` e `Async/Await`)]()
-  - (26/10): [Autenticação e autorização em APIs]()
-  - [**Projeto prático**]()
+  - (24/10): [Manipulação de dados assíncrona (`promises` e `async/await`) e Tratamento de erros (`try/catch`)](semana-9/async-functions.md)
+  - (26/10): [Requisições em APIs](semana-9/requests.md)
+  - [**Projeto prático**](semana-9/avaliação%203/ecommerce.md)
 
 - **Semana 10**: 
-  - (31/10): Tratamento de erros
+  - (31/10): Autenticação e autorização em APIs
   - (02/11): ❌ Feriado
 
 - **Semana 11**: 
@@ -89,7 +89,7 @@
   - (09/11): Integração Redux com React
 
 - **Semana 12**: 
-  - (14/11): Revisão de conteúdo
+  - (14/11): 
   - (16/11): **Projeto prático**
 
 - **Semana 13**: 
@@ -119,6 +119,8 @@ O link do seu pull request deverá ser enviado dentro do **classroom** do curso,
 ## Enviar dúvidas
 
 Abra uma *issue*: <https://github.com/profalves/Tech-Empower---Trilha-React/issues>
+
+Também podem usar o discord do curso: <https://discord.gg/84thxW9w>
 
 ## Sugestões e Melhorias
 
