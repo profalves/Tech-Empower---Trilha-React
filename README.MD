@@ -77,7 +77,7 @@
 
 - **Semana 9**: 
   - (24/10): [Manipulação de dados assíncrona (`promises` e `async/await`) e Tratamento de erros (`try/catch`)](semana-9/async-functions.md)
-  - (26/10): [Requisições em APIs]()
+  - (26/10): [Requisições em APIs](semana-9/requests.md)
   - [**Projeto prático**](semana-9/avaliação%203/ecommerce.md)
 
 - **Semana 10**: 
