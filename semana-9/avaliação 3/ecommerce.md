@@ -67,7 +67,16 @@ Para toda a navegação pode apresentar um `header` e/ou um `footer`, e estes ta
 
 ### Responsividade
 
-A partir de agora já teremos um site com mais cara de **E-Commerce**, por isso a **responsividade** será visto como algo que fará sua nota subir.
+A partir de agora já teremos um site com mais cara de **E-Commerce**, por isso a **responsividade** será visto como algo obrigatório.
+
+## Pesos
+
+- [Home](#home-page): 3 pontos
+- [PDP](#pdp-product-details-page): 3 pontos
+- [Header](#header): 1 ponto
+- [Footer](#footer): 1 ponto 
+- [Responsividade](#responsividade): 1 ponto
+- ***Extras***: 1 ponto
 
 ## Modelo/Exemplo
 
