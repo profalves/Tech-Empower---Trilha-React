@@ -146,9 +146,11 @@ export default function useProducts() {
 E para o uso de imagens no Next.js:
 
 1. Configuração
+
 ![image](https://github.com/profalves/Tech-Empower---Trilha-React/assets/2893710/c119c1e5-4142-4377-abb5-d9adfb664ac7)
 
 2. Uso
+
 ```tsx
 <Image
   src={product?.images[0]}
