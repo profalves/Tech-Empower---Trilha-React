@@ -53,7 +53,7 @@ Para toda a navegação pode apresentar um `header` e/ou um `footer`, e estes ta
 
 #### Header
 
-- Logo
+- Logo (Deve ter o link para a home do site)
 - Menu categorias do site (no mínimo de 3 sessões)
 - Ícone para a conta do usuário (cliente). Caso ele ainda não esteja logado, deverá aparecer um botão de Login. Caso esteja logado, ao lado do Icone deve aparececer o nome do usuário. Para isso pode aplicar Contexto (`useContext`) para salvar os dados do usuário.
 - Ícone para ir para o carrinho
