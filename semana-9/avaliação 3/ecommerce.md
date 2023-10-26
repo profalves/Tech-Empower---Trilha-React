@@ -71,11 +71,11 @@ A partir de agora já teremos um site com mais cara de **E-Commerce**, por isso 
 
 ## Pesos
 
-- [Home](#home-page): 3 pontos
-- [PDP](#pdp-product-details-page): 3 pontos
-- [Header](#header): 1 ponto
-- [Footer](#footer): 1 ponto 
-- [Responsividade](#responsividade): 1 ponto
+- [**Home**](#home-page): 3 pontos
+- [**PDP**](#pdp-product-details-page): 3 pontos
+- [**Header**](#header): 1 ponto
+- [**Footer**](#footer): 1 ponto 
+- [**Responsividade**](#responsividade): 1 ponto
 - ***Extras***: 1 ponto
 
 ## Modelo/Exemplo
