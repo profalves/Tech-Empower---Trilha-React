@@ -80,7 +80,9 @@ A partir de agora já teremos um site com mais cara de **E-Commerce**, por isso 
 
 ## Modelo/Exemplo
 
-Para se inspirar e testar a jornada completa, acesse: <https://storetheme.vtex.com/>
+Para se inspirar e ver como é uma jornada completa em um e-commerce, acesse: 
+- <https://storetheme.vtex.com/>
+- <https://www.figma.com/community/file/1039629108858463825>
 
 ## Envio
 
