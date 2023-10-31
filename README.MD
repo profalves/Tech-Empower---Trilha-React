@@ -98,14 +98,13 @@
 
 - **Semana 14**: 
   - (28/11): Processo de deploy
-  - (30/11): Revisão de conteúdo
-
+  - (30/11): **Projeto final**
 - **Semana 15**: 
-  - (05/12): Revisão de conteúdo
-  - (07/12): **Projeto final**
+  - (05/12): **Apresentação Projeto final**
+  - (07/12): **Apresentação Projeto final**
 
 - **Semana 16**: 
-  - (12/12): **Apresentação Projeto final**
+  - (12/12): **Finalização Projeto final**
 
 
 ## Material de estudos
