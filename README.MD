@@ -81,7 +81,7 @@
   - [**Projeto prático**](semana-9/avaliação%203/ecommerce.md)
 
 - **Semana 10**: 
-  - (31/10): Autenticação e autorização em APIs
+  - (31/10): API Fake e Melhorias no ecommerce
   - (02/11): ❌ Feriado
 
 - **Semana 11**: 
@@ -89,16 +89,16 @@
   - (09/11): Integração Redux com React
 
 - **Semana 12**: 
-  - (14/11): 
+  - (14/11): Autenticação e autorização em APIs
   - (16/11): **Projeto prático**
 
 - **Semana 13**: 
-  - (21/11): Testes de integração
-  - (23/11): Testes de unidade avançados
+  - (21/11): Testes de unitário
+  - (23/11): Testes E2E
 
 - **Semana 14**: 
-  - (28/11): Testes E2E
-  - (30/11): Processo de deploy
+  - (28/11): Processo de deploy
+  - (30/11): Revisão de conteúdo
 
 - **Semana 15**: 
   - (05/12): Revisão de conteúdo
