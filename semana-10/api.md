@@ -148,9 +148,31 @@ O método TRACE executa um teste de chamada *loop-back* junto com o caminho para
 - Não deixar barra no final do endpoint
 - Nunca deixe o cliente sem resposta! Trate os erros, pelos status HTTP
 
-## Fake APIs para front-end
+## Usando cURL para fazer requisições HTTP
 
-- <https://my-json-server.typicode.com/>
+### GET Request:
+
+```bash
+curl http://localhost:3000/posts
+```
+
+### POST Request:
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"title": "Novo Post"}' http://localhost:3000/posts
+```
+
+### PUT Request:
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -d '{"title": "Post Atualizado"}' http://localhost:3000/posts/1
+```
+
+### DELETE Request:
+
+```bash
+curl -X DELETE http://localhost:3000/posts/1
+```
 
 ## Backend no NextJS
 
@@ -185,6 +207,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 ```
 
 Agora, abra o seu localhost, no formato: `localhost:3000/api/example`. A partir de agora, você pode consumir essa rota dentro do seu Front-End.
+
+## Fake APIs para front-end
+
+- <https://my-json-server.typicode.com/>
 
 ---
 
