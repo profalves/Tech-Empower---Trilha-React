@@ -160,17 +160,21 @@ Ok, isso parece forte. O mais comum é vermos aplicações Front-End e Back-End 
 
 Mas, as API Routes do Next buscam entregar uma alternativa para esse padrão.
 
-Como criar rotas com a API Routes?
-Dentro da sua aplicação Next, na pasta /pages, crie a rota /pages/api, tudo que é criado ai dentro, funciona de forma semelhante as rotas de páginas.
+### Como criar rotas com a API Routes?
 
-Se quisermos criar a seguinte rota na aplicação: /api/example, basta criar um arquivo example.js em /pages/api.
+Dentro da sua aplicação Next, na pasta `/pages`, crie a rota `/pages/api`, tudo que é criado ai dentro, funciona de forma semelhante as rotas de páginas.
+
+Se quisermos criar a seguinte rota na aplicação: `/api/example`, basta criar um arquivo `example.ts` em `/pages/api`.
 
 Dessa forma:
 
-```bash```
+```bash
 - pages
   - api
     - example.ts
+```
+
+Dentro do arquivo crie a função:
 
 ```ts
 import type { NextApiRequest, NextApiResponse } from 'next'
@@ -180,6 +184,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 }
 ```
 
+Agora, abra o seu localhost, no formato: `localhost:3000/api/example`. A partir de agora, você pode consumir essa rota dentro do seu Front-End.
 
 ---
 
@@ -194,3 +199,4 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 - <https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api>
 - <https://dev.to/leandroats/vscode-rest-client-2cei>
 - <https://gorest.co.in/>
+- <https://tavanoblog.com.br/post/aprenda-a-utilizar-api-routes-no-nextjs-e-react>
