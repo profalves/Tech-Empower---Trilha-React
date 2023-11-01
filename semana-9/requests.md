@@ -91,3 +91,73 @@ Neste exemplo, o componente `Home` utiliza o hook `useApi` para fazer uma requis
 Exploramos o básico das requisições HTTP em aplicações React usando Next.js e TypeScript. A função `fetch` é uma forma padrão e poderosa de fazer requisições, e usando hooks personalizados, podemos organizar nosso código de forma eficiente.
 
 Lembre-se sempre de tratar erros adequadamente em suas requisições, pois problemas de rede ou falhas do servidor podem ocorrer. Além disso, ajuste as URLs e a estrutura do código conforme necessário para se adequar ao seu projeto específico.
+
+## Pratica
+
+```tsx
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { Product } from "@/models/products";
+
+export default function useProducts() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [selectedProducts, setSelectedProducts] = useState<Product | null>(
+    null
+  );
+  const { query } = useRouter();
+
+  const getProducts = async () => {
+    try {
+      const response = await fetch(
+        `https://dummyjson.com/products?limit=8&skip=2`
+      );
+      const data = await response.json();
+
+      setProducts(data.products);
+    } catch (error) {
+      throw new Error(JSON.stringify(error));
+    }
+  };
+
+  const getProductById = async (id: number) => {
+    try {
+      const response = await fetch(`https://dummyjson.com/products/${id}`);
+      const data = await response.json();
+
+      setSelectedProducts(data);
+    } catch (error) {
+      throw new Error(JSON.stringify(error));
+    }
+  };
+
+  useEffect(() => {
+    getProducts();
+
+    if (query.id) {
+      const productId = Number(query.id);
+      getProductById(productId);
+    }
+  }, [query.id]);
+
+  return { products, selectedProducts };
+}
+
+```
+E para o uso de imagens no Next.js:
+
+1. Configuração
+
+![image](https://github.com/profalves/Tech-Empower---Trilha-React/assets/2893710/c119c1e5-4142-4377-abb5-d9adfb664ac7)
+
+2. Uso
+
+```tsx
+<Image
+  src={product?.images[0]}
+  alt={product?.description}
+  width={400}
+  height={400}
+  className="img-main"
+/>
+```
+

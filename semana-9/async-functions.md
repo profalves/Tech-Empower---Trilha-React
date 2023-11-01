@@ -55,7 +55,7 @@ Promise.all(promises)
   
 Promise.race(promises)
   .then(resultados => {
-    console.log("Todas as Promises foram resolvidas:", resultados);
+    console.log("A primeira Promise resolvida foi retornada:", resultados);
   })
   .catch(erro => {
     console.error("Pelo menos uma Promise foi rejeitada:", erro);

@@ -53,7 +53,7 @@ Para toda a navegação pode apresentar um `header` e/ou um `footer`, e estes ta
 
 #### Header
 
-- Logo
+- Logo (Deve ter o link para a home do site)
 - Menu categorias do site (no mínimo de 3 sessões)
 - Ícone para a conta do usuário (cliente). Caso ele ainda não esteja logado, deverá aparecer um botão de Login. Caso esteja logado, ao lado do Icone deve aparececer o nome do usuário. Para isso pode aplicar Contexto (`useContext`) para salvar os dados do usuário.
 - Ícone para ir para o carrinho
@@ -67,11 +67,22 @@ Para toda a navegação pode apresentar um `header` e/ou um `footer`, e estes ta
 
 ### Responsividade
 
-A partir de agora já teremos um site com mais cara de **E-Commerce**, por isso a **responsividade** será visto como algo que fará sua nota subir.
+A partir de agora já teremos um site com mais cara de **E-Commerce**, por isso a **responsividade** será visto como algo obrigatório.
+
+## Pesos
+
+- [**Home**](#home-page): 3 pontos
+- [**PDP**](#pdp-product-details-page): 3 pontos
+- [**Header**](#header): 1 ponto
+- [**Footer**](#footer): 1 ponto 
+- [**Responsividade**](#responsividade): 1 ponto
+- ***Extras***: 1 ponto
 
 ## Modelo/Exemplo
 
-Para se inspirar e testar a jornada completa, acesse: <https://storetheme.vtex.com/>
+Para se inspirar e ver como é uma jornada completa em um e-commerce, acesse: 
+- <https://storetheme.vtex.com/>
+- <https://www.figma.com/community/file/1039629108858463825>
 
 ## Envio
 
