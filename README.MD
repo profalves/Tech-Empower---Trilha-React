@@ -81,11 +81,11 @@
   - [**Projeto prático**](semana-9/avaliação%203/ecommerce.md)
 
 - **Semana 10**: 
-  - (31/10): API Fake e Melhorias no ecommerce
+  - (31/10): [API Fake e Melhorias no ecommerce](semana-10/api.md)
   - (02/11): ❌ Feriado
 
 - **Semana 11**: 
-  - (07/11): Conceitos Redux (store, actions, reducers)
+  - (07/11): [Conceitos Redux (store, actions, reducers)](semana-11/redux.md)
   - (09/11): Integração Redux com React
 
 - **Semana 12**: 
