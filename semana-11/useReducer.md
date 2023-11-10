@@ -4,63 +4,77 @@ Agora vamos aprender como usar o hook `useReducer` para gerenciar o estado local
 
 ## O que é `useReducer` no React?
 
-`useReducer` é um dos hooks introduzidos no React para gerenciar o estado de um componente. Ele é uma alternativa ao `useState` e é mais adequado para casos em que o estado do componente envolve lógica complexa ou múltiplas subações. O `useReducer` segue o mesmo padrão de design que Redux, permitindo que você gerencie o estado do componente de forma mais previsível.
+`useReducer` é um dos hooks introduzidos no React para gerenciar o estado de um componente. Ele é uma alternativa ao `useState` e é mais adequado para casos em que o estado do componente envolve lógica complexa ou múltiplas sub-ações. O `useReducer` segue o mesmo padrão de design que Redux, permitindo que você gerencie o estado do componente de forma mais previsível.
 
 ## Estrutura Básica do useReducer
 
 O `useReducer` recebe dois argumentos:
 
-Reducer Function: Uma função que recebe o estado atual (state) e uma ação (action) como argumentos e retorna um novo estado. O reducer especifica como o estado deve ser atualizado com base na ação.
+- **Reducer Function**: Uma função que recebe o estado atual (`state`) e uma ação (`action`) como argumentos e retorna um novo estado. O reducer especifica como o estado deve ser atualizado com base na ação.
 
-Initial State: O estado inicial do componente. Pode ser qualquer valor, semelhante ao que você passaria para o useState.
+- **Initial State**: O estado inicial do componente. Pode ser qualquer valor, semelhante ao que você passaria para o `useState`.
 
-javascript
-Copy code
+```javascript
 const [state, dispatch] = useReducer(reducer, initialState);
-state: Representa o estado atual do componente.
-dispatch: Uma função que você chama para despachar uma ação e assim alterar o estado usando o reducer.
-Como Funciona o Exemplo com Carrinho de Compras
-No exemplo anterior, usamos useReducer para gerenciar o estado local do carrinho de compras de um componente de produto. Vamos examinar como isso funciona em detalhes:
+```
 
-1. Inicialização do useReducer
-javascript
-Copy code
-const [state, dispatch] = useReducer(cartReducer, { items: [] });
-cartReducer: O reducer que definimos para gerenciar o estado do carrinho de compras.
-{ items: [] }: O estado inicial do carrinho de compras contendo uma matriz vazia de itens.
-2. Despachando Ações para Alterar o Estado
-Quando o usuário interage com o componente (por exemplo, adicionando um item ao carrinho), chamamos a função dispatch com uma ação apropriada:
+> `state`: Representa o estado atual do componente.
 
-Adicionar Item ao Carrinho:
-javascript
-Copy code
-const handleAddToCart = () => {
-  dispatch({ type: 'ADD_TO_CART', payload: { productId: id } });
+> `dispatch`: Uma função que você chama para despachar uma ação e assim alterar o estado usando o reducer.
+
+## Como Funciona o Exemplo com Carrinho de Compras
+
+Agora, usaremos `useReducer` para gerenciar o estado local do carrinho de compras de um componente de produto. Vamos examinar como isso funciona em detalhes:
+
+### 1. Inicialização do `useReducer`
+
+```typescript
+const [state, dispatch] = useReducer(cartReducer, { items: [] } as CartState);
+```
+
+> `cartReducer`: O reducer que definimos para gerenciar o estado do carrinho de compras.
+>
+> `{ items: [] }`: O estado inicial do carrinho de compras contendo uma matriz vazia de itens.
+
+### 2. Despachando Ações para Alterar o Estado
+
+Quando o usuário interage com o componente (por exemplo, adicionando um item ao carrinho), chamamos a função `dispatch` com uma ação apropriada:
+
+- Adicionar Item ao Carrinho:
+
+```typescript
+const handleAddToCart = (product: CartItem) => {
+  dispatch({ type: 'ADD_TO_CART', payload: { product } });
 };
-Aqui, dispatch envia uma ação com o tipo 'ADD_TO_CART' e um payload contendo o ID do produto que queremos adicionar ao carrinho.
+```
 
-Remover Item do Carrinho:
-javascript
-Copy code
-const handleRemoveFromCart = () => {
+> Aqui, dispatch envia uma ação com o tipo `'ADD_TO_CART'` e um payload contendo o produto que queremos adicionar ao carrinho.
+
+- Remover Item do Carrinho:
+  
+```typescript
+const handleRemoveFromCart = (id: string) => {
   dispatch({ type: 'REMOVE_FROM_CART', payload: { productId: id } });
 };
-Similar ao exemplo anterior, mas com o tipo 'REMOVE_FROM_CART' para indicar que queremos remover um item.
+```
 
-Atualizar Quantidade do Item no Carrinho:
-javascript
-Copy code
-const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+> Similar ao exemplo anterior, mas com o tipo `'REMOVE_FROM_CART'` para indicar que queremos remover um item.
+
+- Atualizar Quantidade do Item no Carrinho:
+  
+```typescript
+const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>, id: string) => {
   const quantity = parseInt(event.target.value, 10);
   dispatch({ type: 'UPDATE_QUANTITY', payload: { productId: id, quantity } });
 };
-Neste caso, dispatch é usado com o tipo 'UPDATE_QUANTITY' e um payload que inclui o ID do produto e a nova quantidade.
+```
 
-3. Reducer para Gerenciar as Ações
+> Neste caso, dispatch é usado com o tipo `'UPDATE_QUANTITY'` e um payload que inclui o ID do produto e a nova quantidade.
+
+### 3. Reducer para Gerenciar as Ações
 O reducer cartReducer recebe a ação despachada e atualiza o estado com base no tipo de ação:
 
-javascript
-Copy code
+```typescript
 const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
     case 'ADD_TO_CART':
@@ -73,7 +87,9 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       return state;
   }
 };
-Dentro do reducer, implementamos a lógica para adicionar, remover ou atualizar a quantidade do item no carrinho com base no tipo de ação.
+```
+
+> Dentro do `reducer`, implementamos a lógica para ***adicionar***, ***remover*** ou ***atualizar*** a quantidade do item no carrinho com base no tipo de ação.
 
 ## Mão na Massa: Carrinho de Compras
 
@@ -134,15 +150,15 @@ type ProductProps = {
 const Product: React.FC<ProductProps> = ({ id, name, price }) => {
   const [state, dispatch] = useReducer(cartReducer, { items: [] });
 
-  const handleAddToCart = () => {
-    dispatch({ type: 'ADD_TO_CART', payload: { productId: id } });
+  const handleAddToCart = (product: CartItem) => {
+    dispatch({ type: 'ADD_TO_CART', payload: { product } });
   };
 
-  const handleRemoveFromCart = () => {
+  const handleRemoveFromCart = (id: string) => {
     dispatch({ type: 'REMOVE_FROM_CART', payload: { productId: id } });
   };
 
-  const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>, id: string) => {
     const quantity = parseInt(event.target.value, 10);
     dispatch({ type: 'UPDATE_QUANTITY', payload: { productId: id, quantity } });
   };
