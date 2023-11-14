@@ -86,14 +86,14 @@
 
 - **Semana 11**: 
   - (07/11): [Conceitos Redux (store, actions, reducers)](semana-11/redux.md)
-  - (09/11): [Integração Redux com React/NextJS]()
+  - (09/11): [Integração Redux com React/NextJS](semana-11/redux-2.md)
 
 - **Semana 12**: 
   - (14/11): [`useReducer`](semana-12/useReducer.md)
   - (16/11): [**Projeto prático**](semana-12/avaliação%204/ecommerce.md)
 
 - **Semana 13**: 
-  - (21/11): [Testes de unitário]()
+  - (21/11): [Testes unitários]()
   - (23/11): [Testes E2E]()
 
 - **Semana 14**: 
