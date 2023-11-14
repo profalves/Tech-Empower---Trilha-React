@@ -97,11 +97,16 @@ export default cartReducer;
    
 ```typescript
 // store.ts
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import cartReducer from './reducer';
+import { configureStore } from "@reduxjs/toolkit";
+import cartReducer from "./reducers";
 
-export const store = createStore(cartReducer);
+const store = configureStore({
+  reducer: {
+    cart: cartReducer,
+  },
+});
+
+export default store;
 ```
 
 4. Integrando com Next.js usando `next-redux-wrapper`
@@ -111,7 +116,6 @@ export const store = createStore(cartReducer);
 import { Provider } from 'react-redux';
 import { store } from '../path/to/store';
 import { AppProps } from 'next/app';
-import { createWrapper } from 'next-redux-wrapper';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -120,11 +124,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     </Provider>
   );
 }
-
-const makeStore = () => store;
-const wrapper = createWrapper(makeStore);
-
-export default wrapper.withRedux(MyApp);
 ```
 
 ### Usando Redux no componente
@@ -175,3 +174,7 @@ export default Product;
 Neste exemplo, o componente `Product` pode adicionar, remover e alterar quantidades dos itens no carrinho de compras usando `Redux`.
 
 Espero que este tutorial ajude você a entender como usar `Redux` com `Next.js` e `TypeScript` para gerenciar o estado global da sua aplicação! Se você tiver mais perguntas ou precisar de mais ajuda, sinta-se à vontade para perguntar.
+
+## Desafio
+
+Monte o seu carrinho de compras com o Redux.

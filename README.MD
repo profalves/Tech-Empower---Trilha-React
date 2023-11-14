@@ -85,24 +85,31 @@
   - (02/11): ❌ Feriado
 
 - **Semana 11**: 
-  - (07/11): Conceitos Redux (store, actions, reducers)
-  - (09/11): Integração Redux com React
+  - (07/11): [Conceitos Redux (store, actions, reducers)](semana-11/redux.md)
+  - (09/11): [Integração Redux com React/NextJS]()
 
 - **Semana 12**: 
-  - (14/11): Autenticação e autorização em APIs
-  - (16/11): **Projeto prático**
+  - (14/11): [`useReducer`](semana-12/useReducer.md)
+  - (16/11): [**Projeto prático**]()
 
 - **Semana 13**: 
-  - (21/11): Testes de unitário
-  - (23/11): Testes E2E
+  - (21/11): [Testes de unitário]()
+  - (23/11): [Testes E2E]()
 
 - **Semana 14**: 
-  - (28/11): Processo de deploy
-  - (30/11): **Projeto final**
+  - (28/11): Autenticação e autorização em APIs
+  - (30/11): Revisão de Conteúdo
 
 - **Semana 15**: 
-  - (05/12): **Apresentação Projeto final**
-  - (07/12): **Apresentação Projeto final**
+  - (05/12): Processo de deploy
+  - (07/12): **Projeto final**
+
+- **Semana 16**: 
+  - (12/12): **Apresentação Projeto final**
+  - (14/12): **Apresentação Projeto final**
+
+- **Semana 17**: 
+  - (19/12): **Conclusão: Próximos passos**
 
 ## Material de estudos
 
