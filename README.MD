@@ -90,7 +90,7 @@
 
 - **Semana 12**: 
   - (14/11): [`useReducer`](semana-12/useReducer.md)
-  - (16/11): [**Projeto prático**]()
+  - (16/11): [**Projeto prático**](semana-12/avaliação%204/ecommerce.md)
 
 - **Semana 13**: 
   - (21/11): [Testes de unitário]()
