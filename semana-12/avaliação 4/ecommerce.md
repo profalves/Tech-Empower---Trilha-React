@@ -47,6 +47,9 @@ Esta semana precisaremos desta estrutura de navegação criada:
 - Precisam ter uma rota para a confirmação do pedido(/`confirmation`), onde o usuário será avisado que o seu pedido foi realizado com sucesso e logo abaixo terá os detalhes do mesmo:
   - Lista de itens comprados, com imagem, nome, quantidade e preço em cada
   - Subtotal, Desconto aplicado e Total.
+  - Dados do Pagamento
+
+ ***PS***: Enviar os dados de entrega, ficará para a próxima avaliação.
 
 
 ### Responsividade
