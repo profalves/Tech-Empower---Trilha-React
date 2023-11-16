@@ -208,6 +208,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
 Agora, abra o seu localhost, no formato: `localhost:3000/api/example`. A partir de agora, você pode consumir essa rota dentro do seu Front-End.
 
+---
+
 ## Fake APIs para front-end
 
 - <https://my-json-server.typicode.com/>
