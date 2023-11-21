@@ -93,7 +93,9 @@
   - (16/11): [**Projeto prático**](semana-12/avaliação%204/ecommerce.md)
 
 - **Semana 13**: 
-  - (21/11): [Testes de unitário]()
+  - (21/11): 
+    - [Fundamentos sobre testes de código](semana-13/fundamentos.md)
+    - [Testes de unitário](semana-13/unit.md)
   - (23/11): [Testes E2E]()
 
 - **Semana 14**: 
