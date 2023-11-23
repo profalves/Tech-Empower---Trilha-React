@@ -96,10 +96,10 @@
   - (21/11): 
     - [Fundamentos sobre testes de código](semana-13/fundamentos.md)
     - [Testes de unitário](semana-13/unit.md)
-  - (23/11): [Testes E2E]()
+  - (23/11): [Testes E2E](semana-13/e2e.md)
 
 - **Semana 14**: 
-  - (28/11): Autenticação e autorização em APIs
+  - (28/11): [Autenticação e autorização em APIs]()
   - (30/11): Revisão de Conteúdo
 
 - **Semana 15**: 
@@ -107,11 +107,8 @@
   - (07/12): **Projeto final**
 
 - **Semana 16**: 
-  - (12/12): **Apresentação Projeto final**
+  - (12/12): **Projeto final**
   - (14/12): **Apresentação Projeto final**
-
-- **Semana 17**: 
-  - (19/12): **Conclusão: Próximos passos**
 
 ## Material de estudos
 
