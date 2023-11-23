@@ -90,7 +90,7 @@ Adicione uma configuração específica para o Cypress no arquivo `cypress/tscon
 
 Crie um arquivo de teste no diretório `cypress/integration`. Comece descrevendo o fluxo de teste usando comandos do Cypress (como `cy.visit`, `cy.get`, `cy.type`, `cy.click`, etc.) para simular as interações do usuário com a aplicação. 
 
-**Exemplo**: Crie um arquivo de teste E2E no diretório `cypress/integration` (por exemplo, `button_spec.ts`).
+**Exemplo**: Crie um arquivo de teste E2E no diretório `cypress/integration` (por exemplo, `button.cy.ts`).
 
 ```typescript
 // cypress/integration/button_spec.ts
