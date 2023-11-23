@@ -28,15 +28,15 @@ A escolha dos tipos de testes a serem realizados depende do contexto do projeto,
 
 Neste tutorial, vamos abordar como escrever testes unitários e testes end-to-end (E2E) para componentes Next.js usando TypeScript. Vamos dividir o tutorial em duas partes: a primeira parte tratará dos testes unitários usando Jest e React Testing Library, e a segunda parte abordará os testes E2E usando Cypress.
 
-### Parte 1: Testes Unitários com Jest e React Testing Library
+## Parte 1: Testes Unitários com Jest e React Testing Library
 
-#### Passo 1: Instale as dependências necessárias para testes unitários:
+### Passo 1: Instale as dependências necessárias para testes unitários:
 
 ```bash
 npm install --save-dev @testing-library/react @testing-library/jest-dom jest ts-jest
 ```
 
-#### Passo 2: Escrevendo Testes Unitários
+### Passo 2: Escrevendo Testes Unitários
 
 Crie um componente no diretório components (por exemplo, Button.tsx).
 
@@ -57,7 +57,7 @@ const Button: React.FC<ButtonProps> = ({ label, onClick }) => {
 export default Button;
 ```
 
-#### Passo 3: Escreva o teste unitário para o componente Button.
+### Passo 3: Escreva o teste unitário para o componente Button.
 
 ```typescript
 // components/Button.test.tsx
@@ -75,25 +75,29 @@ test('renders button with correct label', () => {
 });
 ```
 
-Parte 2: Testes E2E com Cypress
-Passo 1: Configuração do Ambiente
+## Parte 2: Testes E2E com Cypress
+
+### Passo 1: Configuração do Ambiente
+
 1.1. Instale o Cypress como uma dependência de desenvolvimento:
 
-bash
-Copy code
+```bash
 npm install --save-dev cypress
-1.2. Adicione um script no package.json para iniciar o Cypress:
+```
 
-json
-Copy code
+1.2. Adicione um script no `package.json` para iniciar o Cypress:
+
+```json
 "scripts": {
   "cypress:open": "cypress open"
 }
-Passo 2: Escrevendo Testes E2E
-2.1. Crie um arquivo de teste E2E no diretório cypress/integration (por exemplo, button_spec.ts).
+```
 
-typescript
-Copy code
+### Passo 2: Escrevendo Testes E2E
+
+2.1. Crie um arquivo de teste E2E no diretório `cypress/integration` (por exemplo, `button_spec.ts`).
+
+```typescript
 // cypress/integration/button_spec.ts
 describe('Button Component', () => {
   it('should click the button', () => {
@@ -102,16 +106,21 @@ describe('Button Component', () => {
     cy.contains('Button clicked!').should('exist');
   });
 });
+```
 
-Executando os Testes
+## Executando os Testes
+
 Para executar os testes unitários, use o comando:
-bash
-Copy code
+
+```bash
 npm test
+```
+
 Para iniciar o Cypress e executar os testes E2E, use o comando:
-bash
-Copy code
+
+```bash
 npm run cypress:open
+```
 
 ---
 
