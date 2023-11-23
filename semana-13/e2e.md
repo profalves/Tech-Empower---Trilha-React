@@ -58,7 +58,8 @@ Configure o Cypress para suportar Typescript criando um arquivo `tsconfig.json` 
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "types": ["cypress"] // Se você usar Typescript, certifique-se de adicionar tipos do cypress
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
@@ -104,8 +105,21 @@ describe('Button Component', () => {
 
 ### 3. Executando os Testes:
 
-- Execute o Cypress com o comando `npx cypress open` no terminal.
-- Selecione o arquivo de teste que deseja rodar na interface do Cypress.
+`npm run cypress:open` ou `yarn cypress:open` executará o Cypress pela primeira vez. Ele irá gerar automaticamente todos os arquivos necessários para você e testar exemplos em uma pasta cypress na raiz do seu projeto, e abrir uma página dedicada no seu navegador
+
+Se você executar este teste, ele falhará e isso é normal quando está usando NextJS.
+
+![Alt text](image-1.png)
+
+Para fazer funcionar, precisamos primeiro rodar nosso servidor e lançar os testes, para automatizar esse comportamento instalaremos uma biblioteca chamada `start-server-and-test`
+
+```bash
+npm install start-server-and-test --save-dev
+# ou
+yarn add start-server-and-test -D
+```
+
+Adicione um script em seu package.json
   
 ## Mais exemplos
 
@@ -156,3 +170,8 @@ describe('Teste de navegação', () => {
 ## Conclusão
 
 Realizar testes E2E em aplicações Next.js com Typescript é essencial para garantir a qualidade do software. Ao simular as interações do usuário, podemos identificar problemas de integração e garantir uma experiência fluida para os usuários finais. Investir tempo na escrita e execução desses testes contribui significativamente para a confiabilidade e robustez da aplicação.
+
+## Docs
+
+- <https://nextjs.org/docs/pages/building-your-application/optimizing/testing>
+- <https://dev.to/alexcoding42/how-to-set-up-cypress-in-your-next-js-project-for-integration-test-159j>
