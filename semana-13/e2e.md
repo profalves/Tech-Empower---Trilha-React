@@ -93,7 +93,6 @@ Crie um arquivo de teste no diretório `cypress/integration`. Comece descrevendo
 **Exemplo**: Crie um arquivo de teste E2E no diretório `cypress/integration` (por exemplo, `button.cy.ts`).
 
 ```typescript
-// cypress/integration/button_spec.ts
 describe('Button Component', () => {
   it('should click the button', () => {
     cy.visit('/');
