@@ -10,7 +10,7 @@ A criação de testes é uma das boas práticas indicadas para todas aplicaçõe
 
 **Teste Unitário** é um nível de teste de software em que unidades individuais de um sistema são testados. São testes que têm como objetivo testar regras de negócio, testando cada função isoladamente, para ter certeza que ele faz somente o que foi designado para fazer.
 
-Sempre que você criar um componente, tenha em mente que também será gerado um arquivo `<nome-componente>.test.tsx`. Este arquivo vai nos auxiar a iniciar os testes.
+Sempre que você criar um componente, tenha em mente que também será gerado um arquivo `<nome-componente>.test.tsx`, também pode ser `<nome-componente>.spec.tsx`. Este arquivo vai nos auxiliar a iniciar os testes.
 
 ### Teste End-to-End (E2E)
 
