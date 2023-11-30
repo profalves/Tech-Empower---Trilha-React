@@ -107,6 +107,7 @@
 
 - **Semana 16**: 
   - (12/12): **Projeto final**
+  - (15/12): **Projeto final**
   - (14/12): **Apresentação Projeto final**
 
 ## Material de estudos
