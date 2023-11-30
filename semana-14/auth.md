@@ -6,75 +6,114 @@ A segurança é uma das preocupações fundamentais ao desenvolver aplicativos d
 
 - **Autenticação do Usuário**: Vamos começar criando um sistema de autenticação seguro. Para gerenciar nossos formulários de login, aproveitaremos o poder do React Hook Form para uma validação fácil e reativa.
 
-- **Segurança com `Bcrypt` e `JWT`**: Exploraremos técnicas essenciais de segurança, incluindo a `hash` de senhas usando o algoritmo `Bcrypt` e a geração de tokens de autenticação usando `JSON` Web Tokens (`JWT`). Isso garantirá que as informações confidenciais dos usuários estejam protegidas durante a transmissão e armazenamento.
-
 - **Autorização e Rotas Protegidas**: Vamos aprender como proteger rotas específicas da nossa aplicação para garantir que apenas usuários autenticados possam acessá-las. Implementaremos rotas protegidas, permitindo o acesso apenas a usuários autorizados, e examinaremos estratégias para garantir que somente aqueles com as permissões adequadas possam visualizar conteúdo específico.
 
 - **Exemplo Prático com um Backend Simulado**: Para ilustrar esses conceitos, criaremos um exemplo prático usando um backend simulado. Isso nos permitirá focar nos aspectos de autenticação e autorização, sem se preocupar com a complexidade de um servidor real.
 
-Vamos criar rotas protegidas com `Next.js` usando `TypeScript` e formulários com `react-hook-form`. 
 
 ## Mão na massa
 
-### 1. Configuração Inicial:
-Primeiro, crie um novo projeto Next.js com TypeScript:
+### Passo 1: Instalar e configurar o `NextAuth.js`
+
+Instale as dependências do `NextAuth` e também dos provedores que você deseja utilizar (neste caso, vamos usar o provedor de email/senha):
 
 ```bash
-npx create-next-app nome-do-seu-projeto --typescript
-cd nome-do-seu-projeto
+yarn add next-auth
 ```
 
-### 2. Instalação de Dependências:
-Instale as dependências necessárias, incluindo o `react-hook-form`:
+Crie um arquivo `pages/api/auth/[...nextauth].ts` para lidar com as rotas de autenticação. Este será o endpoint usado pelo NextAuth:
 
-```bash
-npm install react-hook-form axios jsonwebtoken bcryptjs cookie
-# or
-yarn add react-hook-form axios jsonwebtoken bcryptjs cookie
+```typescript
+import NextAuth from 'next-auth';
+import Providers from 'next-auth/providers';
+
+export default NextAuth({
+  providers: [
+    Providers.Credentials({
+      credentials: {
+        // Configurações de como os usuários serão autenticados
+        async authorize(credentials) {
+          // Adicione sua lógica de autenticação aqui
+          if (credentials.email === 'seu-email' && credentials.password === 'sua-senha') {
+            // O retorno deve ser um objeto contendo informações do usuário
+            return { id: 1, name: 'Nome do Usuário', email: 'seu-email' };
+          }
+          return null;
+        },
+      },
+    }),
+    // Outros provedores podem ser adicionados aqui (ex: Google, Facebook, etc.)
+  ],
+  pages: {
+    signIn: '/login', // Rota para a tela de login
+  },
+});
 ```
 
-### 3. Implementação do Login com react-hook-form:
-Crie uma página de login (`pages/login.tsx`) usando `react-hook-form` para gerenciar o formulário e fazer a validação:
+### Passo 2: Implementar a proteção da rota `/my-account`
+Para proteger a rota /my-account, você pode criar um componente de verificação de autenticação (auth.tsx) para garantir que o usuário esteja autenticado antes de acessar essa rota.
+
+```tsx
+// components/auth.tsx
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
+
+const Auth: React.FC = ({ children }) => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === 'loading') return; // Aguarde a verificação da sessão
+
+    if (!session) {
+      router.replace('/login'); // Redireciona para a página de login se não estiver autenticado
+    }
+  }, [session, status, router]);
+
+  if (status === 'loading') {
+    // Exibir um loader enquanto verifica a sessão
+    return <div>Carregando...</div>;
+  }
+
+  return <>{children}</>;
+};
+
+export default Auth;
+```
+
+### Passo 3: Criar as páginas de Login e My Account
+
+Crie as páginas de login (`pages/login.tsx`) e `my-account.tsx`.
+
+1. `login.tsx`:
 
 ```tsx
 // pages/login.tsx
-import { FC } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import axios from 'axios';
-import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/react';
+import React from 'react';
 
-interface LoginFormInputs {
-  email: string;
-  password: string;
-}
+const LoginPage: React.FC = () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
-const LoginPage: FC = () => {
-  const { register, handleSubmit, setError, formState: { errors } } = useForm<LoginFormInputs>();
-  const router = useRouter();
-
-  const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
-    try {
-      const response = await axios.post('/api/login', data);
-      if (response.data.token) {
-        // Armazene o token de autenticação em um cookie ou no estado global da aplicação
-        // Redirecione para a página da conta do usuário
-        router.push('/account');
-      }
-    } catch (error) {
-      setError('password', { type: 'manual', message: 'Credenciais inválidas' });
-    }
+    // Chama a função signIn do NextAuth para autenticar o usuário
+    await signIn('credentials', {
+      redirect: false,
+      email,
+      password,
+    });
   };
 
   return (
     <div>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="email" placeholder="Email" {...register('email', { required: 'Este campo é obrigatório' })} />
-        {errors.email && <span>{errors.email.message}</span>}
-
-        <input type="password" placeholder="Senha" {...register('password', { required: 'Este campo é obrigatório' })} />
-        {errors.password && <span>{errors.password.message}</span>}
-
+      <form onSubmit={handleSubmit}>
+        <input type="email" name="email" placeholder="Email" />
+        <input type="password" name="password" placeholder="Senha" />
         <button type="submit">Entrar</button>
       </form>
     </div>
@@ -84,76 +123,44 @@ const LoginPage: FC = () => {
 export default LoginPage;
 ```
 
-### 4. Implementação da Página de Conta Protegida:
-Crie uma página de conta protegida (`pages/account.tsx`) onde os usuários autenticados podem acessar:
+2. `my-account.tsx`:
 
 ```tsx
-// pages/account.tsx
-import { FC, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import axios from 'axios';
+// pages/my-account.tsx
+import React from 'react';
+import Auth from '../components/auth';
 
-const AccountPage: FC = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const response = await axios.get('/api/user');
-        // Se o usuário não estiver autenticado, redirecione para a página de login
-        if (!response.data.userId) {
-          router.push('/login');
-        }
-      } catch (error) {
-        // Se houver um erro ao verificar a autenticação, redirecione para a página de login
-        router.push('/login');
-      }
-    };
-
-    checkAuth();
-  }, []);
-
+const MyAccountPage: React.FC = () => {
   return (
-    <div>
-      <h1>Bem-vindo à sua conta!</h1>
-      {/* Conteúdo da página da conta do usuário */}
-    </div>
+    <Auth>
+      <div>
+        <h1>Minha Conta</h1>
+        {/* Conteúdo da página de conta */}
+      </div>
+    </Auth>
   );
 };
 
-export default AccountPage;
+export default MyAccountPage;
 ```
 
-### 5. Implementação da API com react-hook-form:
-Para a validação do formulário usando `react-hook-form`, você pode criar um arquivo api/login.ts para lidar com a autenticação do usuário:
+### Passo 4: Implementar a funcionalidade de logout
 
-```tsx
-// pages/api/login.ts
-import { NextApiRequest, NextApiResponse } from 'next';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+Para o logout, você pode criar um endpoint em `pages/api/logout.ts`:
 
-const secret = 'seu_segredo_secreto';
+```ts
+// pages/api/logout.ts
+import { signOut } from 'next-auth/react';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'POST') {
-    const { email, password } = req.body;
-
-    // Simulando a verificação do usuário no banco de dados
-    // (realize a verificação adequada em um ambiente de produção)
-    const user = { id: 1, email: 'user@example.com', password: '$2a$10$kkv3J9ggX1WkpcxyNVl6x.EJHApOG0HbbkScUkmF8sJAgfkX.3aO2' };
-
-    if (!user || !bcrypt.compareSync(password, user.password)) {
-      return res.status(401).json({ error: 'Credenciais inválidas' });
-    }
-
-    // Gere um token de autenticação
-    const token = jwt.sign({ userId: user.id, userEmail: user.email }, secret, { expiresIn: '1h' });
-    res.json({ token });
-  } else {
-    res.status(405).end(); // Método não permitido
-  }
+export default async function handler(req, res) {
+  const result = await signOut({ redirect: false, req });
+  res.clearPreviewData();
+  res.status(200).json({ message: 'Deslogado com sucesso' });
 }
 ```
 
-Lembre-se de que este é um exemplo básico para entender o conceito de rotas protegidas com Next.js, TypeScript e react-hook-form. Em um ambiente de produção, você deve considerar usar soluções mais seguras para armazenar e gerenciar tokens de autenticação, bem como autenticação de dois fatores para melhorar a segurança. Além disso, sempre valide e verifique os tokens do lado do servidor para garantir a segurança da sua aplicação.
+No seu frontend, onde você deseja realizar o logout, você pode criar um botão que acione uma função para chamar o endpoint `/api/logout`.
+
+Isso deve te dar uma boa base para implementar a autenticação com `NextAuth.js`, proteger a rota `/my-account` e implementar o logout em seu projeto Next.js com TypeScript. Lembre-se de ajustar as configurações de autenticação de acordo com suas necessidades de segurança!
+
+Lembre-se de que este é um exemplo básico para entender o conceito de rotas protegidas com Next.js. Em um ambiente de produção, você deve considerar usar soluções mais seguras para armazenar e gerenciar tokens de autenticação, bem como autenticação de dois fatores para melhorar a segurança. Além disso, sempre valide e verifique os tokens do lado do servidor para garantir a segurança da sua aplicação.

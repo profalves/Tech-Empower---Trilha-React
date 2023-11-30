@@ -99,12 +99,11 @@
   - (23/11): [Testes E2E](semana-13/e2e.md)
 
 - **Semana 14**: 
-  - (28/11): [Autenticação e autorização em APIs]()
-  - (30/11): Revisão de Conteúdo
+  - (30/11): [Autenticação e autorização em APIs](semana-14/auth.md)
 
 - **Semana 15**: 
   - (05/12): Processo de deploy
-  - (07/12): **Projeto final**
+  - (06/12): **Projeto final**
 
 - **Semana 16**: 
   - (12/12): **Projeto final**
