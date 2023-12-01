@@ -1,4 +1,4 @@
-# Autenticação e autorização em APIs
+# Autenticação e autorização com Next.js 
 
 A segurança é uma das preocupações fundamentais ao desenvolver aplicativos da web modernos. Uma parte crucial desse processo é garantir que apenas usuários autenticados e autorizados tenham acesso a determinadas funcionalidades e dados sensíveis. Neste tutorial, vamos explorar como implementar um sistema robusto de autenticação e autorização em APIs usando Next.js, TypeScript e React Hook Form.
 
