@@ -36,6 +36,8 @@ Esta semana precisaremos desta estrutura de navegação criada:
     - [Login](#login)
     - [Testes](#testes)
   - [Pesos](#pesos)
+  - [Modelo/Exemplo](#modeloexemplo)
+- [Fake Apis para produtos](#fake-apis-para-produtos)
   - [Envio](#envio)
 
 ### Critérios Anteriores (ultima chance)
@@ -78,9 +80,22 @@ Considerando que o desafio vale **10 pontos**:
 6. Extras: **1 ponto**
 7. Apresentação: **1 ponto**
 
+
+## Modelo/Exemplo
+
+Para se inspirar e ver como é uma jornada completa em um e-commerce, acesse: 
+- <https://storetheme.vtex.com/>
+- <https://www.figma.com/community/file/1039629108858463825>
+
+# Fake Apis para produtos
+
+- <https://dummyjson.com/docs>
+- <https://fakestoreapi.com/docs>
+- <https://fakeapi.platzi.com/en/rest/products/>
+
 ## Envio
 
 - Para envio, suba para o repositório do seu projeto no Github
 - Deverá criar um pull/request de uma branch nova para que seja comparada as mudanças somente dessa semana, se possível.
 - Qualquer dificuldade, favor informar com antecedencia, estou aqui para ajudar.
-- **Prazo**: Até as *23hs* de domingo, dia 29/01/2023
+- **Prazo**: Até as *23hs* de domingo, dia 10/12/2023
