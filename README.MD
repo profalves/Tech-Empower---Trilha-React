@@ -102,7 +102,7 @@
   - (30/11): [Autenticação e autorização em APIs](semana-14/auth.md)
 
 - **Semana 15**: 
-  - (05/12): [Processo de deploy]()
+  - (05/12): [Processo de deploy](semana-15/deploy.md)
   - (06/12): [**Projeto final**](semana-15/avaliação%20final/ecommerce.md)
 
 - **Semana 16**: 
