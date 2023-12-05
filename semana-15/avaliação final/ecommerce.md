@@ -44,13 +44,6 @@ Esta semana precisaremos desta estrutura de navegação criada:
 
 - Todos os critérios anteriores poderão ser atingidos a fim de tornar o seu ecommerce mais completo e satisfatório. Além de ser um portfolio para o seu Github. Então vamos lá e mão na massa: [Semana 2 - Critérios de Aceite](../semana-2/DESAFIO_S2.md)
 
-### PLP (Product List Page) e Busca de Produtos
-
-- Para se ter uma página de lista de produtos, antes precisamos ter as 3 opções no menu, como solicitado anteriormente e que cada uma seja para uma categoria de produtos. Logo os seus produtos deverão ter uma categoria associada a eles.
-- Ao clicar nessa categoria no menu, deverá ser redirecionado para PLP que irá carregar somente os produtos dessa categoria.
-- Precisa também permitir que na tela exista um input para pesquisar produtos, o resultado da pesquisa deverá ser independente da categoria selecionada. 
-- Ao clicar no botão de busca de produtos, deverá ser redirecionado para a página de busca de produtos com os dados da categoria selecionada.
-
 ### Minha Conta
 
 - Deverá ser protegida e somente acessar quando estiver logado.
