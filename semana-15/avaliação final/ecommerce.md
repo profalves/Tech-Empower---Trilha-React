@@ -98,4 +98,4 @@ Para se inspirar e ver como é uma jornada completa em um e-commerce, acesse:
 - Para envio, suba para o repositório do seu projeto no Github
 - Deverá criar um pull/request de uma branch nova para que seja comparada as mudanças somente dessa semana, se possível.
 - Qualquer dificuldade, favor informar com antecedencia, estou aqui para ajudar.
-- **Prazo**: Até as *23hs* de domingo, dia 10/12/2023
+- **Prazo**: Até as *23h59*, dia 13/12/2023
