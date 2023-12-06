@@ -20,22 +20,31 @@ Vamos criar um componente simples para testar. Suponha que temos um componente B
 
 ```tsx
 // components/Button/index.tsx
-import React from 'react';
+import React, { ReactNode } from "react";
 
 type ButtonProps = {
+  children: ReactNode;
   onClick: () => void;
-  label: string;
+  loading?: boolean;
+  backgroundColor?: string;
 };
 
-const Button: React.FC<ButtonProps> = ({ onClick, label }) => {
+export default function Button({
+  children,
+  onClick,
+  loading = false,
+  backgroundColor = "green",
+}: ButtonProps) {
   return (
-    <button onClick={onClick} data-testid="custom-button">
-      {label}
+    <button
+      data-testid="custom-button"
+      onClick={onClick}
+      style={{ backgroundColor, color: "white" }}
+    >
+      {loading ? "carregando..." : children}
     </button>
   );
-};
-
-export default Button;
+}
 ```
 
 ### Passo 3: Escrevendo Testes Unitários
@@ -44,31 +53,75 @@ Vamos criar um arquivo de teste `Button.test.tsx` para testar o componente Butto
 
 ```tsx
 // components/Button/Button.test.tsx
+import React from "react";
+import Button from "./Button";
+import { fireEvent, render } from "@testing-library/react";
 
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import Button from './Button';
+describe("Button suite tests", () => {
+  it("renders button correctly", () => {
+    const handleClick = jest.fn();
+    const { getByRole } = render(
+      <Button onClick={handleClick}>Click Me</Button>
+    );
 
-test('renders button correctly', () => {
-  const handleClick = jest.fn();
-  const { getByTestId } = render(
-    <Button onClick={handleClick} label="Click me" />
-  );
-  const button = getByTestId('custom-button');
-  
-  expect(button).toBeInTheDocument();
-  expect(button).toHaveTextContent('Click me');
-});
+    const buttonTag = getByRole("button");
 
-test('handles click event', () => {
-  const handleClick = jest.fn();
-  const { getByTestId } = render(
-    <Button onClick={handleClick} label="Click me" />
-  );
-  const button = getByTestId('custom-button');
-  fireEvent.click(button);
-  
-  expect(handleClick).toHaveBeenCalledTimes(1);
+    expect(buttonTag).toBeInTheDocument();
+  });
+
+  it("should click function called", () => {
+    const handleClick = jest.fn();
+    const { getByTestId } = render(
+      <Button onClick={handleClick}>Click Me</Button>
+    );
+
+    const buttonElement = getByTestId("custom-button");
+
+    fireEvent.click(buttonElement);
+
+    expect(handleClick).toHaveBeenCalled();
+  });
+
+  it("should render loading message", () => {
+    const handleClick = jest.fn();
+    const { getByText } = render(
+      <Button onClick={handleClick} loading>
+        Click Me
+      </Button>
+    );
+
+    const buttonText = getByText("carregando");
+
+    expect(buttonText).toBeVisible();
+  });
+
+  it("should render background color button", () => {
+    const handleClick = jest.fn();
+    const { getByTestId } = render(
+      <Button onClick={handleClick} backgroundColor="red">
+        Click Me
+      </Button>
+    );
+
+    const buttonElement = getByTestId("custom-button");
+
+    expect(buttonElement).toHaveStyle({
+      backgroundColor: "red",
+    });
+  });
+
+  it("should render background color green by default", () => {
+    const handleClick = jest.fn();
+    const { getByTestId } = render(
+      <Button onClick={handleClick}>Click Me</Button>
+    );
+
+    const buttonElement = getByTestId("custom-button");
+
+    expect(buttonElement).toHaveStyle({
+      backgroundColor: "green",
+    });
+  });
 });
 ```
 
