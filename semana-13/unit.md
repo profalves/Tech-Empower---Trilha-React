@@ -11,7 +11,7 @@ Certifique-se de ter o ambiente de desenvolvimento configurado com `Next.js`, `T
 Instale o `Jest` e as ferramentas necessárias para testes:
 
 ```bash
-yarn add -D jest ts-jest @types/jest @testing-library/react @testing-library/react-hooks @testing-library/jest-dom
+yarn add -D jest ts-jest jest-environment-jsdom @types/jest @testing-library/react @testing-library/react-hooks @testing-library/jest-dom @testing-library/user-event
 ```
 
 ### Passo 2: Criando um Componente
@@ -20,7 +20,6 @@ Vamos criar um componente simples para testar. Suponha que temos um componente B
 
 ```tsx
 // components/Button/index.tsx
-
 import React from 'react';
 
 type ButtonProps = {
@@ -112,5 +111,6 @@ Com isso, você tem um ambiente configurado para escrever testes unitários em c
 
 ## Docs
 
+- <https://testing-library.com/docs/react-testing-library/intro/>
 - <https://nextjs.org/docs/pages/building-your-application/optimizing/testing#jest-and-react-testing-library>
 - <https://bobbyhadz.com/blog/support-for-experimental-syntax-jsx-isnt-currently-enabled>
