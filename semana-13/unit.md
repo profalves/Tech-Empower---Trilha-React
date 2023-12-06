@@ -130,7 +130,7 @@ describe("Button suite tests", () => {
 Para executar os testes, use o comando:
 
 ```bash
-npx jest
+yarn test
 ```
 
 ## Cobertura de Código (Code Coverage)
