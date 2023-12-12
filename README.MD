@@ -106,7 +106,7 @@
   - (06/12): [**Projeto final**](semana-15/avaliação%20final/ecommerce.md)
 
 - **Semana 16**: 
-  - (12/12): **Projeto final**
+  - (12/12): [**Projeto final**](semana-16/performance.md)
   - (13/12): **Projeto final**
   - (14/12): **Apresentação Projeto final**
 
