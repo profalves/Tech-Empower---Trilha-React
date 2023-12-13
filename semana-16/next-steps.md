@@ -62,6 +62,7 @@ Neste CMS poderá conter:
 - Cadastro de Produtos
 - Cadastro das opções de Menu 
 - Cadastro dos banners e campanhas
+- Lista de pedidos do usuário
 - Etc.
 
 
