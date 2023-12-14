@@ -106,9 +106,9 @@
   - (06/12): [**Projeto final**](semana-15/avaliação%20final/ecommerce.md)
 
 - **Semana 16**: 
-  - (12/12): [**Projeto final**](semana-16/performance.md)
-  - (13/12): **Apresentação Projeto final**
-  - (14/12): [**Encerramento**](semana-16/next-steps.md)
+  - (12/12): [**Projeto final: Dicas de Performance**](semana-16/performance.md)
+  - (13/12): [**Apresentação Projeto final**]((semana-16/next-steps.md))
+  - (14/12): [**Encerramento**](semana-16/coding.md)
 
 ## Material de estudos
 
