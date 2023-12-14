@@ -176,13 +176,13 @@ Agora, a função `fetchData` aceita opções para especificar o método e o cor
 
 
 ## SOLID (Princípios de Design de Objetos)
-SOLID é um acrônimo para cinco princípios de design de objetos:
+SOLID é um acrônimo para cinco princípios de design orientado a objetos formulados por [**Robert C. Martin**](https://pt.wikipedia.org/wiki/Robert_Cecil_Martin).
 
-- **S** - Single Responsibility Principle
-- **O** - Open/Closed Principle
-- **L** - Liskov Substitution Principle
-- **I** - Interface Segregation Principle
-- **D** - Dependency Inversion Principle
+**S - Single Responsibility Principle**: Uma classe deve ter apenas uma razão para mudar.
+**O - Open/Closed Principle**: As entidades de software devem ser abertas para extensão, mas fechadas para modificação.
+**L - Liskov Substitution Principle**: Subtipos devem ser substituíveis por seus tipos base sem afetar a integridade do sistema.
+**I - Interface Segregation Principle**: Múltiplas interfaces específicas são melhores do que uma única interface geral.
+**D - Dependency Inversion Principle**: Dependa de abstrações, não de implementações concretas.
 
 Esses princípios visam criar código mais limpo, flexível e de fácil manutenção, dividindo responsabilidades, evitando dependências desnecessárias e criando componentes reutilizáveis.
 
