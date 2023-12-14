@@ -58,10 +58,11 @@ Desenvolva um sistema robusto de gerenciamento de conteúdo para cadastros de pr
 
 Neste CMS poderá conter: 
 
-- Usuários cadastrados no site e quais deles serão administradores do CMS e outras permições
+- Usuários cadastrados no site e quais deles serão administradores do CMS e outras permissões
 - Cadastro de Produtos
 - Cadastro das opções de Menu 
 - Cadastro dos banners e campanhas
+- Lista de pedidos do usuário
 - Etc.
 
 
